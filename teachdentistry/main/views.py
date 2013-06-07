@@ -1,25 +1,14 @@
 from annoying.decorators import render_to
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from django.contrib.contenttypes.models import ContentType
-from django.http import HttpResponseRedirect, HttpResponse, \
-    HttpResponseForbidden, HttpResponseServerError
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.utils.encoding import smart_str
-from pagetree.helpers import get_hierarchy, get_section_from_path, \
-    get_module, needs_submit, submitted
-from django.contrib.admin.views.decorators import staff_member_required
-from pagetree.models import Hierarchy
-from pagetree_export.exportimport import export_zip, import_zip
+from pagetree.helpers import get_section_from_path, get_module, needs_submit, \
+    submitted
+from quizblock.models import Submission
 from teachdentistry.main.models import UserProfile
-from quizblock.models import Submission, Response
-from zipfile import ZipFile
-import csv
 import django.core.exceptions
-import os
-from django.core.servers.basehttp import FileWrapper
-from django.conf import settings
 
 
 def get_or_create_profile(user, section):
@@ -66,23 +55,6 @@ def _unlocked(profile, section):
     return profile.has_visited(previous)
 
 
-class rendered_with(object):
-    def __init__(self, template_name):
-        self.template_name = template_name
-
-    def __call__(self, func):
-        def rendered_func(request, *args, **kwargs):
-            items = func(request, *args, **kwargs)
-            if isinstance(items, type({})):
-                ctx = RequestContext(request)
-                return render_to_response(self.template_name,
-                                          items,
-                                          context_instance=ctx)
-            else:
-                return items
-        return rendered_func
-
-
 def has_responses(section):
     quizzes = [p.block() for p in section.pageblock_set.all(
     ) if hasattr(p.block(), 'needs_submit') and p.block().needs_submit()]
@@ -98,9 +70,10 @@ def allow_redo(section):
                 allowed = False
     return allowed
 
+
 @login_required
+@render_to('main/page.html')
 def page(request, path):
-    #import pdb; pdb.set_trace()
     section = get_section_from_path(path)
     hierarchy = section.hierarchy
     root = hierarchy.get_root()
@@ -165,7 +138,7 @@ def page(request, path):
 
 
 @login_required
-@rendered_with("main/instructor_page.html")
+@render_to("main/instructor_page.html")
 def instructor_page(request, path):
     if not request.user.is_superuser:
         return HttpResponseForbidden

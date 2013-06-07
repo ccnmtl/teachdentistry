@@ -3,3 +3,8 @@
 *.pyc
 ve
 teachdentistry/local_settings.py
+reports
+.project
+.pydevproject
+.coverage
+media/CACHE

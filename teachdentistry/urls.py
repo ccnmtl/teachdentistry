@@ -44,10 +44,9 @@ urlpatterns = patterns(
 
 if settings.DEBUG:
     urlpatterns += patterns('',
-        (r'^favicon.ico$',
-         'django.views.static.serve',
-         {'document_root': '../media/img/favicon.ico'}),
-    )
+                            (r'^favicon.ico$',
+                             'django.views.static.serve',
+                             {'document_root': '../media/img/favicon.ico'}),)
 
 urlpatterns += patterns(
     '',

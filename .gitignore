@@ -8,3 +8,4 @@ reports
 .pydevproject
 .coverage
 media/CACHE
+.settings

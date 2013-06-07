@@ -2,8 +2,7 @@ from annoying.decorators import render_to
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponseForbidden
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
+from django.shortcuts import get_object_or_404
 from pagetree.helpers import get_section_from_path, get_module, needs_submit, \
     submitted
 from quizblock.models import Submission
@@ -175,6 +174,7 @@ def edit_page(request, path):
                 module=get_module(section),
                 modules=root.get_children(),
                 root=section.hierarchy.get_root())
+
 
 @render_to('main/index.html')
 def index(request):

@@ -80,7 +80,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'waffle.middleware.WaffleMiddleware',
@@ -118,7 +118,20 @@ INSTALLED_APPS = [
     'smoketest',
     'django_extensions',
     'teachdentistry.main',
+    'pagetree',
+    'pageblocks',
+    'quizblock',
 ]
+
+PAGEBLOCKS = [
+    'pageblocks.TextBlock',
+    'pageblocks.HTMLBlock',
+    'pageblocks.PullQuoteBlock',
+    'pageblocks.ImageBlock',
+    'pageblocks.ImagePullQuoteBlock',
+    'quizblock.Quiz',
+]
+
 
 LETTUCE_APPS = (
     'teachdentistry.main',

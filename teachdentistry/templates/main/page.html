@@ -2,7 +2,6 @@
 {% load render %}
 
 {% block js %}
-    <script type="text/javascript" src="/site_media/js/chapter_marker_player.js"></script>
     {% for block in section.pageblock_set.all %}
         {% renderjs block %}
     {% endfor %}
@@ -20,11 +19,11 @@
 
 {% block pagetitle %}<h2 class="pagetitle">{{section.label}}</h2>{% endblock %}
 
-{% block sidenav %}
-        <!-- ###### Secondary Navigation ###### -->
-        {% if module.get_children %}
-            {% include "main/menu.html" %}
-        {% endif %}
+{% block sidebar %}
+    <!-- ###### Secondary Navigation ###### -->
+    {% if module.get_children %}
+        {% include "main/menu.html" %}
+    {% endif %}
 {% endblock %}
 
 {% block navrightextra %}
@@ -73,10 +72,10 @@
 
 {% block content-nav %}
     <div class="content-nav">
-        {%  with section.get_previous as previous %}
-            {%  if previous %}
-                {%  ifnotequal previous.depth 2 %}
-                    <a href="{{previous.get_absolute_url}}" id="previous" class="pager_button"><b>&larr;</b> {{previous.label}} </a>
+        {% with section.get_previous as previous %}
+            {% if previous %}
+                {% ifnotequal previous section.get_module %}            
+                    <a href="{{previous.get_absolute_url}}" id="previous" class="pager_button"><b>&larr;</b> {{previous.label}}</a>
                 {% endifnotequal %}
             {% endif %}
         {% endwith %}
@@ -85,10 +84,9 @@
             {% if next %}
                 {% if not next.is_root %}
                     {% if next_unlocked %}
-                        <a href="{{ next.get_absolute_url}}" id="next" class="pager_button">{{next.label}} <b>&rarr;</b></a>
+                        <a href="{{next.get_absolute_url}}" id="next" class="pager_button">{{next.label}} <b>&rarr;</b></a>
                     {% else %}
                         <div id="next" class="pager_button">{{next.label}} <b>&rarr;</b></div>
-                        <input type="hidden" id="next_url" value="{{next.get_absolute_url}}" />
                     {% endif %}
                 {% endif %}
             {% endif %}

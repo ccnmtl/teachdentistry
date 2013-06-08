@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load render %}
+
+{% block js %}
+    {% for block in section.pageblock_set.all %}
+        {% renderjs block %}
+    {% endfor %}
+{% endblock %}
+
+{% block css %}
+    {% for block in section.pageblock_set.all %}
+        {% rendercss block %}
+    {% endfor %}
+{% endblock %}
+
+{% block module_slug %}{{module.slug}}{% endblock %}
+
+{% block title %}{{section.label}}{% endblock %}
+
+{% block pagetitle %}<h2 class="pagetitle">{{section.label}}</h2>{% endblock %}
+
+{% block sidebar %}
+    <!-- ###### Secondary Navigation ###### -->
+    {% if module.get_children %}
+        {% include "main/menu.html" %}
+    {% endif %}
+{% endblock %}
+
+{% block navrightextra %}
+    <ul class="nav">
+        {% if user.is_staff %}
+            <li><a href="/edit{{section.get_absolute_url}}">edit page</a></li>
+        {% endif %}
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <div id="content" class ="module-{{module.slug}}">
+        This page is not currently accessible. Please complete the previous sections before continuing.
+    </div>
+{% endblock %}
+
+{% block content-nav %}
+{% endblock %}

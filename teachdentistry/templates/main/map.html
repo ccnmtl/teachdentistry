@@ -6,29 +6,31 @@
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key={{settings.GOOGLE_API_KEY}}&sensor=false">
     </script>
-        
-    <script type="text/javascript">        
-        jQuery(document).ready(function() {
-
-            jQuery(window).resize(function () {  
-                var viewport = getVisibleViewport();
-                jQuery("#map-canvas").css({
-                    'height': viewport.height + "px",
+    
+    {% if accessible %}
+        <script type="text/javascript">        
+            jQuery(document).ready(function() {
+    
+                jQuery(window).resize(function () {  
+                    var viewport = getVisibleViewport();
+                    jQuery("#map-canvas").css({
+                        'height': viewport.height + "px",
+                    });
                 });
+                
+                var mapOptions = {
+                    center: new google.maps.LatLng(39.8282, -98.5795),
+                    zoom: 4,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                
+                var elt = document.getElementById("map-canvas");
+                var mapInstance = new google.maps.Map(elt, mapOptions);
+                
+                jQuery(window).trigger("resize");
             });
-            
-            var mapOptions = {
-                center: new google.maps.LatLng(39.8282, -98.5795),
-                zoom: 4,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            
-            var elt = document.getElementById("map-canvas");
-            var mapInstance = new google.maps.Map(elt, mapOptions);
-            
-            jQuery(window).trigger("resize");
-        });
-    </script>
+        </script>
+    {% endif %}
 {% endblock %}
 
 {% block css %}

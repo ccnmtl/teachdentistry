@@ -53,6 +53,19 @@ body > .container {
   color: blue;
 }
 
+/*--------------------------------------------------
+    Sidebar Menu
+  --------------------------------------------------*/
+
+#sidebar div.active {
+}
+
+#sidebar div.regular {
+}
+
+#sidebar div.locked {
+    color: lightgray;
+}
 
 
 /*--------------------------------------------------

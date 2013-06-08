@@ -72,6 +72,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.debug',
     'django.core.context_processors.request',
     'stagingcontext.staging_processor',
+    'teachdentistry.main.views.django_settings',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -122,6 +123,8 @@ INSTALLED_APPS = [
     'pagetree',
     'pageblocks',
     'quizblock',
+#    'haystack',
+    'teachdentistry.educatormap'
 ]
 
 PAGEBLOCKS = [
@@ -187,3 +190,13 @@ WIND_SUPERUSER_MAPPER_GROUPS = ['anp8', 'jb2410', 'zm4', 'egr2107',
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_COOKIE_HTTPONLY = True
+
+
+#HAYSTACK_CONNECTIONS = {
+#    'default': {
+#        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+#        'URL': 'http://127.0.0.1:8983/solr'
+#        # ...or for multicore...
+#        # 'URL': 'http://127.0.0.1:8983/solr/mysite',
+#    },
+#}

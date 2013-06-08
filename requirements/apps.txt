@@ -28,3 +28,4 @@ requirements/src/django-pagetree-0.11.6.tar.gz
 requirements/src/django-pageblocks-0.5.9.tar.gz
 requirements/src/django-quizblock-0.6.9.1.tar.gz
 requirements/src/django-pagetree_export-0.4.tar.gz
+requirements/src/django-haystack-2.0.0.tar.gz

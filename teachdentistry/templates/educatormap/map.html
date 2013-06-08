@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load render %}
+
+{% block js %}
+    <script type="text/javascript" src="/site_media/js/app/viewport.js"></script>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key={{settings.GOOGLE_API_KEY}}&sensor=false">
+    </script>
+        
+    <script type="text/javascript">        
+        jQuery(document).ready(function() {
+
+            jQuery(window).resize(function () {  
+                var viewport = getVisibleViewport();
+                jQuery("#map-canvas").css({
+                    'height': viewport.height + "px",
+                });
+            });
+            
+            var mapOptions = {
+                center: new google.maps.LatLng(39.8282, -98.5795),
+                zoom: 4,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            
+            var elt = document.getElementById("map-canvas");
+            var mapInstance = new google.maps.Map(elt, mapOptions);
+            
+            jQuery(window).trigger("resize");
+        });
+    </script>
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block module_slug %}{% endblock %}
+
+{% block title %}Interactive Map{% endblock %}
+
+{% block pagetitle %}<h2 class="pagetitle">Interactive Map</h2>{% endblock %}
+
+{% block navrightextra %}
+{% endblock %}
+
+{% block breadcrumbs %}
+{% endblock breadcrumbs %}
+
+{% block container %}
+    <div class="map-container">
+        <div class="search">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                        Collapsible Group Item #1
+                    </a>
+                </div>
+                <div id="collapseOne" class="accordion-body collapse in">
+                    <div class="accordion-inner">
+                        Anim pariatur cliche...
+                    </div>
+                    <div class="accordion-inner">
+                        Interdum et malesuada
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                        Collapsible Group Item #2
+                    </a>
+                </div>
+                <div id="collapseTwo" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        Anim pariatur cliche...
+                    </div>
+                    <div class="accordion-inner">
+                        Interdum et malesuada
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <div class="map">
+             <div id="map-canvas" class="google-maps"></div>
+        </div>
+    </div>
+{% endblock %}
+

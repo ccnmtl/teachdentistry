@@ -26,103 +26,102 @@
 </head>
 <body>
 
-{% block topnavbar %}
-  <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <ul class="nav">
-          <li><a class="brand" href="/">teachdentistry</a></li>
-          {% block topnavbarleftitems %}{% endblock %}
-        </ul>
-
-        <p class="navbar-text pull-right">
-          {% block topnavbarrightitems %}{% endblock %}
-{% block usernav %}
-          {% if request.user.is_anonymous %}
-          <a href="/accounts/login/?next=/" class="btn btn-success">login</a>
-          {% else %}
-          logged in as {{request.user.first_name}} {{request.user.last_name}}
-          <a href="/logout/" class="btn btn-inverse">logout</a>
-          {% endif %}
-{% endblock %}
-       </p>
-
-       </div>
-     </div>
-  </div>
-{% endblock %}
-
-  <div class="container" id="outer-container">
-{% block masthead %}
-    <header class="subhead hidden-phone" id="masthead">
-      <h1><a href="./" title="teachdentistry">teachdentistry</a></h1>
-      <h4 id="logo-ccnmtl">
-        <a href="http://ccnmtl.columbia.edu" target="_blank"
-          title="Columbia Center for New Media Teaching and Learning">
-          <span>Produced by the Columbia Center for New Media Teaching
-          and Learning</span>
-        </a>
-      </h4>
-    </header>
-
-{% block primarynav %}
-    <div class="navbar" id="primarynav">
-      <div class="navbar-inner">
-        <div class="container">
-          <ul class="nav">
-          {% block primarynavtabs %}
-            <li class="active"><a href="/one/">One</a></li>
-						<li><a href="/two/">Two</a></li>
-          {% endblock %}
-					{% block primarynavtabsextra %}{% endblock %}
-          </ul>
-
-          <ul class="nav pull-right">
-            {% block primarynavrightextra %}{% endblock %}
-						<li><a href="/three/">Three</a></li>
-						<li><a href="/four/">Four</a></li>
-          </ul>
+    {% block topnavbar %}
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <ul class="nav">
+                      <li><a class="brand" href="/">teachdentistry</a></li>
+                      {% block topnavbarleftitems %}{% endblock %}
+                    </ul>
+        
+                    <p class="navbar-text pull-right">
+                        {% block topnavbarrightitems %}{% endblock %}
+                        {% block usernav %}
+                            {% if request.user.is_anonymous %}
+                                <a href="/accounts/login/?next=/" class="btn btn-success">login</a>
+                            {% else %}
+                                logged in as {{request.user.first_name}} {{request.user.last_name}}
+                                <a href="/logout/" class="btn btn-inverse">logout</a>
+                            {% endif %}
+                        {% endblock %}
+                    </p>    
+                </div>
+            </div>
         </div>
-      </div>
+    {% endblock %}
+
+    <div class="container" id="outer-container">
+        {% block masthead %}
+            <header class="subhead hidden-phone" id="masthead">
+                <h1><a href="./" title="teachdentistry">teachdentistry</a></h1>
+                <h4 id="logo-ccnmtl">
+                    <a href="http://ccnmtl.columbia.edu" target="_blank"
+                        title="Columbia Center for New Media Teaching and Learning">
+                        <span>Produced by the Columbia Center for New Media Teaching
+                            and Learning</span>
+                    </a>
+                </h4>
+            </header>
+        
+            {% block primarynav %}
+                <div class="navbar" id="primarynav">
+                  <div class="navbar-inner">
+                    <div class="container">
+                      <ul class="nav">
+                          {% block primarynavtabs %}
+                            <li class="active"><a href="/one/">One</a></li>
+                						<li><a href="/two/">Two</a></li>
+                          {% endblock %}
+            		      {% block primarynavtabsextra %}{% endblock %}
+                      </ul>
+            
+                      <ul class="nav pull-right">
+                          {% block primarynavrightextra %}{% endblock %}
+        				  <li><a href="/three/">Three</a></li>
+        				  <li><a href="/four/">Four</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+            {% endblock %}    
+        {% endblock %}
+    
+        <div class="container-fluid" id="content">
+            <div class="row-fluid">
+                {% block container %}
+                    <div class="span2" id="sidebar">
+                        {% block sidebar %}{% endblock %}
+                    </div>
+                    <div class="span10" id="right-content">
+                        {% block pagetitle %}{% endblock %}
+                        {% block content %}{% endblock %}
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
     </div>
-{% endblock %}
 
-{% endblock %}
+    {% block footer %}
+      <footer class="footer navbar-fixed-bottom hidden-phone">
+        <img src="/site_media/img/logo_ccnmtl_sidebar.gif" class="printonly pull-right" alt="sidebar"/>
+      </footer>
+    {% endblock %}
 
-    <div class="container-fluid" id="content">
-      <div class="row-fluid">
-        <div class="span2" id="sidebar">
-{% block sidebar %}{% endblock %}
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    
+    {% compress js %}
+        <script src="/site_media/bootstrap/js/bootstrap.js"></script>
+    {% endcompress %}
+    
+    {% block js %}{% endblock %}
+    
+    {% if STAGING_ENV %}
+        <div class="alert alert-error" style="position: fixed; bottom: 0px;">
+            <h4>Warning: Staging Site</h4>
+            <p>You are viewing a staging version of this site, not the production site.</p>
+            <p>This site was last updated on: <b>{{STAGING_DEPLOY_TIME}}</b></p>
         </div>
-        <div class="span10" id="right-content">
-{% block pagetitle %}{% endblock %}
-{% block content %}{% endblock %}
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-{% block footer %}
-  <footer class="footer navbar-fixed-bottom hidden-phone">
-    <img src="/site_media/img/logo_ccnmtl_sidebar.gif" class="printonly pull-right" />
-  </footer>
-{% endblock %}
-
-<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-
-{% compress js %}
-<script src="/site_media/bootstrap/js/bootstrap.js"></script>
-{% endcompress %}
-
-{% block js %}{% endblock %}
-
-{% if STAGING_ENV %}
-<div class="alert alert-error" style="position: fixed; bottom: 0px;">
-<h4>Warning: Staging Site</h4>
-<p>You are viewing a staging version of this site, not the production site.</p>
-<p>This site was last updated on: <b>{{STAGING_DEPLOY_TIME}}</b></p>
-</div>
-{% endif %}
+    {% endif %}
 </body>
 </html>

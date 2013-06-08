@@ -1,4 +1,5 @@
 from annoying.decorators import render_to
+from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponseForbidden
@@ -8,6 +9,16 @@ from pagetree.helpers import get_section_from_path, get_module, needs_submit, \
 from quizblock.models import Submission
 from teachdentistry.main.models import UserProfile
 import django.core.exceptions
+
+
+# returns important setting information for all web pages.
+def django_settings(request):
+    whitelist = ['GOOGLE_API_KEY']
+
+    rv = {'settings': dict([(k, getattr(settings, k, None))
+                            for k in whitelist])}
+
+    return rv
 
 
 def get_or_create_profile(user, section):

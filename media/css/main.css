@@ -52,3 +52,26 @@ body > .container {
 #primarynav a:hover {
   color: blue;
 }
+
+
+
+/*--------------------------------------------------
+    Searchable Educator Map
+  --------------------------------------------------*/
+
+div.map-container div.search {
+    float: left;
+    width: 30%;
+}
+
+div.map-container div.map {
+    float: right;
+    width: 68%;
+}
+
+#map-canvas {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}

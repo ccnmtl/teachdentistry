@@ -12,6 +12,7 @@ from teachdentistry.main.helpers import get_or_create_profile, has_responses, \
 from teachdentistry.main.models import UserProfile
 
 
+@login_required
 @render_to('main/index.html')
 def index(request):
     profile, created = UserProfile.objects.get_or_create(user=request.user)
@@ -57,8 +58,6 @@ def page(request, path):
             return HttpResponseRedirect("/")
     else:
         instructor_link = has_responses(section)
-        allow_next_link = not needs_submit(
-            section) or submitted(section, request.user)
 
         items = dict(section=section,
                      module=module,
@@ -70,7 +69,8 @@ def page(request, path):
                      instructor_link=instructor_link,
                      can_edit=can_edit,
                      allow_redo=allow_redo(section),
-                     next_unlocked=is_section_unlocked(user_profile, section.get_next()))
+                     next_unlocked=is_section_unlocked(user_profile,
+                                                       section.get_next()))
 
         if not accessible:
             template_name = 'main/inaccessible.html'
@@ -118,7 +118,6 @@ def instructor_page(request, path):
 @render_to('main/edit_page.html')
 def edit_page(request, path):
     section = get_section_from_path(path)
-    root = section.hierarchy.get_root()
     user_profile = get_or_create_profile(user=request.user, section=section)
 
     return dict(section=section,

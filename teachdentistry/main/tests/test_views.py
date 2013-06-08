@@ -8,7 +8,7 @@ class BasicTest(TestCase):
 
     def test_root(self):
         response = self.c.get("/")
-        self.assertEquals(response.status_code, 200)
+        self.assertEquals(response.status_code, 302)  # redirect to login
 
     def test_smoketest(self):
         response = self.c.get("/smoketest/")

@@ -9,6 +9,9 @@ ADMINS = ()
 
 MANAGERS = ADMINS
 
+AUTH_PROFILE_MODULE = "main.UserProfile"
+ACCOUNT_ACTIVATION_DAYS = 7
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -62,6 +65,7 @@ MEDIA_ROOT = "/var/www/teachdentistry/uploads/"
 MEDIA_URL = '/uploads/'
 STATIC_URL = '/media/'
 SECRET_KEY = ')ng#)ef_u@_^zvvu@dxm7ql-yb^_!a6%v3v^j3b(mp+)l+5%@h'
+
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
@@ -92,6 +96,8 @@ ROOT_URLCONF = 'teachdentistry.urls'
 TEMPLATE_DIRS = (
     "/var/www/teachdentistry/templates/",
     os.path.join(os.path.dirname(__file__), "templates"),
+    os.path.join(os.path.dirname(__file__),
+                 "../ve/lib/python2.7/site-packages/treebeard/templates")
 )
 
 INSTALLED_APPS = [
@@ -122,7 +128,7 @@ INSTALLED_APPS = [
     'pagetree',
     'pageblocks',
     'quizblock',
-#    'haystack',
+    'treebeard'
 ]
 
 PAGEBLOCKS = [
@@ -151,6 +157,7 @@ DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.signals.SignalDebugPanel',
     'debug_toolbar.panels.logger.LoggingPanel',
 )
+
 
 STATSD_CLIENT = 'statsd.client'
 STATSD_PREFIX = 'teachdentistry'

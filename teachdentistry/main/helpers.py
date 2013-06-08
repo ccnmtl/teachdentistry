@@ -1,4 +1,3 @@
-from django.conf import settings
 from pagetree.helpers import get_hierarchy
 from teachdentistry.main.models import UserProfile
 from django.core.exceptions import MultipleObjectsReturned

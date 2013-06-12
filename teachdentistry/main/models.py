@@ -63,14 +63,20 @@ class UserVisited(models.Model):
 
 class CareerType(models.Model):
     name = models.CharField(max_length=256)
+    def __unicode__(self):
+        return self.name
 
 
 class ClinicalField(models.Model):
     name = models.CharField(max_length=256)
+    def __unicode__(self):
+        return self.name
 
 
 class Degree(models.Model):
     name = models.CharField(max_length=256)
+    def __unicode__(self):
+        return self.name
 
 
 class Institution(models.Model):
@@ -87,14 +93,20 @@ class Institution(models.Model):
 
 class Motivation(models.Model):
     name = models.CharField(max_length=256)
+    def __unicode__(self):
+        return self.name
 
 
 class TeachingResponsibility(models.Model):
     name = models.CharField(max_length=256)
+    def __unicode__(self):
+        return self.name
 
 
 class TimeCommitment(models.Model):
     duration = models.CharField(max_length=256)
+    def __unicode__(self):
+        return self.duration
 
 
 class DentalEducator(models.Model):

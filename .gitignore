@@ -9,3 +9,4 @@ reports
 .coverage
 media/CACHE
 .settings
+.DS_Store

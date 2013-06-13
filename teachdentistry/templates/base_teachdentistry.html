@@ -13,7 +13,9 @@
     <link href="/site_media/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="/site_media/css/main.css" rel="stylesheet">
 {% endcompress %}
-  <link rel="shortcut icon" href="/site_media/img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" 
+      type="image/png" 
+      href="/site_media/img/favicon.png" />
   {% block css %}{% endblock %}
 
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -24,6 +26,21 @@
 	{% block feeds %}{% endblock %}
 </head>
 <body>
+
+    <header id="site-header">
+        <div id="logo-project"></div>
+        <div id="sitewide-pages"></div>
+        <div id="user-status">
+        {% block usernav %}
+            {% if request.user.is_anonymous %}
+                <a href="/accounts/login/?next=/" class="btn btn-small btn-primary">Log in</a>
+            {% else %}
+                Hello, {% if request.user.first_name %}{{request.user.first_name}}{% else %}{{request.user.username}}{% endif %}
+                <a href="/logout/" class="btn btn-small btn-danger">Log out</a>
+            {% endif %}
+        {% endblock %}
+        </div>
+    </header>
 
     {% block topnavbar %}
     <div class="navbar">
@@ -36,14 +53,6 @@
     
                 <p class="navbar-text pull-right">
                     {% block topnavbarrightitems %}{% endblock %}
-                    {% block usernav %}
-                        {% if request.user.is_anonymous %}
-                            <a href="/accounts/login/?next=/" class="btn btn-success">login</a>
-                        {% else %}
-                            logged in as {{request.user.first_name}} {{request.user.last_name}}
-                            <a href="/logout/" class="btn btn-inverse">logout</a>
-                        {% endif %}
-                    {% endblock %}
                 </p>    
             </div>
         </div>

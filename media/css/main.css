@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  background-color: #eee;
+  background-color: #fff;
   height: 100%;
 }
 
@@ -88,3 +88,79 @@ div.map-container div.map {
     height: 100%;
     width: 100%;
 }
+
+
+/*--------------------------------------------------
+    Teach Dentistry CSS
+  --------------------------------------------------*/
+
+#site-header {
+    margin: auto;
+    padding: 0;
+    border: 0;
+}
+
+#site-header {
+    width: 940px;
+    height: 53px;
+}
+
+#logo-project {
+    width: 228px;
+    height: 53px;
+    background: url('/site_media/img/logo_project.png') -155px 0 no-repeat;
+    float: left;
+}
+
+#user-status {
+    float: right;
+    padding: 0;
+    border: 0;
+}
+
+
+/*--------------------------------------------------
+    Bootstrap Responsive Addition
+  --------------------------------------------------*/
+
+@media (min-width: 1200px) {
+    #site-header {
+        width: 1170px;
+        height: 70px;
+    }
+    #logo-project {
+        width: 304px;
+        height: 70px;
+        background: url('/site_media/img/logo_project.png') -386px 0 no-repeat;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    #site-header {
+        width: 724px;
+        height: 53px;
+    }
+    #logo-project {
+        width: 228px;
+        height: 53px;
+        background: url('/site_media/img/logo_project.png') -155px 0 no-repeat;
+    }
+}
+
+@media (max-width: 767px) {
+    #site-header {
+        width: auto;
+        height: 35px;
+    }
+    #logo-project {
+        width: 152px;
+        height: 35px;
+        background: url('/site_media/img/logo_project.png') 0 0 no-repeat;
+    }
+}
+
+
+/*--------------------------------------------------
+    Bootstrap Override
+  --------------------------------------------------*/
+

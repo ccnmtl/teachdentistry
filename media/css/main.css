@@ -112,6 +112,12 @@ div.map-container div.map {
     float: left;
 }
 
+#logo-project a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 #user-status {
     float: right;
     padding: 0;

@@ -27,8 +27,9 @@
 </head>
 <body>
 
+    {% block topnavbar %}
     <header id="site-header">
-        <div id="logo-project"></div>
+        <div id="logo-project"><a href="/"></a></div>
         <div id="sitewide-pages"></div>
         <div id="user-status">
         {% block usernav %}
@@ -40,24 +41,11 @@
             {% endif %}
         {% endblock %}
         </div>
+        {% block topnavbarleftitems %}{% endblock %}
+        {% block topnavbarrightitems %}{% endblock %}
     </header>
-
-    {% block topnavbar %}
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="container">
-                <ul class="nav">
-                  <li><a class="brand" href="/">teachdentistry</a></li>
-                  {% block topnavbarleftitems %}{% endblock %}
-                </ul>
-    
-                <p class="navbar-text pull-right">
-                    {% block topnavbarrightitems %}{% endblock %}
-                </p>    
-            </div>
-        </div>
-    </div>
     {% endblock %}
+
 
     <div class="container" id="outer-container">
         {% block masthead %}

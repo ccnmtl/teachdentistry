@@ -111,7 +111,7 @@ div.map-container div.map {
 #logo-project {
     width: 228px;
     height: 53px;
-    background: url('/site_media/img/logo_project.png') -155px 0 no-repeat;
+    background: url('/site_media/img/logo_project.png') -541px 0 no-repeat;
     float: left;
 }
 
@@ -132,7 +132,7 @@ div.map-container div.map {
     Bootstrap Responsive Addition
   --------------------------------------------------*/
 
-/*----------------Desktop---------------------------*/
+/*----------------- Large desktop ------------------*/
 @media (min-width: 1200px) {
     #site-header {
         width: 1170px;
@@ -141,11 +141,11 @@ div.map-container div.map {
     #logo-project {
         width: 304px;
         height: 70px;
-        background: url('/site_media/img/logo_project.png') -386px 0 no-repeat;
+        background: url('/site_media/img/logo_project.png') -772px 0 no-repeat;
     }
 }
 
-/*----------------Tablets---------------------------*/
+/*---- Portrait tablet to landscape and desktop ----*/
 @media (min-width: 768px) and (max-width: 979px) {
     #site-header {
         width: 724px;
@@ -154,13 +154,16 @@ div.map-container div.map {
     #logo-project {
         width: 228px;
         height: 53px;
-        background: url('/site_media/img/logo_project.png') -155px 0 no-repeat;
+        background: url('/site_media/img/logo_project.png') -310px 0 no-repeat;
     }
 }
 
-
-/*----------------Phones----------------------------*/
+/*------- Landscape phone to portrait tablet -------*/
 @media (max-width: 767px) {
+    body {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
     #site-header {
         width: auto;
         height: 35px;
@@ -168,7 +171,23 @@ div.map-container div.map {
     #logo-project {
         width: 152px;
         height: 35px;
-        background: url('/site_media/img/logo_project.png') 0 0 no-repeat;
+        background: url('/site_media/img/logo_project.png') -155px 0 no-repeat;
+    }
+    #outer-container {
+        box-shadow: none;
+    }
+}
+
+/*----------- Landscape phones and down ------------*/
+@media (max-width: 480px) {
+    #site-header {
+        width: auto;
+        height: 35px;
+    }
+    #logo-project {
+        width: 152px;
+        height: 35px;
+        background: url('/site_media/img/logo_project.png') 0px 0 no-repeat;
     }
     #outer-container {
         box-shadow: none;

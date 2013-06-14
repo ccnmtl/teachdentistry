@@ -4,28 +4,28 @@ from pagetree.models import Section
 
 
 GENDER_CHOICES = (
-    ('M','Male'),
-    ('F','Female')
+    ('M', 'Male'),
+    ('F', 'Female')
 )
 
 RACE_CHOICES = (
-    ('R1','Black/African American'),
-    ('R2','White'),
-    ('R3','Native Hawaiian or Other Pacific Islander'),
-    ('R4','Asian'),
-    ('R5','American Indian/Alaska Native'),
-    ('R6','Other')
+    ('R1', 'Black/African American'),
+    ('R2', 'White'),
+    ('R3', 'Native Hawaiian or Other Pacific Islander'),
+    ('R4', 'Asian'),
+    ('R5', 'American Indian/Alaska Native'),
+    ('R6', 'Other')
 )
 
 ETHNICITY_CHOICES = (
-    ('E1','Hispanic or Latino'),
-    ('E2','Non-Hispanic or Non-Latino')
+    ('E1', 'Hispanic or Latino'),
+    ('E2', 'Non-Hispanic or Non-Latino')
 )
 
 CAREER_STAGE_CHOICES = (
-    ('E','Early career'),
-    ('M','Mid career'),
-    ('L','Late career')
+    ('E', 'Early career'),
+    ('M', 'Mid career'),
+    ('L', 'Late career')
 )
 
 
@@ -63,18 +63,21 @@ class UserVisited(models.Model):
 
 class CareerType(models.Model):
     name = models.CharField(max_length=256)
+
     def __unicode__(self):
         return self.name
 
 
 class ClinicalField(models.Model):
     name = models.CharField(max_length=256)
+
     def __unicode__(self):
         return self.name
 
 
 class Degree(models.Model):
     name = models.CharField(max_length=256)
+
     def __unicode__(self):
         return self.name
 
@@ -93,18 +96,21 @@ class Institution(models.Model):
 
 class Motivation(models.Model):
     name = models.CharField(max_length=256)
+
     def __unicode__(self):
         return self.name
 
 
 class TeachingResponsibility(models.Model):
     name = models.CharField(max_length=256)
+
     def __unicode__(self):
         return self.name
 
 
 class TimeCommitment(models.Model):
     duration = models.CharField(max_length=256)
+
     def __unicode__(self):
         return self.duration
 
@@ -118,12 +124,15 @@ class DentalEducator(models.Model):
     contact_email = models.CharField(max_length=256, null=True, blank=True)
     contact_permission = models.BooleanField()
     release_consent = models.BooleanField()
-    race = models.CharField(max_length=2, choices=RACE_CHOICES, null=True, blank=True)
-    ethnicity = models.CharField(max_length=2, choices=ETHNICITY_CHOICES, null=True, blank=True)
+    race = models.CharField(max_length=2, choices=RACE_CHOICES,
+                            null=True, blank=True)
+    ethnicity = models.CharField(max_length=2, choices=ETHNICITY_CHOICES,
+                                 null=True, blank=True)
     headshot = models.FileField(
         upload_to="headshots/%Y/%m/%d/", null=True, blank=True)
     academic_title = models.CharField(max_length=256, null=True, blank=True)
-    clinical_field = models.ManyToManyField(ClinicalField, null=True, blank=True)
+    clinical_field = models.ManyToManyField(ClinicalField,
+                                            null=True, blank=True)
     degree = models.ManyToManyField(Degree, null=True, blank=True)
     other_degree = models.CharField(max_length=256, null=True, blank=True)
     institution = models.ForeignKey(Institution)
@@ -135,14 +144,18 @@ class DentalEducator(models.Model):
         TimeCommitment,
         related_name="unpaid_time_commitment")
     career_stage = models.CharField(max_length=1, choices=CAREER_STAGE_CHOICES)
-    years_teaching = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+    years_teaching = models.DecimalField(max_digits=4, decimal_places=2,
+                                         null=True, blank=True)
     dental_career = models.ForeignKey(CareerType, null=True, blank=True)
-    other_dental_career = models.CharField(max_length=256, null=True, blank=True)
+    other_dental_career = models.CharField(max_length=256,
+                                           null=True, blank=True)
     academic_career = models.ManyToManyField(
         CareerType, null=True, blank=True,
         related_name="dentaleducator_academic_career")
-    other_academic_career = models.CharField(max_length=256, null=True, blank=True)
-    primary_motivation = models.ManyToManyField(Motivation, null=True, blank=True)
+    other_academic_career = models.CharField(max_length=256,
+                                             null=True, blank=True)
+    primary_motivation = models.ManyToManyField(Motivation,
+                                                null=True, blank=True)
     other_motivation = models.CharField(max_length=256, null=True, blank=True)
     teaching_reason = models.TextField(default='', null=True, blank=True)
     video = models.TextField(default='', null=True, blank=True)

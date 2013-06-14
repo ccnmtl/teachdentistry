@@ -93,6 +93,9 @@ div.map-container div.map {
 /*--------------------------------------------------
     Teach Dentistry CSS
   --------------------------------------------------*/
+#outer-container {
+    box-shadow: 0px 0px 8px #888888;
+}
 
 #site-header {
     margin: auto;
@@ -129,6 +132,7 @@ div.map-container div.map {
     Bootstrap Responsive Addition
   --------------------------------------------------*/
 
+/*----------------Desktop---------------------------*/
 @media (min-width: 1200px) {
     #site-header {
         width: 1170px;
@@ -141,6 +145,7 @@ div.map-container div.map {
     }
 }
 
+/*----------------Tablets---------------------------*/
 @media (min-width: 768px) and (max-width: 979px) {
     #site-header {
         width: 724px;
@@ -153,6 +158,8 @@ div.map-container div.map {
     }
 }
 
+
+/*----------------Phones----------------------------*/
 @media (max-width: 767px) {
     #site-header {
         width: auto;
@@ -162,6 +169,9 @@ div.map-container div.map {
         width: 152px;
         height: 35px;
         background: url('/site_media/img/logo_project.png') 0 0 no-repeat;
+    }
+    #outer-container {
+        box-shadow: none;
     }
 }
 

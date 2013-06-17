@@ -159,3 +159,5 @@ class DentalEducator(models.Model):
     other_motivation = models.CharField(max_length=256, null=True, blank=True)
     teaching_reason = models.TextField(default='', null=True, blank=True)
     video = models.TextField(default='', null=True, blank=True)
+    video_poster = models.FileField(
+        upload_to="video/%Y/%m/%d/", null=True, blank=True)

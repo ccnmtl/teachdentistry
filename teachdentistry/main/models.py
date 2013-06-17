@@ -146,7 +146,17 @@ class DentalEducator(models.Model):
     career_stage = models.CharField(max_length=1, choices=CAREER_STAGE_CHOICES)
     years_teaching = models.DecimalField(max_digits=4, decimal_places=2,
                                          null=True, blank=True)
-    dental_career = models.ForeignKey(CareerType, null=True, blank=True)
+    previous_dental_career = models.ForeignKey(CareerType, null=True, blank=True)
+    other_previous_dental_career = models.CharField(max_length=256,
+                                           null=True, blank=True)
+    current_dental_career = models.ManyToManyField(
+        CareerType, null=True, blank=True,
+        related_name="dentaleducator_current_career")
+    other_current_dental_career = models.CharField(max_length=256,
+                                             null=True, blank=True)
+    dental_career = models.ForeignKey(
+        CareerType, null=True, blank=True,
+        related_name="dentaleducator_dental_career")
     other_dental_career = models.CharField(max_length=256,
                                            null=True, blank=True)
     academic_career = models.ManyToManyField(

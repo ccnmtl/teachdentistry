@@ -34,7 +34,7 @@ body > .container {
   margin-bottom: 0px;
 }
 
-#primarynav .navbar-inner {
+/* #primarynav .navbar-inner {
 	background-color: blue;
 	background-image: none;
 }
@@ -51,7 +51,7 @@ body > .container {
 
 #primarynav a:hover {
   color: blue;
-}
+} */
 
 /*--------------------------------------------------
     Sidebar Menu
@@ -94,24 +94,26 @@ div.map-container div.map {
     Teach Dentistry CSS
   --------------------------------------------------*/
 #outer-container {
+    position: relative;
     box-shadow: 0px 0px 8px #888888;
+    padding: 0;
 }
 
 #site-header {
-    margin: auto;
+    margin: 5px auto 0 auto;
     padding: 0;
     border: 0;
 }
 
 #site-header {
     width: 940px;
-    height: 53px;
+    height: 90px;
 }
 
 #logo-project {
-    width: 228px;
-    height: 53px;
-    background: url('/site_media/img/logo_project.png') -541px 0 no-repeat;
+    width: 270px;
+    height: 60px;
+    background: url('/site_media/img/logo_project_sprite.png') 0 0 no-repeat;
     float: left;
 }
 
@@ -129,6 +131,156 @@ div.map-container div.map {
 
 
 /*--------------------------------------------------
+    Section Navigation (Default)
+  --------------------------------------------------*/
+
+#primarynav {
+	width: 918px;
+    margin: -7px auto 0 auto;
+    padding: 6px 0 0 0;
+    border: 0;
+    z-index: 100;
+    background: url('/site_media/img/bg_section_nav_top_tl.png') 0px 0px no-repeat;
+}
+
+#primarynav-inner {
+	height: 110px;
+	display: block;
+	margin: 0 auto;
+	padding: 0;
+	border: 0;
+    background: #e1e9f1 url('/site_media/img/bg_section_nav_tl.png') 0px 0px repeat-y;
+}
+
+.section-nav-tab {
+	width: 102px;
+	height: 40px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: url('/site_media/img/bg_section_tab_sprite.png') no-repeat -137px 0px;
+	cursor: pointer;
+}
+
+.section-nav-tab-inner {
+	width: 94px;
+	height: 40px;
+	margin: 0;
+	padding: 0 0 0 8px;
+	border: 0;
+	background: url('/site_media/img/white-arrow.png') no-repeat 80px -45px;
+	line-height: 40px;
+	color: #fff;
+	cursor: pointer;
+}
+
+.section-nav-tab .active {
+	background-position: 80px 15px;
+}
+
+#section-items {
+    margin: 0 auto;
+    padding: 10px 0 0 0;
+    border: 0;
+    list-style: none;
+}
+
+.section-item {
+    display: block;
+    float: left;
+    width: 70px;
+    height: 94px;
+    margin: 0 15px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.section-item .section-icon {
+    display: block;
+    width: 70px;
+    height: 70px;
+    border: 1px solid #ccc;
+    background-color: #000;
+}
+
+.section-item .section-icon:hover {
+    box-shadow: 0px 0px 6px #000;
+}
+
+.section-item .section-title {
+    display: block;
+    margin: 2px 0 0 0;
+    padding: 0;
+    width: 72px;
+    font-size: 11px;
+    text-align: center;
+    color: #000;
+    text-decoration: none;
+	text-transform: uppercase;
+}
+
+#section-items .active .section-icon {
+    box-shadow: 0px 0px 10px #f00;
+    border: 1px solid #ff9933;
+}
+
+.section-icon-intro .completed {
+    background: url('/site_media/img/section_icon_intro.png') -115px -15px no-repeat;
+    border-color: #6699cc;
+}
+
+.section-icon-intro .inprogress {
+    background: url('/site_media/img/section_icon_intro.png') -115px -115px no-repeat;
+    border-color: #999;
+}
+
+.section-icon-tracks .completed {
+    background: url('/site_media/img/section_icon_tracks.png') -115px -15px no-repeat;
+    border-color: #6699cc;
+}
+
+.section-icon-tracks .inprogress {
+    background: url('/site_media/img/section_icon_tracks.png') -115px -115px no-repeat;
+    border-color: #999;
+}
+
+.section-icon-focus .inprogress {
+    background: url('/site_media/img/section_icon_focus.png') -115px -115px no-repeat;
+    border-color: #999;
+}
+
+.section-icon-impact .locked {
+    background: url('/site_media/img/section_icon_impact.png') -115px -215px no-repeat;
+    border-color: #ccc;
+    cursor: default;
+}
+
+.section-icon-concerns .locked {
+    background: url('/site_media/img/section_icon_concerns.png') -115px -215px no-repeat;
+    border-color: #ccc;
+    cursor: default;
+}
+
+.section-icon-settings .locked {
+    background: url('/site_media/img/section_icon_settings.png') -115px -215px no-repeat;
+    border-color: #ccc;
+    cursor: default;
+}
+
+.section-icon-map .locked {
+    background: url('/site_media/img/section_icon_map.png') -115px -215px no-repeat;
+    border-color: #ccc;
+    cursor: default;
+}
+
+.section-icon-ce .locked {
+    background: url('/site_media/img/section_icon_ce.png') -115px -215px no-repeat;
+    border-color: #ccc;
+    cursor: default;
+}
+
+
+/*--------------------------------------------------
     Bootstrap Responsive Addition
   --------------------------------------------------*/
 
@@ -136,12 +288,44 @@ div.map-container div.map {
 @media (min-width: 1200px) {
     #site-header {
         width: 1170px;
-        height: 70px;
+        height: 75px;
     }
     #logo-project {
         width: 304px;
         height: 70px;
         background: url('/site_media/img/logo_project.png') -772px 0 no-repeat;
+    }
+    #primarynav {
+        width: 1143px;
+        background: url('/site_media/img/bg_section_nav_top_d.png') 0px 0px no-repeat;
+    }
+    #primarynav-inner {
+	    height: 130px;
+        background: #cfddeb url('/site_media/img/bg_section_nav_d.png') 0px 0px repeat-y;
+    }
+    .section-nav-tab {
+        width: 127px;
+        background-position: 0px 0px;
+    }
+    .section-nav-tab-inner {
+        width: 119px;
+    	padding: 0 0 0 8px;
+        background-position: 80px -45px;
+    }
+    .section-nav-tab .active {
+	    background-position: 80px 15px;
+    }
+    .section-item {
+        width: 90px;
+        height: 114px;
+        margin: 0 17px;
+    }
+    .section-item .section-icon {
+        width: 90px;
+        height: 90px;
+    }
+    .section-item .section-title {
+        width: 92px;
     }
 }
 
@@ -149,12 +333,45 @@ div.map-container div.map {
 @media (min-width: 768px) and (max-width: 979px) {
     #site-header {
         width: 724px;
-        height: 53px;
+        height: 58px;
     }
     #logo-project {
         width: 228px;
         height: 53px;
         background: url('/site_media/img/logo_project.png') -310px 0 no-repeat;
+    }
+    #primarynav {
+        width: 702px;
+        background: url('/site_media/img/bg_section_nav_top_tp.png') 0px 0px no-repeat;
+    }
+    #primarynav-inner {
+	    height: 100px;
+        background: #cfddeb url('/site_media/img/bg_section_nav_tp.png') 0px 0px repeat-y;
+    }
+    .section-nav-tab {
+        width: 78px;
+        background-position: -249px 0px;
+    }
+    .section-nav-tab-inner {
+        width: 76px;
+    	padding: 0 0 0 2px;
+        background-position: 62px -45px;
+        font-size: 12px;
+    }
+    .section-nav-tab .active {
+	    background-position: 62px 15px;
+    }
+    .section-item {
+        width: 60px;
+        height: 84px;
+        margin: 0 8px;
+    }
+    .section-item .section-icon {
+        width: 60px;
+        height: 60px;
+    }
+    .section-item .section-title {
+        width: 62px;
     }
 }
 
@@ -166,11 +383,11 @@ div.map-container div.map {
     }
     #site-header {
         width: auto;
-        height: 35px;
+        height: 40px;
     }
     #logo-project {
         width: 152px;
-        height: 35px;
+        height: 40px;
         background: url('/site_media/img/logo_project.png') -155px 0 no-repeat;
     }
     #outer-container {
@@ -198,4 +415,3 @@ div.map-container div.map {
 /*--------------------------------------------------
     Bootstrap Override
   --------------------------------------------------*/
-

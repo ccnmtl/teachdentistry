@@ -106,12 +106,9 @@ $(function() {
 
 {% endblock %}
 
-{% block mode-view%}
-    <li class="active"><a href="{{section.get_absolute_url}}">View</a></li>
-{% endblock %}
+{% block mode-view %}<li><a href="{{section.get_absolute_url}}">View</a></li>{% endblock %}
+{% block mode-edit %}<li class="active"><a>Edit</a></li>{% endblock %}
 
-{% block mode-edit %}
-{% endblock %}
 
 {% block content %}
 <h1>{{ section.label }}</h1>

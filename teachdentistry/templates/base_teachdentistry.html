@@ -47,7 +47,7 @@
     {% endblock %}
 
 
-    <div class="container" id="outer-container">
+    <div class="container well" id="outer-container">
         {% block masthead %}
             <header class="subhead hidden-phone" id="masthead">
                 <h1><a href="./" title="teachdentistry">teachdentistry</a></h1>
@@ -60,42 +60,31 @@
                 </h4>
             </header>
         
-            {% block primarynav %}
-                <div class="navbar" id="primarynav" style="margin-left: -10px;">
-                    <div class="navbar-inner">
-                        <div class="container">
-                            <ul class="nav">
-                                {% block primarynavtabs %}
-                                    {% for section in modules %}
-                                        <li class="{% ifequal section.id module.id %}active{% endifequal %}">
-                                            {% if section.locked %}
-                                                <a href="#"><i class="icon-lock"></i> {{section.label}}</a>
-                                            {% else %}{% if section.complete %}
-                                                <a href="{{section.url}}"><i class="icon-check"></i> {{section.label}}</a>
-                                            {% else %}
-                                                <a href="{{section.url}}"><i class="icon-time"></i> {{section.label}}</a>
-                                            {% endif %}{% endif %}
-                                        </li>
-                                    {% endfor %}
-                                {% endblock %}
-                            </ul>
-                            
-                            <ul class="nav pull-right">
-                                {% if can_edit %}
-                                    {% block mode-view %}{% endblock %}                                    
-                                    {% block mode-edit %}<li><a href="/edit{{section.get_absolute_url}}">Edit</a></li>{% endblock %}
-                                    
-                                    {% if instructor_link %}
-                                        <li><a href="/instructor{{request.path}}" class="btn btn-mini btn-info">responses</a></li>
-                                    {% endif %}
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            {% endblock %}    
         {% endblock %}
-    
+
+            {% block primarynav %}
+<div id="primarynav">
+    <div id="primarynav-inner">
+        <ul id="section-items">
+            <li class="section-item"><a href="/" class="section-icon img-rounded"></a><div class="section-title">home</div></li>
+            {% block primarynavtabs %}
+                {% for section in modules %}
+                <li class="section-item section-icon-{{section.label|lower}} {% ifequal section.id module.id %}active{% endifequal %}">
+                <a href="{% if section.locked %}#{% else %}{{section.url}}{% endif %}" class="section-icon img-rounded {% if section.locked %}locked{% else %}{% if section.complete %}completed{% else %}inprogress{% endif %}{% endif %}"></a>
+                <a href="{% if section.locked %}#{% else %}{{section.url}}{% endif %}" class="section-title">{{section.label}}</a></li>
+                {% endfor %}
+            {% endblock %}
+        </ul>
+    </div>
+    <div class="section-nav-tab"><div class="section-nav-tab-inner">CONTENT</div></div>
+</div>
+            {% endblock %}    
+
+
+
+
+
+
         <div class="container-fluid" id="content">
             <div class="row-fluid">
                 {% block container %}
@@ -103,6 +92,16 @@
                         {% block sidebar %}{% endblock %}
                     </div>
                     <div class="span10" id="right-content">
+                        {% if can_edit %}
+                        <ul class="nav nav-pills">
+                            <li><a style="color: #000;"><b>Page mode:</b></a></li>
+                            {% block mode-view %}<li class="active"><a>View</a></li>{% endblock %}
+                            {% block mode-edit %}<li><a href="/edit{{section.get_absolute_url}}">Edit</a></li>{% endblock %}
+                            {% if instructor_link %}<li><a href="/instructor{{request.path}}">Responses</a></li>{% endif %}
+                        </ul>
+                        <hr />
+                        {% endif %}
+                        
                         {% block pagetitle %}{% endblock %}
                         {% block content %}{% endblock %}
                         <div class="visualclear"></div>
@@ -128,6 +127,17 @@
     
     {% block js %}{% endblock %}
     
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$(".section-nav-tab-inner").click(function(){
+		$("#primarynav-inner").slideToggle("fast");
+		$(this).toggleClass("active"); return false;
+	});
+	
+	 
+});
+</script>
     {% if STAGING_ENV %}
         <div class="alert alert-error" style="position: fixed; bottom: 0px;">
             <h4>Warning: Staging Site</h4>

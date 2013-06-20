@@ -145,7 +145,7 @@ div.map-container div.map {
 
 #primarynav-inner {
 	height: 110px;
-	display: block;
+	display: none;
 	margin: 0 auto;
 	padding: 0;
 	border: 0;
@@ -224,60 +224,48 @@ div.map-container div.map {
     border: 1px solid #ff9933;
 }
 
-.section-icon-intro .completed {
-    background: url('/site_media/img/section_icon_intro.png') -115px -15px no-repeat;
+#section-items .active .section-title {
+    color: #cc3333;
+	font-weight: bold;
+}
+
+.section-item .completed {
     border-color: #6699cc;
 }
 
-.section-icon-intro .inprogress {
-    background: url('/site_media/img/section_icon_intro.png') -115px -115px no-repeat;
+.section-item .inprogress {
     border-color: #999;
 }
 
-.section-icon-tracks .completed {
-    background: url('/site_media/img/section_icon_tracks.png') -115px -15px no-repeat;
-    border-color: #6699cc;
-}
-
-.section-icon-tracks .inprogress {
-    background: url('/site_media/img/section_icon_tracks.png') -115px -115px no-repeat;
-    border-color: #999;
-}
-
-.section-icon-focus .inprogress {
-    background: url('/site_media/img/section_icon_focus.png') -115px -115px no-repeat;
-    border-color: #999;
-}
-
-.section-icon-impact .locked {
-    background: url('/site_media/img/section_icon_impact.png') -115px -215px no-repeat;
+.section-item .locked {
     border-color: #ccc;
     cursor: default;
 }
 
-.section-icon-concerns .locked {
-    background: url('/site_media/img/section_icon_concerns.png') -115px -215px no-repeat;
-    border-color: #ccc;
-    cursor: default;
-}
-
-.section-icon-settings .locked {
-    background: url('/site_media/img/section_icon_settings.png') -115px -215px no-repeat;
-    border-color: #ccc;
-    cursor: default;
-}
-
-.section-icon-map .locked {
-    background: url('/site_media/img/section_icon_map.png') -115px -215px no-repeat;
-    border-color: #ccc;
-    cursor: default;
-}
-
-.section-icon-ce .locked {
-    background: url('/site_media/img/section_icon_ce.png') -115px -215px no-repeat;
-    border-color: #ccc;
-    cursor: default;
-}
+.section-icon-intro .completed { background: url('/site_media/img/section_icon_intro.png') -115px -15px no-repeat; }
+.section-icon-intro .inprogress { background: url('/site_media/img/section_icon_intro.png') -115px -115px no-repeat; }
+.section-icon-intro .locked { background: url('/site_media/img/section_icon_intro.png') -115px -215px no-repeat; }
+.section-icon-tracks .completed { background: url('/site_media/img/section_icon_tracks.png') -115px -15px no-repeat; }
+.section-icon-tracks .inprogress { background: url('/site_media/img/section_icon_tracks.png') -115px -115px no-repeat; }
+.section-icon-tracks .locked { background: url('/site_media/img/section_icon_tracks.png') -115px -215px no-repeat; }
+.section-icon-focus .inprogress { background: url('/site_media/img/section_icon_focus.png') -115px -115px no-repeat; }
+.section-icon-focus .inprogress { background: url('/site_media/img/section_icon_focus.png') -115px -115px no-repeat; }
+.section-icon-focus .locked { background: url('/site_media/img/section_icon_focus.png') -115px -215px no-repeat; }
+.section-icon-impact .completed { background: url('/site_media/img/section_icon_impact.png') -115px -15px no-repeat; }
+.section-icon-impact .inprogress { background: url('/site_media/img/section_icon_impact.png') -115px -115px no-repeat; }
+.section-icon-impact .locked { background: url('/site_media/img/section_icon_impact.png') -115px -215px no-repeat; }
+.section-icon-concerns .completed { background: url('/site_media/img/section_icon_concerns.png') -115px -15px no-repeat; }
+.section-icon-concerns .inprogress { background: url('/site_media/img/section_icon_concerns.png') -115px -115px no-repeat; }
+.section-icon-concerns .locked { background: url('/site_media/img/section_icon_concerns.png') -115px -215px no-repeat; }
+.section-icon-settings .completed { background: url('/site_media/img/section_icon_settings.png') -115px -15px no-repeat; }
+.section-icon-settings .inprogress { background: url('/site_media/img/section_icon_settings.png') -115px -115px no-repeat; }
+.section-icon-settings .locked { background: url('/site_media/img/section_icon_settings.png') -115px -215px no-repeat; }
+.section-icon-map .completed { background: url('/site_media/img/section_icon_map.png') -115px -15px no-repeat; }
+.section-icon-map .inprogress { background: url('/site_media/img/section_icon_map.png') -115px -115px no-repeat; }
+.section-icon-map .locked { background: url('/site_media/img/section_icon_map.png') -115px -215px no-repeat; }
+.section-icon-ce .completed { background: url('/site_media/img/section_icon_ce.png') -115px -15px no-repeat; }
+.section-icon-ce .inprogress { background: url('/site_media/img/section_icon_ce.png') -115px -115px no-repeat; }
+.section-icon-ce .locked { background: url('/site_media/img/section_icon_ce.png') -115px -215px no-repeat; }
 
 
 /*--------------------------------------------------
@@ -327,6 +315,30 @@ div.map-container div.map {
     .section-item .section-title {
         width: 92px;
     }
+    .section-icon-intro .completed { background-position: -5px -5px; }
+    .section-icon-intro .inprogress { background-position: -5px -105px; }
+    .section-icon-intro .locked { background-position: -5px -205px; }
+    .section-icon-tracks .completed { background-position: -5px -5px; }
+    .section-icon-tracks .inprogress { background-position: -5px -105px; }
+    .section-icon-tracks .locked { background-position: -5px -205px; }
+    .section-icon-focus .inprogress { background-position: -5px -105px; }
+    .section-icon-focus .inprogress { background-position: -5px -105px; }
+    .section-icon-focus .locked { background-position: -5px -205px; }
+    .section-icon-impact .completed { background-position: -5px -5px; }
+    .section-icon-impact .inprogress { background-position: -5px -105px; }
+    .section-icon-impact .locked { background-position: -5px -205px; }
+    .section-icon-concerns .completed { background-position: -5px -5px; }
+    .section-icon-concerns .inprogress { background-position: -5px -105px; }
+    .section-icon-concerns .locked { background-position: -5px -205px; }
+    .section-icon-settings .completed { background-position: -5px -5px; }
+    .section-icon-settings .inprogress { background-position: -5px -105px; }
+    .section-icon-settings .locked { background-position: -5px -205px; }
+    .section-icon-map .completed { background-position: -5px -5px; }
+    .section-icon-map .inprogress { background-position: -5px -105px; }
+    .section-icon-map .locked { background-position: -5px -205px; }
+    .section-icon-ce .completed { background-position: -5px -5px; }
+    .section-icon-ce .inprogress { background-position: -5px -105px; }
+    .section-icon-ce .locked { background-position: -5px -205px; }
 }
 
 /*---- Portrait tablet to landscape and desktop ----*/
@@ -373,6 +385,30 @@ div.map-container div.map {
     .section-item .section-title {
         width: 62px;
     }
+    .section-icon-intro .completed { background-position: -220px -20px; }
+    .section-icon-intro .inprogress { background-position: -220px -120px; }
+    .section-icon-intro .locked { background-position: -220px -220px; }
+    .section-icon-tracks .completed { background-position: -220px -20px; }
+    .section-icon-tracks .inprogress { background-position: -220px -120px; }
+    .section-icon-tracks .locked { background-position: -220px -220px; }
+    .section-icon-focus .inprogress { background-position: -220px -120px; }
+    .section-icon-focus .inprogress { background-position: -220px -120px; }
+    .section-icon-focus .locked { background-position: -220px -220px; }
+    .section-icon-impact .completed { background-position: -220px -20px; }
+    .section-icon-impact .inprogress { background-position: -220px -120px; }
+    .section-icon-impact .locked { background-position: -220px -220px; }
+    .section-icon-concerns .completed { background-position: -220px -20px; }
+    .section-icon-concerns .inprogress { background-position: -220px -120px; }
+    .section-icon-concerns .locked { background-position: -220px -220px; }
+    .section-icon-settings .completed { background-position: -220px -20px; }
+    .section-icon-settings .inprogress { background-position: -220px -120px; }
+    .section-icon-settings .locked { background-position: -220px -220px; }
+    .section-icon-map .completed { background-position: -220px -20px; }
+    .section-icon-map .inprogress { background-position: -220px -120px; }
+    .section-icon-map .locked { background-position: -220px -220px; }
+    .section-icon-ce .completed { background-position: -220px -20px; }
+    .section-icon-ce .inprogress { background-position: -220px -120px; }
+    .section-icon-ce .locked { background-position: -220px -220px; }
 }
 
 /*------- Landscape phone to portrait tablet -------*/

@@ -38,6 +38,7 @@
 {% endblock breadcrumbs %}
 {% block masthead %}{% endblock %}
 {% block content %}
+<b>{{module.slug}}</b>
     <div id="content" class ="module-{{module.slug}}">
         {% if needs_submit %}
             {% if is_submitted %}

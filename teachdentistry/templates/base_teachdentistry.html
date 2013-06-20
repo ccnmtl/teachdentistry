@@ -62,7 +62,7 @@
         
         {% endblock %}
 
-            {% block primarynav %}
+            {% if request.user.is_authenticated %}{% block primarynav %}
 <div id="primarynav">
     <div id="primarynav-inner">
         <ul id="section-items">
@@ -78,7 +78,7 @@
     </div>
     <div class="section-nav-tab"><div class="section-nav-tab-inner">CONTENT</div></div>
 </div>
-            {% endblock %}    
+            {% endblock %}{% endif %}
 
 
 

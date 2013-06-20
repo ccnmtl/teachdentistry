@@ -220,7 +220,7 @@ div.map-container div.map {
 }
 
 #section-items .active .section-icon {
-    box-shadow: 0px 0px 10px #f00;
+    box-shadow: 0px 0px 6px #f00;
     border: 1px solid #ff9933;
 }
 
@@ -248,7 +248,7 @@ div.map-container div.map {
 .section-icon-tracks .completed { background: url('/site_media/img/section_icon_tracks.png') -115px -15px no-repeat; }
 .section-icon-tracks .inprogress { background: url('/site_media/img/section_icon_tracks.png') -115px -115px no-repeat; }
 .section-icon-tracks .locked { background: url('/site_media/img/section_icon_tracks.png') -115px -215px no-repeat; }
-.section-icon-focus .inprogress { background: url('/site_media/img/section_icon_focus.png') -115px -115px no-repeat; }
+.section-icon-focus .completed { background: url('/site_media/img/section_icon_focus.png') -115px -15px no-repeat; }
 .section-icon-focus .inprogress { background: url('/site_media/img/section_icon_focus.png') -115px -115px no-repeat; }
 .section-icon-focus .locked { background: url('/site_media/img/section_icon_focus.png') -115px -215px no-repeat; }
 .section-icon-impact .completed { background: url('/site_media/img/section_icon_impact.png') -115px -15px no-repeat; }
@@ -321,7 +321,7 @@ div.map-container div.map {
     .section-icon-tracks .completed { background-position: -5px -5px; }
     .section-icon-tracks .inprogress { background-position: -5px -105px; }
     .section-icon-tracks .locked { background-position: -5px -205px; }
-    .section-icon-focus .inprogress { background-position: -5px -105px; }
+    .section-icon-focus .completed { background-position: -5px -5px; }
     .section-icon-focus .inprogress { background-position: -5px -105px; }
     .section-icon-focus .locked { background-position: -5px -205px; }
     .section-icon-impact .completed { background-position: -5px -5px; }
@@ -391,7 +391,7 @@ div.map-container div.map {
     .section-icon-tracks .completed { background-position: -220px -20px; }
     .section-icon-tracks .inprogress { background-position: -220px -120px; }
     .section-icon-tracks .locked { background-position: -220px -220px; }
-    .section-icon-focus .inprogress { background-position: -220px -120px; }
+    .section-icon-focus .completed { background-position: -220px -20px; }
     .section-icon-focus .inprogress { background-position: -220px -120px; }
     .section-icon-focus .locked { background-position: -220px -220px; }
     .section-icon-impact .completed { background-position: -220px -20px; }

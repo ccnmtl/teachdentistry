@@ -49,16 +49,7 @@
 
     <div class="container well" id="outer-container">
         {% block masthead %}
-            <header class="subhead hidden-phone" id="masthead">
-                <h1><a href="./" title="teachdentistry">teachdentistry</a></h1>
-                <h4 id="logo-ccnmtl">
-                    <a href="http://ccnmtl.columbia.edu" target="_blank"
-                        title="Columbia Center for New Media Teaching and Learning">
-                        <span>Produced by the Columbia Center for New Media Teaching
-                            and Learning</span>
-                    </a>
-                </h4>
-            </header>
+            <header class="subhead hidden-phone" id="masthead"></header>
         
         {% endblock %}
 
@@ -66,7 +57,8 @@
 <div id="primarynav">
     <div id="primarynav-inner">
         <ul id="section-items">
-            <li class="section-item"><a href="/" class="section-icon img-rounded"></a><div class="section-title">home</div></li>
+            <li class="section-item section-icon-home"><a href="/" class="section-icon img-rounded"></a>
+            <a href="/" class="section-title">home</a></li>
             {% block primarynavtabs %}
                 {% for section in modules %}
                 <li class="section-item section-icon-{{section.label|lower}} {% ifequal section.id module.id %}active{% endifequal %}">
@@ -82,16 +74,15 @@
 
 
 
-
-
-
         <div class="container-fluid" id="content">
             <div class="row-fluid">
                 {% block container %}
-                    <div class="span2" id="sidebar">
+                    {% if request.user.is_superuser %}<div class="span2" id="sidebar" style="background-color: #efefef;">
+                        Only superuser can see this side bar
                         {% block sidebar %}{% endblock %}
-                    </div>
-                    <div class="span10" id="right-content">
+                        
+                    </div>{% endif %}
+                    <div class="{% if request.user.is_superuser %}span10{% else %}span12{% endif %}" id="right-content">
                         {% if can_edit %}
                         <ul class="nav nav-pills">
                             <li><a style="color: #000;"><b>Page mode:</b></a></li>
@@ -101,7 +92,7 @@
                         </ul>
                         <hr />
                         {% endif %}
-                        
+                        {% block section_thumbnail %}{% endblock %}
                         {% block pagetitle %}{% endblock %}
                         {% block content %}{% endblock %}
                         <div class="visualclear"></div>
@@ -129,13 +120,10 @@
     
 <script type="text/javascript">
 $(document).ready(function(){
-
 	$(".section-nav-tab-inner").click(function(){
 		$("#primarynav-inner").slideToggle("fast");
 		$(this).toggleClass("active"); return false;
 	});
-	
-	 
 });
 </script>
     {% if STAGING_ENV %}

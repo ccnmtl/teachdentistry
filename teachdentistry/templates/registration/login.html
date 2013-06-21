@@ -1,4 +1,29 @@
 {% extends "base_teachdentistry.html" %}
+
+{% block login_overlay %}
+<div class="btn btn-large btn-primary" id="login">
+Log in
+</div>
+
+<div class="btn btn-large btn-info" id="signup">
+Sign up
+</div>
+
+<div class="well login-set" id="login-window">
+    <button type="button" class="close" id="close-login">&times;</button>
+    <div id="login-form">
+        <form method="post" action=".">
+        <label for="id_username">Username: {{ form.username }}</label>
+        <label for="id_password">Password: {{ form.password }}</label>
+        <input type="submit" value="Log in" class="btn btn-large btn-primary" id="td_login" />
+        <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+    </div>
+</div>
+
+<div class="login-set" id="login-overlay"></div>
+{% endblock %}
+
 {% block content %}
 
 <div class="hero-unit">
@@ -7,8 +32,6 @@
 </div>
 
 
-<h2>Choose a Login Option...</h2>
-
 <form method="get" action="{{ wind_base }}login" class="well">
 <input type="hidden" name="service" value="{{ wind_service }}" />
 <input type="hidden" name="destination" value="http://{{ request.get_host }}/accounts/windlogin/?next={{ next }}" />
@@ -16,15 +39,6 @@
         (UNI)... </p><input type="submit" value="LOG IN" class="btn btn-primary"/></p>
 </form>
 
-<form method="post" action="." class="well">
-<p>If you have a project account...</p>
-
-<label for="id_username">Username: {{ form.username }}</label>
-<label for="id_password">Password: {{ form.password }}</label>
-
-<input type="submit" value="LOG IN" class="btn btn-primary" />
-<input type="hidden" name="next" value="{{ next }}" />
-</form>
 {% endblock %}
 
 

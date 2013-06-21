@@ -53,25 +53,42 @@
         
         {% endblock %}
 
-            {% if request.user.is_authenticated %}{% block primarynav %}
-<div id="primarynav">
-    <div id="primarynav-inner">
-        <ul id="section-items">
-            <li class="section-item section-icon-home"><a href="/" class="section-icon img-rounded"></a>
-            <a href="/" class="section-title">home</a></li>
-            {% block primarynavtabs %}
-                {% for section in modules %}
-                <li class="section-item section-icon-{{section.label|lower}} {% ifequal section.id module.id %}active{% endifequal %}">
-                <a href="{% if section.locked %}#{% else %}{{section.url}}{% endif %}" class="section-icon img-rounded {% if section.locked %}locked{% else %}{% if section.complete %}completed{% else %}inprogress{% endif %}{% endif %}"></a>
-                <a href="{% if section.locked %}#{% else %}{{section.url}}{% endif %}" class="section-title">{{section.label}}</a></li>
-                {% endfor %}
+        {% if request.user.is_authenticated %}
+            {% block primarynav %}
+            <div id="primarynav">
+                <div id="primarynav-inner">
+                    <ul id="section-items">
+                        <li class="section-item section-icon-home"><a href="/" class="section-icon img-rounded"></a>
+                        <a href="/" class="section-title">home</a></li>
+                        {% block primarynavtabs %}
+                        {% for section in modules %}
+                        <li class="section-item section-icon-{{section.label|lower}} {% ifequal section.id module.id %}active{% endifequal %}">
+                        <a href="{% if section.locked %}#{% else %}{{section.url}}{% endif %}" class="section-icon img-rounded {% if section.locked %}locked{% else %}{% if section.complete %}completed{% else %}inprogress{% endif %}{% endif %}"></a>
+                        <a href="{% if section.locked %}#{% else %}{{section.url}}{% endif %}" class="section-title">{{section.label}}</a></li>
+                        {% endfor %}
+                        {% endblock %}
+                    </ul>
+                </div>
+                <div class="section-nav-tab"><div class="section-nav-tab-inner">CONTENT</div></div>
+            </div>
             {% endblock %}
-        </ul>
-    </div>
-    <div class="section-nav-tab"><div class="section-nav-tab-inner">CONTENT</div></div>
-</div>
-            {% endblock %}{% endif %}
+        {% endif %}
 
+        {% block carousel_slideshow %}
+        <div class="well" id="invitation">
+                <div class="text-content" id="phrase1">
+                <h2>Welcome to TeachDentistry.org</h2>
+                Enjoy teaching tomorrow’s dentists today
+                </div>
+                
+                <div class="text-content" id="phrase2">
+                So you want to give back?<br />
+                Learn from other dentists who have.
+                </div>
+                
+                {% block login_overlay %}{% endblock %}
+        </div>
+        {% endblock %}
 
 
         <div class="container-fluid" id="content">
@@ -119,11 +136,21 @@
     {% block js %}{% endblock %}
     
 <script type="text/javascript">
-$(document).ready(function(){
+$(document).ready(function($){
+
+/* For Content Navigation */
 	$(".section-nav-tab-inner").click(function(){
 		$("#primarynav-inner").slideToggle("fast");
 		$(this).toggleClass("active"); return false;
 	});
+	
+/* For Login page */
+    $("#invitation #login").click(function(){
+        $(".login-set").fadeIn("fast", "linear");
+    });
+    $("#login-window #close-login").click(function(){
+        $(".login-set").fadeOut("fast", "linear");
+    });
 });
 </script>
     {% if STAGING_ENV %}

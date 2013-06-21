@@ -342,13 +342,23 @@ div.map-container div.map {
     background-color: #999;
 }
 
+#TDCarousel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0px;
+    z-index: 0;
+}
+
 .text-content {
     width: auto;
     font: 20px normal "Century Gothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #fff;
-    text-shadow: 1px 1px #000000;
+    text-shadow: 2px 2px 5px #000000;
     margin: 0px;
     padding: 0px;
+    z-index: 51;
 }
 
 .text-content h2 {

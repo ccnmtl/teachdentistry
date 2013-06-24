@@ -1,6 +1,6 @@
 from teachdentistry.main.models import UserVisited, UserProfile
 from teachdentistry.main.models import Institution, DentalEducator, \
-    CareerType, ClinicalField, Degree, Motivation, \
+    CareerType, ClinicalField, Degree, Motivation, PrimaryTraineesType, \
     TeachingResponsibility, TimeCommitment
 from django.contrib import admin
 
@@ -27,6 +27,8 @@ admin.site.register(ClinicalField)
 admin.site.register(Degree)
 
 admin.site.register(Motivation)
+
+admin.site.register(PrimaryTraineesType)
 
 admin.site.register(TeachingResponsibility)
 

@@ -101,6 +101,13 @@ class Motivation(models.Model):
         return self.name
 
 
+class PrimaryTraineesType(models.Model):
+    name = models.CharField(max_length=256)
+
+    def __unicode__(self):
+        return self.name
+
+
 class TeachingResponsibility(models.Model):
     name = models.CharField(max_length=256)
 
@@ -137,15 +144,15 @@ class DentalEducator(models.Model):
     other_degree = models.CharField(max_length=256, null=True, blank=True)
     institution = models.ForeignKey(Institution)
     institution_state = models.CharField(max_length=2, null=True, blank=True)
-    trainees_type = models.CharField(max_length=256)
+    primary_trainees_type = models.ForeignKey(PrimaryTraineesType)
+    other_trainees_type = models.CharField(max_length=256, null=True, blank=True)
     teaching_responsibility = models.ManyToManyField(TeachingResponsibility)
     paid_time_commitment = models.ForeignKey(TimeCommitment)
     volunteer_time_commitment = models.ForeignKey(
         TimeCommitment,
         related_name="unpaid_time_commitment")
     career_stage = models.CharField(max_length=1, choices=CAREER_STAGE_CHOICES)
-    years_teaching = models.DecimalField(max_digits=4, decimal_places=2,
-                                         null=True, blank=True)
+    years_teaching = models.CharField(max_length=256, null=True, blank=True)
     previous_dental_career = models.ForeignKey(CareerType, null=True, blank=True)
     other_previous_dental_career = models.CharField(max_length=256,
                                            null=True, blank=True)
@@ -153,16 +160,6 @@ class DentalEducator(models.Model):
         CareerType, null=True, blank=True,
         related_name="dentaleducator_current_career")
     other_current_dental_career = models.CharField(max_length=256,
-                                             null=True, blank=True)
-    dental_career = models.ForeignKey(
-        CareerType, null=True, blank=True,
-        related_name="dentaleducator_dental_career")
-    other_dental_career = models.CharField(max_length=256,
-                                           null=True, blank=True)
-    academic_career = models.ManyToManyField(
-        CareerType, null=True, blank=True,
-        related_name="dentaleducator_academic_career")
-    other_academic_career = models.CharField(max_length=256,
                                              null=True, blank=True)
     primary_motivation = models.ManyToManyField(Motivation,
                                                 null=True, blank=True)

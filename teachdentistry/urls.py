@@ -3,8 +3,14 @@ from django.contrib import admin
 from django.conf import settings
 from django.views.generic.simple import direct_to_template
 import os.path
-admin.autodiscover()
 import staticmedia
+from tastypie.api import Api
+from teachdentistry.main.api import DentalEducatorResource
+
+v1_api = Api(api_name='v1')
+v1_api.register(DentalEducatorResource())
+
+admin.autodiscover()
 
 site_media_root = os.path.join(os.path.dirname(__file__), "../media")
 
@@ -17,6 +23,7 @@ urlpatterns = patterns(
     (r'^$', 'teachdentistry.main.views.index'),
     (r'^_pagetree/', include('pagetree.urls')),
     (r'^_quiz/', include('quizblock.urls')),
+    (r'^_main/api/', include(v1_api.urls)),
     (r'^admin/', include(admin.site.urls)),
     (r'^munin/', include('munin.urls')),
     (r'^stats/', direct_to_template, {'template': 'stats.html'}),

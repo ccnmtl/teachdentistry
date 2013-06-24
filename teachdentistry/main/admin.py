@@ -1,7 +1,8 @@
-from django.contrib import admin
+from teachdentistry.main.models import UserVisited, UserProfile
 from teachdentistry.main.models import Institution, DentalEducator, \
-    CareerType, ClinicalField, Degree, Motivation, TeachingResponsibility, \
-    TimeCommitment, UserVisited, UserProfile
+    CareerType, ClinicalField, Degree, Motivation, PrimaryTraineesType, \
+    TeachingResponsibility, TimeCommitment
+from django.contrib import admin
 
 admin.site.register(UserProfile)
 
@@ -26,6 +27,8 @@ admin.site.register(ClinicalField)
 admin.site.register(Degree)
 
 admin.site.register(Motivation)
+
+admin.site.register(PrimaryTraineesType)
 
 admin.site.register(TeachingResponsibility)
 

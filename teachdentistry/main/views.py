@@ -50,12 +50,7 @@ def page(request, path):
 
         section.submit(request.POST, request.user)
 
-        next_section = section.get_next()
-        if next_section:
-            # ignoring proceed and always pushing them along. see PMT #77454
-            return HttpResponseRedirect(next_section.get_absolute_url())
-        else:
-            return HttpResponseRedirect("/")
+        return HttpResponseRedirect(section.get_absolute_url())
     else:
         instructor_link = has_responses(section)
 

@@ -170,3 +170,6 @@ class DentalEducator(models.Model):
     video = models.TextField(default='', null=True, blank=True)
     video_poster = models.FileField(
         upload_to="video/%Y/%m/%d/", null=True, blank=True)
+
+    def __unicode__(self):
+        return "%s %s" % (self.first_name, self.last_name)

@@ -1,4 +1,14 @@
-(function (jQuery) {
+(function (jQuery) {       
+    
+    Institution = Backbone.Model.extend({
+        urlRoot: '/_main/api/v1/institution/',
+        toJSON: function() {
+            return this.get('resource_uri');
+        },
+        toTemplate: function() {
+            return _(this.attributes).clone();
+        }        
+    });    
 
     Educator = Backbone.Model.extend({
         urlRoot: '/_main/api/v1/educator/',
@@ -7,7 +17,13 @@
         },
         toTemplate: function() {
             return _(this.attributes).clone();
-        }        
+        },
+        parse: function(response) {
+            if (response) {
+                response.institution = new Institution(response.institution);
+            }
+            return response;
+        }
     });
 
     EducatorList = Backbone.Collection.extend({
@@ -20,7 +36,11 @@
                     this.add(x);
                 }
             }
-        },   
+        },
+        parse: function(response) {
+            return response.objects || response;
+
+        },        
         getByDataId: function(id) {
             var internalId = this.urlRoot + id + '/';
             return this.get(internalId);
@@ -38,22 +58,59 @@
         }
     });
     
-    window.EducatorMapView = Backbone.View.extend({
-        events: {
-            'resize': 'onResize'          
-        },
+    window.EducatorPinView = Backbone.View.extend({
         initialize: function(options) {
             _.bindAll(this,
                       "render",
+                      "unrender");
+            
+            this.parentView = options.parentView;
+            this.model.bind("destroy", this.unrender);
+            this.render();            
+        },
+        render: function () {
+            var self = this; 
+            var institution = this.model.get('institution');
+            this.latlng = new google.maps.LatLng(institution.get('latitude'),
+                                                 institution.get('longitude'));
+            
+            this.marker = new google.maps.Marker({
+                position: this.latlng, 
+                title: this.model.get('name'),
+                map: this.parentView.mapInstance
+             });
+            
+            google.maps.event.addListener(this.marker, 'click', function() {
+                self.parentView.trigger("markerClicked", self.model, self.marker);
+            });
+        },
+        unrender: function () {
+            
+        }
+    });
+    
+    window.EducatorMapView = Backbone.View.extend({
+        events: {},
+        initialize: function(options) {
+            _.bindAll(this,
+                      "render",
+                      "renderPopup",
                       "onAddEducator",
-                      "onRemoveEducator",                   
+                      "onRemoveEducator",
+                      "onResetEducators",
                       "onResize",
                       "getVisibleViewport");
+            
+            this.educatorTemplate =
+                _.template(jQuery("#educator-template").html());
 
-            this.educators = new EducatorList(options.actors);
+            this.educators = new EducatorList();
             this.educators.on("add", this.onAddEducator);
-            this.educators.on("remove", this.onRemoveEducator);            
+            this.educators.on("remove", this.onRemoveEducator);
+            this.educators.on("reset", this.onResetEducators);
             this.educators.fetch();
+            
+            jQuery(window).on('resize', this.onResize);
             
             var mapOptions = {
                 center: new google.maps.LatLng(39.8282, -98.5795),
@@ -61,8 +118,10 @@
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             
-            var elt = document.getElementById("map-canvas");
-            var mapInstance = new google.maps.Map(elt, mapOptions);
+            var mapCanvas = document.getElementById("map-canvas");
+            this.mapInstance = new google.maps.Map(mapCanvas, mapOptions);
+            
+            this.on("markerClicked", this.renderPopup);
             
             jQuery(window).trigger("resize");
         },
@@ -87,52 +146,45 @@
             }
             
             return { height: viewportheight -
-                        (30 + document.getElementById("masthead").clientHeight +
+                        (30 + document.getElementById("site-header").clientHeight +
                                 document.getElementById("primarynav").clientHeight),
                      width: viewportwidth };
         },
         render: function() {
-            var self = this;
+        },
+        renderPopup: function(educator, marker) {
+            if (this.infowindow) {
+                this.infowindow.close();
+            }
+            
+            var offset = new google.maps.Size(-5, 15);
+            var markup = this.educatorTemplate(educator.toTemplate());
 
-            // toggle map layers on/off
-            jQuery(".career_location_map_layer").each(function() {
-                var dataId = jQuery(this).data("id");
-                if (self.state.get("layers").getByDataId(dataId) || self.state.get("view_type") === "BD") {
-                    // Check layer box
-                    jQuery("#select_layer_" + dataId).attr("checked", "checked");
-
-                    // Display layer & legend
-                    jQuery("#map_layer_" + dataId).show();
-                    jQuery("#map_legend_" + dataId).show();
-                } else {
-                    // Uncheck layer box
-                    jQuery("#select_layer_" + dataId).removeAttr("checked");
-
-                    // Hide layer
-                    jQuery("#map_layer_" + dataId).hide();
-                    jQuery("#map_legend_" + dataId).hide();
-                }
+            this.infowindow = new google.maps.InfoWindow({
+                content: markup,
+                maxWidth: 400});
+            this.infowindow.open(this.mapInstance, marker);
+        },
+        onAddEducator: function(educator) {
+            var view = new EducatorPinView({
+                model: educator,
+                parentView: this
             });
-
-            var selectedLayers = self.state.get("layers");
-            if (selectedLayers.length > 0) {
-                jQuery("div.map_legend_container h3").show();
-            } else {
-                jQuery("div.map_legend_container h3").hide();
-            }
-
-            if (this.state.get("view_type") === "IV" || this.state.get("view_type") === "LC") {
-                this.renderStakeholderInterview();
-            }
-            if (this.state.get("view_type") === "LC" || this.state.get("view_type") === "BD") {
-                this.renderSelectLocation();
-            }
-            if (this.state.get("view_type") === "BD") {
-                this.renderBoardView();
-            }
+        },
+        onRemoveEducator: function(educator) {
+            educator.destroy();
+        },
+        onResetEducators: function(collection, options) {
+            var self = this;
+            collection.forEach(function(obj) {
+                var view = new EducatorPinView({
+                    model: obj,
+                    parentView: self
+                });
+            });
         },
         onResize: function() {
-            var viewport = getVisibleViewport();
+            var viewport = this.getVisibleViewport();
             jQuery("#map-canvas").css({
                 'height': viewport.height + "px"
             });

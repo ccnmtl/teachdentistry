@@ -95,6 +95,15 @@ div.map-container div.map {
     width: 100%;
 }
 
+div.educator-name {
+    color: red;
+    font-weight: bold;
+    font-size: 24px;    
+}
+
+div.educator-bio-summary {
+}
+
 
 /*--------------------------------------------------
     Teach Dentistry CSS

@@ -9,7 +9,7 @@ from pagetree.helpers import get_section_from_path, get_module, needs_submit, \
 from quizblock.models import Submission
 from teachdentistry.main.helpers import get_or_create_profile, has_responses, \
     allow_redo, is_section_unlocked, primary_nav_sections
-from teachdentistry.main.models import UserProfile
+from teachdentistry.main.models import UserProfile, DentalEducator
 
 
 @login_required
@@ -50,12 +50,7 @@ def page(request, path):
 
         section.submit(request.POST, request.user)
 
-        next_section = section.get_next()
-        if next_section:
-            # ignoring proceed and always pushing them along. see PMT #77454
-            return HttpResponseRedirect(next_section.get_absolute_url())
-        else:
-            return HttpResponseRedirect("/")
+        return HttpResponseRedirect(section.get_absolute_url())
     else:
         instructor_link = has_responses(section)
 
@@ -125,3 +120,19 @@ def edit_page(request, path):
                 modules=primary_nav_sections(user_profile),
                 root=section.hierarchy.get_root(),
                 can_edit=True)
+
+
+@login_required
+@render_to('main/profile.html')
+def profile(request, educator_id):
+    section = get_section_from_path("map/")
+    user_profile = get_or_create_profile(user=request.user, section=section)
+    if not is_section_unlocked(user_profile, section):
+        return HttpResponseRedirect("/")
+
+    educator = get_object_or_404(DentalEducator, id=educator_id)
+
+    return dict(educator=educator,
+                module=get_module(section),
+                modules=primary_nav_sections(user_profile),
+                root=section.hierarchy.get_root())

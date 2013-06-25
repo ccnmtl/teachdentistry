@@ -1,0 +1,31 @@
+{% extends 'base_teachdentistry.html' %}
+{% load render %}
+
+{% block js %}
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block module_slug %}{% endblock %}
+
+{% block title %}Interactive Map{% endblock %}
+
+{% block pagetitle %}<h2 class="pagetitle">Interactive Map</h2>{% endblock %}
+
+{% block navrightextra %}
+{% endblock %}
+
+{% block breadcrumbs %}
+{% endblock breadcrumbs %}
+
+{% block carousel_slideshow %}{% endblock %}
+
+{% block container %}
+    <div class="profile-container">
+        <h1>{{educator.educator_display_name}}</h1>
+        {{educator.gender}}<br />        
+        {{educator.contact_email}}<br />
+    </div>
+{% endblock %}
+

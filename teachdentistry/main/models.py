@@ -171,5 +171,11 @@ class DentalEducator(models.Model):
     video_poster = models.FileField(
         upload_to="video/%Y/%m/%d/", null=True, blank=True)
 
+    def educator_display_name(self):
+        if self.display_name:
+            return self.display_name
+        else:
+            return "%s %s" % (self.first_name, self.last_name)
+
     def __unicode__(self):
-        return "%s %s" % (self.first_name, self.last_name)
+        return self.educator_display_name()

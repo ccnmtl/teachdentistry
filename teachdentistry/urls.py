@@ -1,14 +1,15 @@
-from django.conf.urls.defaults import patterns, include
-from django.contrib import admin
 from django.conf import settings
+from django.conf.urls.defaults import patterns, include, url
+from django.contrib import admin
 from django.views.generic.simple import direct_to_template
+from tastypie.api import Api
+from teachdentistry.main.api import DentalEducatorResource, InstitutionResource
 import os.path
 import staticmedia
-from tastypie.api import Api
-from teachdentistry.main.api import DentalEducatorResource
 
 v1_api = Api(api_name='v1')
 v1_api.register(DentalEducatorResource())
+v1_api.register(InstitutionResource())
 
 admin.autodiscover()
 
@@ -34,6 +35,9 @@ urlpatterns = patterns(
      'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     (r'^_pagetree/', include('pagetree.urls')),
     (r'^_quiz/', include('quizblock.urls')),
+    url(r'^profile/(?P<educator_id>\d+)/$',
+        'teachdentistry.main.views.profile',
+        name='profile-view'),
     (r'^edit/(?P<path>.*)$', 'teachdentistry.main.views.edit_page',
      {}, 'edit-page'),
 )

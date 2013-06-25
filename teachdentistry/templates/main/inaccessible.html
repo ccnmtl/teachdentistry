@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load render %}
-
+{% block carousel_slideshow %}{% endblock %}
 {% block js %}
     {% for block in section.pageblock_set.all %}
         {% renderjs block %}

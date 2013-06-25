@@ -1,11 +1,37 @@
 {% extends 'base_teachdentistry.html' %}
 
 {% block primarynav %}{% endblock %}
+
 {% block content %}
 <div class="hero-unit">
 <h2>Your login is successful</h2>
 <p>Please pardon our appearance. Teach Dentistry is under construction.</p>
 </div>
 
+
 {% if request.user.is_superuser %}<a href="/intro/">Go to Content</a>{% endif %}
+{% endblock %}
+
+
+
+
+
+
+
+
+{% block js %}
+<script type="text/javascript">
+$(document).ready(function($){
+    /* For Login page */
+    $("#invitation #login").click(function(){
+        $(".login-set").fadeIn("fast", "linear");
+    });
+    $("#login-window #close-login").click(function(){
+        $(".login-set").fadeOut("fast", "linear");
+    });
+    $('.carousel').carousel({
+        interval: 8000
+    })
+});
+</script>
 {% endblock %}

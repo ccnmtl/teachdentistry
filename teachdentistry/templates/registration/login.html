@@ -28,12 +28,6 @@ Sign up
 
 {% block content %}
 
-<div class="hero-unit">
-<h1>Teach Dentistry<br/>is under construction</h1>
-<p>Please pardon our appearance.</p>
-</div>
-
-
 <form method="get" action="{{ wind_base }}login" class="well">
 <input type="hidden" name="service" value="{{ wind_service }}" />
 <input type="hidden" name="destination" value="http://{{ request.get_host }}/accounts/windlogin/?next={{ next }}" />
@@ -41,6 +35,59 @@ Sign up
         (UNI)... </p><input type="submit" value="LOG IN" class="btn btn-primary"/></p>
 </form>
 
+
+<h2 class="tab-header">What Teach Dentistry has to offer</h2>
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Watch a video <span class="pointer">&nbsp;&nbsp;&gt;&gt;</span></a></li>
+		<li><a href="#tabs-2">Where do I start? <span class="pointer">&nbsp;&nbsp;&gt;&gt;</span></a></li>
+		<li><a href="#tabs-3">What do I need to know? <span class="pointer">&nbsp;&nbsp;&gt;&gt;</span></a></li>
+		<li><a href="#tabs-4">Earn a CE credit <span class="pointer">&nbsp;&nbsp;&gt;&gt;</span></a></li>
+	</ul>
+	<div id="tabs-1">
+		<h2>Watch a video</h2>
+		<p class="video-placeholder img-rounded"></p>
+	</div>
+	<div id="tabs-2">
+		<h2>Where do I start?</h2>
+		<p>Throughout this course you will learn from dentists working in academic settings. See what they have to say!
+</p>
+	</div>
+	<div id="tabs-3">
+		<h2>What do I need to know?</h2>
+		<p>You will find information on the logistics of academe along with a map profiling dentists working in academics throughout the United States. </p>
+	</div>
+	<div id="tabs-4">
+		<h2>Earn a CE credit</h2>
+		<p>By signing up and completing this course, you will receive one continuing education credit.</p>
+	</div>
+</div>
+<div class="visualclear"></div>
+
+
+
 {% endblock %}
 
 
+{% block js %}
+<script type="text/javascript">
+$(document).ready(function($){
+    /* For Login page */
+    $("#invitation #login").click(function(){
+        $(".login-set").fadeIn("fast", "linear");
+    });
+    $("#login-window #close-login").click(function(){
+        $(".login-set").fadeOut("fast", "linear");
+    });
+    $('.carousel').carousel({
+        interval: 8000
+    })
+});
+	$(function() {
+		$( "#tabs" ).tabs({hide:true}).addClass( "ui-tabs-vertical ui-helper-clearfix" );
+		$( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+	});
+
+</script>
+{% endblock %}

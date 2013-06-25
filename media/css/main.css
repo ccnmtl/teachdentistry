@@ -145,6 +145,73 @@ div.educator-bio-summary {
 }
 
 
+h2.tab-header {
+	padding: 0 0 40px;
+	margin: 0;
+	font-size: 36px;
+	font-weight: normal;
+}
+
+.ui-tabs-vertical { width: auto; }
+
+.ui-tabs-vertical .ui-tabs-nav {
+	float: left;
+	width: 300px;
+	font-size: 20px;
+	list-style: none;
+	margin: 0;
+	padding: 0 0 0 20px;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li {
+	clear: left;
+	margin-bottom: 10px;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li span.pointer { display: none; }
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active span.pointer { display: inline; }
+
+.ui-tabs-vertical .ui-tabs-nav li a {
+	padding: 6px 0;
+	display: block;
+	text-decoration: none;
+}
+
+.ui-tabs-vertical a:active, .ui-tabs-vertical a:focus {
+	border: none;
+	outline: 0;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active a { color: #000; }
+
+.ui-tabs-vertical .ui-tabs-panel {
+	padding: 0 0 0 10px;
+	float: left;
+	width: 570px;
+}
+
+.ui-tabs-vertical .ui-tabs-panel h2 {
+	padding: 0 0 20px;
+	margin: 0;
+	font-size: 30px;
+	font-weight: normal;
+	color: #666;
+	display: none;
+}
+
+.ui-tabs-vertical .ui-tabs-panel p {
+	font-size: 20px;
+	line-height: 150%;
+	font-weight: normal;
+	color: #666;
+}
+
+.video-placeholder {
+	width: 480px;
+	height: 270px;
+	background-color: #ccc;
+}
+
 /*--------------------------------------------------
     Section Navigation (Default)
   --------------------------------------------------*/
@@ -539,6 +606,9 @@ div.educator-bio-summary {
     .section-icon-ce .completed { background-position: -5px -5px; }
     .section-icon-ce .inprogress { background-position: -5px -105px; }
     .section-icon-ce .locked { background-position: -5px -205px; }
+    .ui-tabs-vertical .ui-tabs-panel {
+        width: 800px;
+    }
 }
 
 /*---- Portrait tablet to landscape and desktop ----*/
@@ -613,6 +683,17 @@ div.educator-bio-summary {
     .section-icon-ce .completed { background-position: -220px -20px; }
     .section-icon-ce .inprogress { background-position: -220px -120px; }
     .section-icon-ce .locked { background-position: -220px -220px; }
+    .ui-tabs-vertical .ui-tabs-nav {
+        float: left;
+        width: 194px;
+        font-size: 14px;
+        list-style: none;
+        margin: 0;
+        padding: 0px;
+    }
+    .ui-tabs-vertical .ui-tabs-panel {
+        width: 480px;
+    }
 }
 
 /*------- Landscape phone to portrait tablet -------*/

@@ -76,28 +76,24 @@
 
         {% block carousel_slideshow %}
         <div class="well" id="invitation">
-<div id="TDCarousel" class="carousel slide">
-  <!-- Carousel items -->
-  <div class="carousel-inner">
-    <div class="active item"><img src="/site_media/img/stock-img1.jpg" /></div>
-    <div class="item"><img src="/site_media/img/stock-img2.jpg" /></div>
-    <div class="item"><img src="/site_media/img/stock-img3.jpg" /></div>
-  </div>
-</div>
-
-
-
-                <div class="text-content" id="phrase1">
+            <div id="TDCarousel" class="carousel slide">
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                    <div class="active item"><img src="/site_media/img/stock-img1.jpg" /></div>
+                    <div class="item"><img src="/site_media/img/stock-img2.jpg" /></div>
+                    <div class="item"><img src="/site_media/img/stock-img3.jpg" /></div>
+                </div>
+            </div>
+            <div class="text-content" id="phrase1">
                 <h2>Welcome to TeachDentistry.org</h2>
                 Enjoy teaching tomorrow’s dentists today
-                </div>
-                
-                <div class="text-content" id="phrase2">
+            </div>
+            <div class="text-content" id="phrase2">
                 So you want to give back?<br />
                 Learn from other dentists who have.
-                </div>
-                
-                {% block login_overlay %}{% endblock %}
+            </div>
+            
+            {% block login_overlay %}{% endblock %}
         </div>
         {% endblock %}
 
@@ -144,6 +140,8 @@
         <script type="text/javascript" src="/site_media/bootstrap/js/bootstrap.js"></script>
     {% endcompress %}
     
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
     {% block js %}{% endblock %}
     
 <script type="text/javascript">
@@ -154,18 +152,8 @@ $(document).ready(function($){
 		$("#primarynav-inner").slideToggle("fast");
 		$(this).toggleClass("active"); return false;
 	});
-	
-/* For Login page */
-    $("#invitation #login").click(function(){
-        $(".login-set").fadeIn("fast", "linear");
-    });
-    $("#login-window #close-login").click(function(){
-        $(".login-set").fadeOut("fast", "linear");
-    });
-    $('.carousel').carousel({
-  interval: 10000
-})
 });
+
 </script>
     {% if STAGING_ENV %}
         <div class="alert alert-error" style="position: fixed; bottom: 0px;">

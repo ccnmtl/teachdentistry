@@ -4,12 +4,13 @@
 {% getquestionresponse question as response %}
 
 <div class="cases">
-  {{question.intro_text|markdown}}
+  <p class="question_intro_text">{{question.intro_text|safe}}</p>
 
   <div class="casetitle"> Question {{question.display_number}}:</div>
      
   <div class="casecontent">
     <div class="casequestion">
+    
       <p class="question_text">{{question.text|safe}}</p>
       {% if question.answerable %}
         {% if block.rhetorical %}<form id="form-{{question.id}}" method="post">{% endif %}

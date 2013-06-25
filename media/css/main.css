@@ -652,3 +652,58 @@ div.educator-bio-summary {
 }
 
 
+/*----------- Self-ID quiz styling ------------*/
+
+.self-id-quiz .casetitle,
+.self-id-quiz p.question_text {
+    display: none;
+}
+
+.self-id-quiz .question_intro_text {
+    margin: 0 0 0 0;
+    padding: 0 0 10px 0;
+    font-size: 36px;
+    color: #06c;
+    font-weight: normal;
+}
+
+.self-id-quiz .selection {
+    margin: 10px 0 10px 0;
+    padding: 10px;
+    border: 0;
+    vertical-align: middle;
+    width: 500px;
+    font-size: 16px;
+}
+
+.self-id-quiz .selection:hover {
+    box-shadow: 0px 0px 10px #9cf;
+    -webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+            border-radius: 6px;
+}
+
+.self-id-quiz .selection input[type='radio']{
+    margin: 0 10px 0 0;
+    padding: 0;
+    border: 1px solid #ccc;
+}
+
+.self-id-quiz .selection-block {
+    margin: 0 0 0 0;
+    padding: 0 0 30px 0;
+    border: 0;
+}
+
+.self-id-quiz .selection-block h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    color: #666;
+    font-weight: normal;
+}
+
+.self-id-quiz .highlighted h3 {
+    color: #06c;
+}
+

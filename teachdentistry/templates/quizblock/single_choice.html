@@ -7,30 +7,36 @@
             <div>
             {% if response %}
                 {% ifequal response.value answer.value %}
-                    You chose: {{answer.label}} <br />
-                    Explanation {{answer.explanation|safe}}
+                    <div class="selection-block highlighted">
+                    <h3>“{{answer.label}}”</h3>
+                    
+                    {{answer.explanation|safe}}
+                    </div>
                 {% endifequal %}
             {% else %}
-                <input name="pageblock-{{block.pageblock.id}}-question{{question.id}}"
-                value="{{answer.value}}" type="radio" />{{answer.label}}
+                    <label class="selection">
+                    <input name="pageblock-{{block.pageblock.id}}-question{{question.id}}"
+                value="{{answer.value}}" type="radio" />{{answer.label}}</label>
             {% endif %}
             </div>
         {% endif %}
     {% endfor %}
 
-<hr />
-Explore other stuff:<br />
+{% if response %}<hr />
+<span style="color: red;">Let's look at other stuff (need replacement text)</span><br />
+{% endif %}
 
     {% for answer in question.answer_set.all %}
         {% if block.rhetorical %}
         {% else %}
-            <div>
             {% if response %}
                 {% ifnotequal response.value answer.value %}
-                    You didn't choose: {{answer.label}}<br />
-                    Explanation {{answer.explanation|safe}}
-                {% endifnotequal %}
+             <div class="selection-block">
+                   <h3>“{{answer.label}}”</h3>
+                    
+                    {{answer.explanation|safe}}
+             </div>
+              {% endifnotequal %}
             {% endif %}
-            </div>
-        {% endif %}
+         {% endif %}
     {% endfor %}

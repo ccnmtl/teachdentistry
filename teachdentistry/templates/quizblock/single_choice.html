@@ -1,0 +1,36 @@
+{% load markup %}
+
+    {% for answer in question.answer_set.all %}
+        {% if block.rhetorical %}
+            <div><input name="question{{question.id}}" value="{{answer.label}}" type="radio" />{{answer.label}}</div>
+        {% else %}
+            <div>
+            {% if response %}
+                {% ifequal response.value answer.value %}
+                    You chose: {{answer.label}} <br />
+                    Explanation {{answer.explanation|safe}}
+                {% endifequal %}
+            {% else %}
+                <input name="pageblock-{{block.pageblock.id}}-question{{question.id}}"
+                value="{{answer.value}}" type="radio" />{{answer.label}}
+            {% endif %}
+            </div>
+        {% endif %}
+    {% endfor %}
+
+<hr />
+Explore other stuff:<br />
+
+    {% for answer in question.answer_set.all %}
+        {% if block.rhetorical %}
+        {% else %}
+            <div>
+            {% if response %}
+                {% ifnotequal response.value answer.value %}
+                    You didn't choose: {{answer.label}}<br />
+                    Explanation {{answer.explanation|safe}}
+                {% endifnotequal %}
+            {% endif %}
+            </div>
+        {% endif %}
+    {% endfor %}

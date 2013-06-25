@@ -31,7 +31,7 @@
     <header id="site-header">
         <div id="logo-project"><a href="/"></a></div>
         <div id="sitewide-pages"></div>
-        <div id="user-status">
+        <div id="user-status">About Help Contact
         {% block usernav %}
             {% if request.user.is_anonymous %}
                 <a href="/accounts/login/?next=/" class="btn btn-small btn-primary">Log in</a>
@@ -163,7 +163,7 @@ $(document).ready(function($){
         $(".login-set").fadeOut("fast", "linear");
     });
     $('.carousel').carousel({
-  interval: 5000
+  interval: 10000
 })
 });
 </script>

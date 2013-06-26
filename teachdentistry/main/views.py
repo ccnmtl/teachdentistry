@@ -9,7 +9,9 @@ from pagetree.helpers import get_section_from_path, get_module, needs_submit, \
 from quizblock.models import Submission
 from teachdentistry.main.helpers import get_or_create_profile, has_responses, \
     allow_redo, is_section_unlocked, primary_nav_sections
-from teachdentistry.main.models import UserProfile, DentalEducator
+from teachdentistry.main.models import UserProfile, DentalEducator, \
+    CAREER_STAGE_CHOICES, TeachingResponsibility, TimeCommitment, \
+    PrimaryTraineesType
 
 
 @login_required
@@ -71,6 +73,12 @@ def page(request, path):
             template_name = 'main/inaccessible.html'
         elif path.startswith('map'):
             template_name = 'main/map.html'
+            items['career_stages'] = CAREER_STAGE_CHOICES
+            items['teaching_responsibilities'] = \
+                TeachingResponsibility.objects.all().order_by('name')
+            items['paid_time_commitments'] = TimeCommitment.objects.all()
+            items['volunteer_time_commitments'] = TimeCommitment.objects.all()
+            items['trainee_types'] = PrimaryTraineesType.objects.all()
         elif path.startswith('profile'):
             template_name = 'main/profile.html'
         else:

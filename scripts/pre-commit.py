@@ -101,12 +101,12 @@ def main(all_files):
         print check['output']
         result = check_files(files, check) or result
 
-    if result == 0:
-        print 'Running Flake8...'
-        return_code = subprocess.call(
-            'flake8 --exclude=ve,media --ignore=F403 .',
-            shell=True)
-        result = return_code or result
+    #if result == 0:
+    #    print 'Running Flake8...'
+    #    return_code = subprocess.call(
+    #        'flake8 --exclude=ve,media --ignore=F403 .',
+    #        shell=True)
+    #    result = return_code or result
 
     if result == 0:
         print 'Running Unit Tests...'

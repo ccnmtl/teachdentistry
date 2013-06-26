@@ -90,7 +90,8 @@
     });
     
     window.EducatorMapView = Backbone.View.extend({
-        events: {},
+        events: {
+        },
         initialize: function(options) {
             _.bindAll(this,
                       "render",
@@ -99,7 +100,8 @@
                       "onRemoveEducator",
                       "onResetEducators",
                       "onResize",
-                      "getVisibleViewport");
+                      "getVisibleViewport",
+                      "toggleAccordion");
             
             this.educatorTemplate =
                 _.template(jQuery("#educator-template").html());
@@ -111,6 +113,9 @@
             this.educators.fetch();
             
             jQuery(window).on('resize', this.onResize);
+            
+            jQuery('.collapse').on('hide', this.toggleAccordion);
+            jQuery('.collapse').on('show', this.toggleAccordion);
             
             var mapOptions = {
                 center: new google.maps.LatLng(39.8282, -98.5795),
@@ -188,7 +193,11 @@
             jQuery("#map-canvas").css({
                 'height': viewport.height + "px"
             });
-        }        
+        },
+        toggleAccordion: function(event) {
+            var prev = jQuery(event.currentTarget).prev();
+            jQuery(prev).find('i').toggleClass('icon-plus-sign icon-minus-sign');
+        }
     });
     
 }(jQuery));    

@@ -6,15 +6,15 @@ header#masthead
 }
 
 header h1 {
-	display: none;
+    display: none;
 }
 
 header h4 {
-	display: none;
+    display: none;
 }
 
 html {
-	height: 100%;
+    height: 100%;
 }
 
 body {
@@ -36,18 +36,18 @@ body > .container {
 }
 
 /* #primarynav .navbar-inner {
-	background-color: blue;
-	background-image: none;
+    background-color: blue;
+    background-image: none;
 }
 
 #primarynav li.active a {
-	background-color: #8ae;
-	color: black;
+    background-color: #8ae;
+    color: black;
 }
 
 #primarynav a {
   color: white;
-	background-color: #679;
+    background-color: #679;
 }
 
 #primarynav a:hover {
@@ -115,101 +115,138 @@ div.educator-bio-summary {
 }
 
 #site-header {
-    margin: 5px auto 0 auto;
-    padding: 0;
+    margin: 0 auto 0 auto;
+    padding: 15px 0;
     border: 0;
 }
 
 #site-header {
     width: 940px;
-    height: 90px;
+    height: 60px;
 }
 
 #logo-project {
+    float: left;
     width: 270px;
     height: 60px;
+    margin: 0;
+    padding: 0;
+    border: 0;
     background: url('/site_media/img/logo_project_sprite.png') 0 0 no-repeat;
-    float: left;
 }
 
 #logo-project a {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
     display: block;
     width: 100%;
     height: 100%;
 }
 
-#user-status {
-    float: right;
+#sitewide-pages {
+    margin: 0;
     padding: 0;
     border: 0;
+    float: right;
+    list-style: none;
+    font-size: 12px;
+    color: #666;
+}
+
+#sitewide-pages li {
+    display: block;
+    float: left;
+    margin: 0 0 0 10px;
+    padding: 5px;
+    border:  0;
+}
+
+#sitewide-pages li.flatpages a {
+    display: block;
+    color: #666;
+    text-decoration: none;
+    outline: 0;
+}
+
+#sitewide-pages li.flatpages a:hover {
+    color: #000;
+    text-decoration: none;
+    outline: 0;
+}
+
+#sitewide-pages li#user-status {
+    border-right: 1px solid #999;
+    padding-right: 15px;
 }
 
 
 h2.tab-header {
-	padding: 0 0 40px;
-	margin: 0;
-	font-size: 36px;
-	font-weight: normal;
+    padding: 0 0 40px;
+    margin: 0;
+    font-size: 36px;
+    font-weight: normal;
 }
 
 .ui-tabs-vertical { width: auto; }
 
 .ui-tabs-vertical .ui-tabs-nav {
-	float: left;
-	width: 300px;
-	font-size: 20px;
-	list-style: none;
-	margin: 0;
-	padding: 0 0 0 20px;
+    float: left;
+    width: 300px;
+    font-size: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 20px;
 }
 
 .ui-tabs-vertical .ui-tabs-nav li {
-	clear: left;
-	margin-bottom: 10px;
+    clear: left;
+    margin-bottom: 10px;
 }
 
 .ui-tabs-vertical .ui-tabs-nav li span.pointer { display: none; }
 .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active span.pointer { display: inline; }
 
 .ui-tabs-vertical .ui-tabs-nav li a {
-	padding: 6px 0;
-	display: block;
-	text-decoration: none;
+    padding: 6px 0;
+    display: block;
+    text-decoration: none;
 }
 
 .ui-tabs-vertical a:active, .ui-tabs-vertical a:focus {
-	border: none;
-	outline: 0;
+    border: none;
+    outline: 0;
 }
 
 .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active a { color: #000; }
 
 .ui-tabs-vertical .ui-tabs-panel {
-	padding: 0 0 0 10px;
-	float: left;
-	width: 570px;
+    padding: 0 0 0 10px;
+    float: left;
+    width: 570px;
 }
 
 .ui-tabs-vertical .ui-tabs-panel h2 {
-	padding: 0 0 20px;
-	margin: 0;
-	font-size: 30px;
-	font-weight: normal;
-	color: #666;
-	display: none;
+    padding: 0 0 20px;
+    margin: 0;
+    font-size: 30px;
+    font-weight: normal;
+    color: #666;
+    display: none;
 }
 
 .ui-tabs-vertical .ui-tabs-panel p {
-	font-size: 20px;
-	line-height: 150%;
-	font-weight: normal;
-	color: #666;
+    font-size: 20px;
+    line-height: 150%;
+    font-weight: normal;
+    color: #666;
 }
 
 .video-placeholder {
-	width: 480px;
-	height: 270px;
-	background-color: #ccc;
+    width: 480px;
+    height: 270px;
+    background-color: #ccc;
 }
 
 /*--------------------------------------------------
@@ -217,7 +254,7 @@ h2.tab-header {
   --------------------------------------------------*/
 
 #primarynav {
-	width: 918px;
+    width: 918px;
     margin: -7px auto 0 auto;
     padding: 6px 0 0 0;
     border: 0;
@@ -226,11 +263,11 @@ h2.tab-header {
 }
 
 #primarynav-inner {
-	height: 110px;
-	display: none;
-	margin: 0 auto;
-	padding: 0;
-	border: 0;
+    height: 110px;
+    display: none;
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
     background-color: #bed4e9;
     box-shadow: 1px 1px 3px #999;
     -webkit-border-bottom-right-radius: 6px;
@@ -240,12 +277,12 @@ h2.tab-header {
 }
 
 .section-nav-tab {
-	width: 140px;
-	height: 40px;
-	margin: 0;
-	padding: 0;
-	border: 0;
-	cursor: pointer;
+    width: 140px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
     -webkit-border-bottom-right-radius: 6px;
        -moz-border-bottom-right-radius: 6px;
             border-bottom-right-radius: 6px;
@@ -271,19 +308,19 @@ h2.tab-header {
 }
 
 .section-nav-tab-inner {
-	width: 100%;
-	height: 40px;
-	margin: 0;
-	padding: 0 0 0 8px;
-	border: 0;
-	background: url('/site_media/img/white-arrow.png') no-repeat 80px -45px;
-	line-height: 40px;
-	color: #fff;
-	cursor: pointer;
+    width: 100%;
+    height: 40px;
+    margin: 0;
+    padding: 0 0 0 8px;
+    border: 0;
+    background: url('/site_media/img/white-arrow.png') no-repeat 80px -45px;
+    line-height: 40px;
+    color: #fff;
+    cursor: pointer;
 }
 
 .section-nav-tab .active {
-	background-position: 80px 15px;
+    background-position: 80px 15px;
 }
 
 #section-items {
@@ -324,7 +361,7 @@ h2.tab-header {
     color: #000;
     text-align: center;
     text-decoration: none;
-	text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 #section-items .active .section-icon {
@@ -334,7 +371,7 @@ h2.tab-header {
 
 #section-items .active .section-title {
     color: #cc3333;
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .section-item .completed, .section-icon-home  .section-icon {
@@ -540,30 +577,30 @@ h2.tab-header {
 @media (min-width: 1200px) {
     #site-header {
         width: 1170px;
-        height: 75px;
+        height: 77px;
     }
     #logo-project {
-        width: 304px;
-        height: 70px;
-        background: url('/site_media/img/logo_project.png') -772px 0 no-repeat;
+        width: 350px;
+        height: 77px;
+        background-position: -280px 0;
     }
     #primarynav {
         width: 1143px;
         /* background: url('/site_media/img/bg_section_nav_top_d.png') 0px 0px no-repeat; */
     }
     #primarynav-inner {
-	    height: 130px;
+        height: 130px;
         /* background: #cfddeb url('/site_media/img/bg_section_nav_d.png') 0px 0px repeat-y; */
     }
     .section-nav-tab {
         width: 170px;
     }
     .section-nav-tab-inner {
-    	padding: 0 0 0 8px;
+        padding: 0 0 0 8px;
         background-position: 80px -45px;
     }
     .section-nav-tab .active {
-	    background-position: 80px 15px;
+        background-position: 80px 15px;
     }
     .section-item {
         width: 90px;
@@ -616,31 +653,25 @@ h2.tab-header {
 @media (min-width: 768px) and (max-width: 979px) {
     #site-header {
         width: 724px;
-        height: 58px;
-    }
-    #logo-project {
-        width: 228px;
-        height: 53px;
-        background: url('/site_media/img/logo_project.png') -310px 0 no-repeat;
     }
     #primarynav {
         width: 702px;
         /*background: url('/site_media/img/bg_section_nav_top_tp.png') 0px 0px no-repeat;*/
     }
     #primarynav-inner {
-	    height: 100px;
+        height: 100px;
         /*background: #cfddeb url('/site_media/img/bg_section_nav_tp.png') 0px 0px repeat-y;*/
     }
     .section-nav-tab {
         width: 107px;
     }
     .section-nav-tab-inner {
-    	padding: 0 0 0 2px;
+        padding: 0 0 0 2px;
         background-position: 62px -45px;
         font-size: 12px;
     }
     .section-nav-tab .active {
-	    background-position: 62px 15px;
+        background-position: 62px 15px;
     }
     .section-item {
         width: 60px;

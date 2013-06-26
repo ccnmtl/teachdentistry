@@ -77,7 +77,8 @@
             this.marker = new google.maps.Marker({
                 position: this.latlng, 
                 title: this.model.get('name'),
-                map: this.parentView.mapInstance
+                map: this.parentView.mapInstance,
+                icon: 'http://teachdentistry.org/site_media/img/blue-dot.png'
              });
             
             google.maps.event.addListener(this.marker, 'click', function() {

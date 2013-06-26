@@ -40,6 +40,7 @@ urlpatterns = patterns(
         name='profile-view'),
     (r'^edit/(?P<path>.*)$', 'teachdentistry.main.views.edit_page',
      {}, 'edit-page'),
+    (r'^pages/', include('django.contrib.flatpages.urls')),
 )
 
 if settings.DEBUG:

@@ -1,13 +1,13 @@
 {% extends "base_teachdentistry.html" %}
-
+{% block title %}Welcome, Please Log In{% endblock %}
 {% block usernav %}{% endblock %}
 
 {% block login_overlay %}
-<div class="btn btn-large btn-primary" id="login">
+<div class="btn btn-large btn-primary add-box-shadow" id="login">
 Log in
 </div>
 
-<div class="btn btn-large btn-info" id="signup">
+<div class="btn btn-large btn-info add-box-shadow" id="signup">
 Sign up
 </div>
 
@@ -28,12 +28,12 @@ Sign up
 
 {% block content %}
 
-<form method="get" action="{{ wind_base }}login" class="well">
+{% comment %}<form method="get" action="{{ wind_base }}login" class="well">
 <input type="hidden" name="service" value="{{ wind_service }}" />
 <input type="hidden" name="destination" value="http://{{ request.get_host }}/accounts/windlogin/?next={{ next }}" />
 <p>If you have a Columbia University Network ID
         (UNI)... </p><input type="submit" value="LOG IN" class="btn btn-primary"/></p>
-</form>
+</form>{% endcomment %}
 
 
 <h2 class="tab-header">What Teach Dentistry has to offer</h2>

@@ -59,6 +59,22 @@ body > .container {
     padding-top: 30px;
 }
 
+.visualclear {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    clear: both;
+}
+
+
+.container-fluid {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+
+
+
 /*--------------------------------------------------
     Sidebar Menu
   --------------------------------------------------*/
@@ -181,9 +197,33 @@ div.educator-bio-summary {
     padding-right: 15px;
 }
 
+footer {
+    margin: 0 auto 0 auto;
+    padding: 0;
+    border: 0;
+    text-align: center;
+}
+
+footer {
+    width: 940px;
+    height: 100px;
+}
+
+footer a {
+    margin: 0;
+    border: 0;
+    outline: 0;
+}
+
+footer img {
+    padding: 5px 20px;
+    margin: 0;
+    border: 0;
+    outline: 0;
+}
 
 h2.tab-header {
-    padding: 0 0 40px;
+    padding: 30px 0 40px 0;
     margin: 0;
     font-size: 36px;
     font-weight: normal;
@@ -224,7 +264,7 @@ h2.tab-header {
 .ui-tabs-vertical .ui-tabs-panel {
     padding: 0 0 0 10px;
     float: left;
-    width: 570px;
+    width: 530px;
 }
 
 .ui-tabs-vertical .ui-tabs-panel h2 {
@@ -365,7 +405,7 @@ h2.tab-header {
 }
 
 #section-items .active .section-icon {
-    box-shadow: 0px 0px 6px #f00;
+    box-shadow: 0px 0px 10px #f00;
     border: 1px solid #ff9933;
 }
 
@@ -452,7 +492,7 @@ h2.tab-header {
     margin: 20px;
     padding: 0;
     border: 0;
-    border: 1px solid #666;
+    border: 1px solid #efefef;
     background-color: #999;
 }
 
@@ -467,12 +507,16 @@ h2.tab-header {
 
 .text-content {
     width: auto;
-    font: 20px normal "Century Gothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 20px normal "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #fff;
-    text-shadow: 2px 2px 5px #000000;
+    text-shadow: 2px 2px 10px #000000;
     margin: 0px;
     padding: 0px;
-    z-index: 51;
+    z-index: 100;
+}
+
+.add-box-shadow {
+    box-shadow: 1px 1px 8px #000000;
 }
 
 .text-content h2 {
@@ -488,6 +532,7 @@ h2.tab-header {
     position: absolute;
     left: 10px;
     top: 10px;
+    z-index: 100;
  }
 
 #invitation #phrase2 {
@@ -495,7 +540,8 @@ h2.tab-header {
     left: 10px;
     bottom: 20px;
     font-size: 24px;
- }
+    z-index: 100;
+}
 
 #invitation #login {
     position: absolute;
@@ -508,6 +554,7 @@ h2.tab-header {
     position: absolute;
     right: 30px;
     bottom: 20px;
+    z-index: 100;
 }
 
 #invitation #login-overlay {
@@ -515,11 +562,22 @@ h2.tab-header {
     height: 100%;
     width: auto;
     background-color: #333;
-    z-index: 100;
+    z-index: 200;
     opacity: 0.9;
     filter: alpha(opacity=90);
     -moz-opacity:0.9;
 }
+
+.gradient-overlay {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 50;
+    height: 200px;
+    background: url('/site_media/img/bg_gradient_overlay.png') 0 0 repeat-x;
+    width: 100%;
+}
+
 
 #invitation .login-set {
     display: none;
@@ -537,7 +595,7 @@ h2.tab-header {
     margin: 0px;
     padding: 10px !important;
     background-color: #fff;
-    z-index: 200;
+    z-index: 300;
 }
 
 #login-window #login-form {
@@ -565,6 +623,8 @@ h2.tab-header {
   color: #333;
   opacity: 0.5;
   filter: alpha(opacity=50);
+  width: 30px;
+  height: 30px;
 }
 
 
@@ -591,6 +651,9 @@ h2.tab-header {
     #primarynav-inner {
         height: 130px;
         /* background: #cfddeb url('/site_media/img/bg_section_nav_d.png') 0px 0px repeat-y; */
+    }
+    footer {
+       width: 1170px;
     }
     .section-nav-tab {
         width: 170px;
@@ -645,7 +708,7 @@ h2.tab-header {
     .section-icon-ce .inprogress { background-position: -5px -105px; }
     .section-icon-ce .locked { background-position: -5px -205px; }
     .ui-tabs-vertical .ui-tabs-panel {
-        width: 800px;
+        width: 760px;
     }
 }
 
@@ -661,6 +724,9 @@ h2.tab-header {
     #primarynav-inner {
         height: 100px;
         /*background: #cfddeb url('/site_media/img/bg_section_nav_tp.png') 0px 0px repeat-y;*/
+    }
+    footer {
+       width: 724px;
     }
     .section-nav-tab {
         width: 107px;
@@ -726,22 +792,99 @@ h2.tab-header {
     .ui-tabs-vertical .ui-tabs-panel {
         width: 480px;
     }
+    .container-fluid {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
 
 /*------- Landscape phone to portrait tablet -------*/
 @media (max-width: 767px) {
     body {
-        padding-right: 10px;
-        padding-left: 10px;
+        padding-right: 5px;
+        padding-left: 5px;
     }
-    #site-header {
-        width: auto;
-        height: 40px;
+    #site-header, .container {
+        width: 724px;
     }
-    #logo-project {
-        width: 152px;
-        height: 40px;
-        background: url('/site_media/img/logo_project.png') -155px 0 no-repeat;
+    #primarynav {
+        width: 702px;
+        /*background: url('/site_media/img/bg_section_nav_top_tp.png') 0px 0px no-repeat;*/
+    }
+    #primarynav-inner {
+        height: 100px;
+        /*background: #cfddeb url('/site_media/img/bg_section_nav_tp.png') 0px 0px repeat-y;*/
+    }
+    footer {
+       width: 724px;
+    }
+    .section-nav-tab {
+        width: 107px;
+    }
+    .section-nav-tab-inner {
+        padding: 0 0 0 2px;
+        background-position: 62px -45px;
+        font-size: 12px;
+    }
+    .section-nav-tab .active {
+        background-position: 62px 15px;
+    }
+    .section-item {
+        width: 60px;
+        height: 84px;
+        margin: 0 8px;
+    }
+    .section-item .section-icon {
+        width: 60px;
+        height: 60px;
+    }
+    .section-item .section-title {
+        width: 62px;
+    }
+    .section-thumbnail .section-icon {
+        width: 98px;
+        height: 98px;
+        background-position: -285px -26px;
+    }
+    .section-icon-home .section-icon { background-position: -220px -20px; }
+    .section-icon-intro .completed { background-position: -220px -20px; }
+    .section-icon-intro .inprogress { background-position: -220px -120px; }
+    .section-icon-intro .locked { background-position: -220px -220px; }
+    .section-icon-tracks .completed { background-position: -220px -20px; }
+    .section-icon-tracks .inprogress { background-position: -220px -120px; }
+    .section-icon-tracks .locked { background-position: -220px -220px; }
+    .section-icon-focus .completed { background-position: -220px -20px; }
+    .section-icon-focus .inprogress { background-position: -220px -120px; }
+    .section-icon-focus .locked { background-position: -220px -220px; }
+    .section-icon-impact .completed { background-position: -220px -20px; }
+    .section-icon-impact .inprogress { background-position: -220px -120px; }
+    .section-icon-impact .locked { background-position: -220px -220px; }
+    .section-icon-concerns .completed { background-position: -220px -20px; }
+    .section-icon-concerns .inprogress { background-position: -220px -120px; }
+    .section-icon-concerns .locked { background-position: -220px -220px; }
+    .section-icon-settings .completed { background-position: -220px -20px; }
+    .section-icon-settings .inprogress { background-position: -220px -120px; }
+    .section-icon-settings .locked { background-position: -220px -220px; }
+    .section-icon-map .completed { background-position: -220px -20px; }
+    .section-icon-map .inprogress { background-position: -220px -120px; }
+    .section-icon-map .locked { background-position: -220px -220px; }
+    .section-icon-ce .completed { background-position: -220px -20px; }
+    .section-icon-ce .inprogress { background-position: -220px -120px; }
+    .section-icon-ce .locked { background-position: -220px -220px; }
+    .ui-tabs-vertical .ui-tabs-nav {
+        float: left;
+        width: 194px;
+        font-size: 14px;
+        list-style: none;
+        margin: 0;
+        padding: 0px;
+    }
+    .ui-tabs-vertical .ui-tabs-panel {
+        width: 480px;
+    }
+    .container-fluid {
+        padding-left: 20px;
+        padding-right: 20px;
     }
     #outer-container {
         box-shadow: none;
@@ -750,14 +893,91 @@ h2.tab-header {
 
 /*----------- Landscape phones and down ------------*/
 @media (max-width: 480px) {
-    #site-header {
-        width: auto;
-        height: 35px;
+    body {
+        padding-right: 5px;
+        padding-left: 5px;
     }
-    #logo-project {
-        width: 152px;
-        height: 35px;
-        background: url('/site_media/img/logo_project.png') 0px 0 no-repeat;
+    #site-header, .container {
+        width: 724px;
+    }
+    #primarynav {
+        width: 702px;
+        /*background: url('/site_media/img/bg_section_nav_top_tp.png') 0px 0px no-repeat;*/
+    }
+    #primarynav-inner {
+        height: 100px;
+        /*background: #cfddeb url('/site_media/img/bg_section_nav_tp.png') 0px 0px repeat-y;*/
+    }
+    footer {
+       width: 724px;
+    }
+    .section-nav-tab {
+        width: 107px;
+    }
+    .section-nav-tab-inner {
+        padding: 0 0 0 2px;
+        background-position: 62px -45px;
+        font-size: 12px;
+    }
+    .section-nav-tab .active {
+        background-position: 62px 15px;
+    }
+    .section-item {
+        width: 60px;
+        height: 84px;
+        margin: 0 8px;
+    }
+    .section-item .section-icon {
+        width: 60px;
+        height: 60px;
+    }
+    .section-item .section-title {
+        width: 62px;
+    }
+    .section-thumbnail .section-icon {
+        width: 98px;
+        height: 98px;
+        background-position: -285px -26px;
+    }
+    .section-icon-home .section-icon { background-position: -220px -20px; }
+    .section-icon-intro .completed { background-position: -220px -20px; }
+    .section-icon-intro .inprogress { background-position: -220px -120px; }
+    .section-icon-intro .locked { background-position: -220px -220px; }
+    .section-icon-tracks .completed { background-position: -220px -20px; }
+    .section-icon-tracks .inprogress { background-position: -220px -120px; }
+    .section-icon-tracks .locked { background-position: -220px -220px; }
+    .section-icon-focus .completed { background-position: -220px -20px; }
+    .section-icon-focus .inprogress { background-position: -220px -120px; }
+    .section-icon-focus .locked { background-position: -220px -220px; }
+    .section-icon-impact .completed { background-position: -220px -20px; }
+    .section-icon-impact .inprogress { background-position: -220px -120px; }
+    .section-icon-impact .locked { background-position: -220px -220px; }
+    .section-icon-concerns .completed { background-position: -220px -20px; }
+    .section-icon-concerns .inprogress { background-position: -220px -120px; }
+    .section-icon-concerns .locked { background-position: -220px -220px; }
+    .section-icon-settings .completed { background-position: -220px -20px; }
+    .section-icon-settings .inprogress { background-position: -220px -120px; }
+    .section-icon-settings .locked { background-position: -220px -220px; }
+    .section-icon-map .completed { background-position: -220px -20px; }
+    .section-icon-map .inprogress { background-position: -220px -120px; }
+    .section-icon-map .locked { background-position: -220px -220px; }
+    .section-icon-ce .completed { background-position: -220px -20px; }
+    .section-icon-ce .inprogress { background-position: -220px -120px; }
+    .section-icon-ce .locked { background-position: -220px -220px; }
+    .ui-tabs-vertical .ui-tabs-nav {
+        float: left;
+        width: 194px;
+        font-size: 14px;
+        list-style: none;
+        margin: 0;
+        padding: 0px;
+    }
+    .ui-tabs-vertical .ui-tabs-panel {
+        width: 480px;
+    }
+    .container-fluid {
+        padding-left: 20px;
+        padding-right: 20px;
     }
     #outer-container {
         box-shadow: none;

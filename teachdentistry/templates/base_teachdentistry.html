@@ -27,64 +27,63 @@
 <body>
 
 {% block topnavbar %}
-<div id="site-header">
-    <div id="logo-project"><a href="/"></a></div>
-    <ul id="sitewide-pages">
-    {% block usernav %}
-        <li id="user-status">
-        {% if request.user.is_anonymous %}
-            <a href="/accounts/login/?next=/" class="btn btn-small btn-primary">Log in</a>
-        {% else %}
-            Hello, {% if request.user.first_name %}{{request.user.first_name}}{% else %}{{request.user.username}}{% endif %}
-            <a href="/logout/" class="btn btn-mini btn-danger">Log out</a>
-        {% endif %}
-        </li>
-    {% endblock %}
-        <li class="flatpages"><a href="/about/">ABOUT</a></li>
-        <li class="flatpages"><a href="/help/">HELP</a></li>
-        <li class="flatpages"><a href="/contact/">CONTACT</a></li>
-    </ul>
-    {% block topnavbarleftitems %}{% endblock %}
-    {% block topnavbarrightitems %}{% endblock %}
-</div>
+    <div id="site-header">
+        <div id="logo-project"><a href="/"></a></div>
+        <ul id="sitewide-pages">
+        {% block usernav %}
+            <li id="user-status">
+            {% if request.user.is_anonymous %}
+                <a href="/accounts/login/?next=/" class="btn btn-small btn-primary">Log in</a>
+            {% else %}
+                Hello, {% if request.user.first_name %}{{request.user.first_name}}{% else %}{{request.user.username}}{% endif %}
+                <a href="/logout/" class="btn btn-mini btn-danger">Log out</a>
+            {% endif %}
+            </li>
+        {% endblock %}
+            <li class="flatpages"><a href="/about/">ABOUT</a></li>
+            <li class="flatpages"><a href="/help/">HELP</a></li>
+            <li class="flatpages"><a href="/contact/">CONTACT</a></li>
+        </ul>
+        {% block topnavbarleftitems %}{% endblock %}
+        {% block topnavbarrightitems %}{% endblock %}
+    </div>
 {% endblock %}
 
 
     <div class="container well" id="outer-container">
         {% block masthead %}
-            <header class="subhead hidden-phone" id="masthead"></header>
-        
+        <header class="subhead hidden-phone" id="masthead"></header>
         {% endblock %}
-
+        
         {% if request.user.is_authenticated %}
-            {% block primarynav %}
-            <div id="primarynav">
-                <div id="primarynav-inner">
-                    <ul id="section-items">
-                        <li class="section-item section-icon-home"><a href="/" class="section-icon img-rounded"></a>
-                        <a href="/" class="section-title">home</a></li>
-                        {% block primarynavtabs %}
-                        {% for section in modules %}
-                        <li class="section-item section-icon-{{section.label|lower}} {% ifequal section.id module.id %}active{% endifequal %}">
-                        <a href="{% if section.locked %}#{% else %}{{section.url}}{% endif %}" class="section-icon img-rounded {% if section.locked %}locked{% else %}{% if section.complete %}completed{% else %}inprogress{% endif %}{% endif %}"></a>
-                        <a href="{% if section.locked %}#{% else %}{{section.url}}{% endif %}" class="section-title">{{section.label}}</a></li>
-                        {% endfor %}
-                        {% endblock %}
-                    </ul>
-                </div>
-                <div class="section-nav-tab"><div class="section-nav-tab-inner">CONTENT</div></div>
+        {% block primarynav %}
+        <div id="primarynav">
+            <div id="primarynav-inner">
+                <ul id="section-items">
+                    <li class="section-item section-icon-home"><a href="/" class="section-icon img-rounded"></a>
+                    <a href="/" class="section-title">home</a></li>
+                    {% block primarynavtabs %}
+                    {% for section in modules %}
+                    <li class="section-item section-icon-{{section.label|lower}} {% ifequal section.id module.id %}active{% endifequal %}">
+                    <a href="{% if section.locked %}#{% else %}{{section.url}}{% endif %}" class="section-icon img-rounded {% if section.locked %}locked{% else %}{% if section.complete %}completed{% else %}inprogress{% endif %}{% endif %}"></a>
+                    <a href="{% if section.locked %}#{% else %}{{section.url}}{% endif %}" class="section-title">{{section.label}}</a></li>
+                    {% endfor %}
+                    {% endblock %}
+                </ul>
             </div>
-            {% endblock %}
+            <div class="section-nav-tab"><div class="section-nav-tab-inner">CONTENT</div></div>
+        </div>
+        {% endblock %}
         {% endif %}
-
+        
         {% block carousel_slideshow %}
-        <div class="well" id="invitation">
+        <div class="img-rounded" id="invitation">
             <div id="TDCarousel" class="carousel slide">
                 <!-- Carousel items -->
                 <div class="carousel-inner">
-                    <div class="active item"><img src="/site_media/img/stock-img1.jpg" /></div>
-                    <div class="item"><img src="/site_media/img/stock-img2.jpg" /></div>
-                    <div class="item"><img src="/site_media/img/stock-img3.jpg" /></div>
+                    <div class="active item"><img src="/site_media/img/slideshow_01.jpg" /></div>
+                    <div class="item"><img src="/site_media/img/slideshow_02.jpg" /></div>
+                    <div class="item"><img src="/site_media/img/slideshow_03.jpg" /></div>
                 </div>
             </div>
             <div class="text-content" id="phrase1">
@@ -95,45 +94,45 @@
                 So you want to give back?<br />
                 Learn from other dentists who have.
             </div>
-            
-            {% block login_overlay %}{% endblock %}
+             {% block login_overlay %}{% endblock %}
+             <div class="gradient-overlay"></div>
         </div>
         {% endblock %}
-
-
+        
         <div class="container-fluid" id="content">
             <div class="row-fluid">
-                {% block container %}
-                    {% if request.user.is_superuser %}<div class="span2" id="sidebar" style="background-color: #efefef;">
-                        Only superuser can see this side bar
-                        {% block sidebar %}{% endblock %}
-                        
-                    </div>{% endif %}
-                    <div class="{% if request.user.is_superuser %}span10{% else %}span12{% endif %}" id="right-content">
-                        {% if can_edit %}
-                        <ul class="nav nav-pills">
-                            <li><a style="color: #000;"><b>Page mode:</b></a></li>
-                            {% block mode-view %}<li class="active"><a>View</a></li>{% endblock %}
-                            {% block mode-edit %}<li><a href="/edit{{section.get_absolute_url}}">Edit</a></li>{% endblock %}
-                            {% if instructor_link %}<li><a href="/instructor{{request.path}}">Responses</a></li>{% endif %}
-                        </ul>
-                        <hr />
-                        {% endif %}
-                        {% block section_thumbnail %}{% endblock %}
-                        {% block pagetitle %}{% endblock %}
-                        {% block content %}{% endblock %}
-                        <div class="visualclear"></div>
-                        {% block content-nav %}{% endblock %}
-                    </div>
-                {% endblock %}
+            {% block container %}
+                {% if request.user.is_superuser %}
+                <div class="span2" id="sidebar" style="background-color: #efefef;">
+                Only superuser can see this side bar
+                </div>
+                {% endif %}
+                <div class="{% if request.user.is_superuser %}span10{% else %}span12{% endif %}" id="right-content">
+                    {% if can_edit %}
+                    <ul class="nav nav-pills">
+                        <li><a style="color: #000;"><b>Page mode:</b></a></li>
+                        {% block mode-view %}<li class="active"><a>View</a></li>{% endblock %}
+                        {% block mode-edit %}<li><a href="/edit{{section.get_absolute_url}}">Edit</a></li>{% endblock %}
+                        {% if instructor_link %}<li><a href="/instructor{{request.path}}">Responses</a></li>{% endif %}
+                    </ul>
+                    <hr />
+                    {% endif %}
+                    {% block section_thumbnail %}{% endblock %}
+                    {% block pagetitle %}{% endblock %}
+                    {% block content %}{% endblock %}
+                    <div class="visualclear"></div>
+                    {% block content-nav %}{% endblock %}
+                </div>
+            {% endblock %}
             </div>
         </div>
     </div>
 
     {% block footer %}
-      <footer class="footer navbar-fixed-bottom hidden-phone">
-        <img src="/site_media/img/logo_ccnmtl_sidebar.gif" class="printonly pull-right" alt="sidebar"/>
-      </footer>
+    <footer class="footer hidden-phone">
+        <a href="http://dental.columbia.edu/" target="_blank" title="Columbia University College of Dental Medicine"><img src="/site_media/img/logo_dental_school.png" /></a>
+        <a href="http://ccnmtl.columbia.edu" target="_blank" title="Columbia Center for New Media Teaching and Learning"><img src="/site_media/img/logo_ccnmtl.png" /></a>
+    </footer>
     {% endblock %}
 
     <script type="text/javascript" src="/site_media/js/jquery-1.10.1.min.js"></script>
@@ -143,27 +142,28 @@
         <script type="text/javascript" src="/site_media/bootstrap/js/bootstrap.js"></script>
     {% endcompress %}
     
-	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<script src="/site_media/js/jquery-ui-1.10.3.min.js"></script>
 
     {% block js %}{% endblock %}
     
-<script type="text/javascript">
-$(document).ready(function($){
+    <script type="text/javascript">
+    $(document).ready(function($){
+        /* For Content Navigation */
+        $(".section-nav-tab-inner").click(function(){
+            $("#primarynav-inner").slideToggle("fast");
+            $(this).toggleClass("active");
+            return false;
+        });
+    });
+    
+    </script>
 
-/* For Content Navigation */
-	$(".section-nav-tab-inner").click(function(){
-		$("#primarynav-inner").slideToggle("fast");
-		$(this).toggleClass("active"); return false;
-	});
-});
-
-</script>
-    {% if STAGING_ENV %}
-        <div class="alert alert-error" style="position: fixed; bottom: 0px;">
-            <h4>Warning: Staging Site</h4>
-            <p>You are viewing a staging version of this site, not the production site.</p>
-            <p>This site was last updated on: <b>{{STAGING_DEPLOY_TIME}}</b></p>
-        </div>
-    {% endif %}
+{% if STAGING_ENV %}
+    <div class="alert alert-error" style="position: fixed; bottom: 0px;">
+        <h4>Warning: Staging Site</h4>
+        <p>You are viewing a staging version of this site, not the production site.</p>
+        <p>This site was last updated on: <b>{{STAGING_DEPLOY_TIME}}</b></p>
+    </div>
+{% endif %}
 </body>
 </html>

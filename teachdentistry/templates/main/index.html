@@ -1,5 +1,5 @@
 {% extends 'base_teachdentistry.html' %}
-
+{% block title %}Welcome{% endblock %} 
 {% block primarynav %}{% endblock %}
 
 {% block content %}
@@ -8,8 +8,14 @@
 <p>Please pardon our appearance. Teach Dentistry is under construction.</p>
 </div>
 
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nulla lectus, volutpat eget egestas non, pretium gravida ligula. Ut non vehicula lacus. Nunc viverra lectus eu enim lobortis posuere. Nam lacinia mollis ligula, non porttitor dolor vulputate in. Etiam in arcu ligula. Duis pharetra congue lacus. Donec nec porttitor enim, ac vulputate nisl.</p>
 
-{% if request.user.is_superuser %}<a href="/intro/">Go to Content</a>{% endif %}
+<p>Quisque pretium facilisis ante in euismod. Nulla commodo luctus neque. Integer sed est dapibus, lacinia massa vitae, dapibus turpis. Nam mauris diam, euismod non lacinia a, eleifend ut purus. Mauris porttitor purus eget metus commodo, vel posuere eros euismod.</p>
+
+<p>Etiam magna nisi, ornare ac velit ut, rutrum porttitor ligula. Aliquam ac tincidunt justo, at mattis sapien. Morbi nec elit vestibulum, condimentum mi ac, gravida sapien. Quisque metus tellus, varius sed commodo eu, rutrum eget lacus. Cras pretium dolor pulvinar, pretium ligula sit amet, venenatis mi.</p>
+
+<p><a href="/intro/">Go to Content</a></p>
+
 {% endblock %}
 
 

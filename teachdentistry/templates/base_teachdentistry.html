@@ -13,38 +13,41 @@
     <link href="/site_media/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="/site_media/css/main.css" rel="stylesheet">
 {% endcompress %}
-    <link rel="shortcut icon" 
-      type="image/png" 
-      href="/site_media/img/favicon.png" />
-  {% block css %}{% endblock %}
+    <link rel="shortcut icon" type="image/png" href="/site_media/img/favicon.png" />
+  
+{% block css %}{% endblock %}
 
-  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-  <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-	{% block feeds %}{% endblock %}
+{% block feeds %}{% endblock %}
 </head>
 <body>
 
-    {% block topnavbar %}
-    <header id="site-header">
-        <div id="logo-project"><a href="/"></a></div>
-        <div id="sitewide-pages"></div>
-        <div id="user-status">About Help Contact
-        {% block usernav %}
-            {% if request.user.is_anonymous %}
-                <a href="/accounts/login/?next=/" class="btn btn-small btn-primary">Log in</a>
-            {% else %}
-                Hello, {% if request.user.first_name %}{{request.user.first_name}}{% else %}{{request.user.username}}{% endif %}
-                <a href="/logout/" class="btn btn-mini btn-danger">Log out</a>
-            {% endif %}
-        {% endblock %}
-        </div>
-        {% block topnavbarleftitems %}{% endblock %}
-        {% block topnavbarrightitems %}{% endblock %}
-    </header>
+{% block topnavbar %}
+<div id="site-header">
+    <div id="logo-project"><a href="/"></a></div>
+    <ul id="sitewide-pages">
+    {% block usernav %}
+        <li id="user-status">
+        {% if request.user.is_anonymous %}
+            <a href="/accounts/login/?next=/" class="btn btn-small btn-primary">Log in</a>
+        {% else %}
+            Hello, {% if request.user.first_name %}{{request.user.first_name}}{% else %}{{request.user.username}}{% endif %}
+            <a href="/logout/" class="btn btn-mini btn-danger">Log out</a>
+        {% endif %}
+        </li>
     {% endblock %}
+        <li class="flatpages"><a href="/about/">ABOUT</a></li>
+        <li class="flatpages"><a href="/help/">HELP</a></li>
+        <li class="flatpages"><a href="/contact/">CONTACT</a></li>
+    </ul>
+    {% block topnavbarleftitems %}{% endblock %}
+    {% block topnavbarrightitems %}{% endblock %}
+</div>
+{% endblock %}
 
 
     <div class="container well" id="outer-container">
@@ -140,7 +143,7 @@
         <script type="text/javascript" src="/site_media/bootstrap/js/bootstrap.js"></script>
     {% endcompress %}
     
-	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 
     {% block js %}{% endblock %}
     

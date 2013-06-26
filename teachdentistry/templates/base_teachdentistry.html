@@ -27,6 +27,7 @@
 <body>
 
 {% block topnavbar %}
+<<<<<<< HEAD
     <div id="site-header">
         <div id="logo-project"><a href="/"></a></div>
         <ul id="sitewide-pages">
@@ -47,6 +48,28 @@
         {% block topnavbarleftitems %}{% endblock %}
         {% block topnavbarrightitems %}{% endblock %}
     </div>
+=======
+<div id="site-header">
+    <div id="logo-project"><a href="/"></a></div>
+    <ul id="sitewide-pages">
+    {% block usernav %}
+        <li id="user-status">
+        {% if request.user.is_anonymous %}
+            <a href="/accounts/login/?next=/" class="btn btn-small btn-primary">Log in</a>
+        {% else %}
+            Hello, {% if request.user.first_name %}{{request.user.first_name}}{% else %}{{request.user.username}}{% endif %}
+            <a href="/logout/" class="btn btn-mini btn-danger">Log out</a>
+        {% endif %}
+        </li>
+    {% endblock %}
+        <li class="flatpages"><a href="/pages/about/">ABOUT</a></li>
+        <li class="flatpages"><a href="/pages/help/">HELP</a></li>
+        <li class="flatpages"><a href="/pages/contact/">CONTACT</a></li>
+    </ul>
+    {% block topnavbarleftitems %}{% endblock %}
+    {% block topnavbarrightitems %}{% endblock %}
+</div>
+>>>>>>> 33006b5fb653908bb3ce69b91024a3712df71c9d
 {% endblock %}
 
 

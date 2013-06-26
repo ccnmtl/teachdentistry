@@ -24,7 +24,13 @@
         <% } %>
         
         <a href="/profile/<%=id%>/">Link To Profile</a>        
-    </script>    
+    </script>
+    
+    <script type="text/template" id="breadcrumbs-template">
+        <% for (var i=0; i < criteria.length; i++;) { %>
+            <li><a href="#"><%=c.value%><input type="hidden" value="<%=c.id%>" name="<%=c.name%>"/></a></li>
+        <% } %>
+    </script>
     
     {% if accessible %}
         <script type="text/javascript">        
@@ -52,40 +58,88 @@
 
 {% block carousel_slideshow %}{% endblock %}
 
-{% block container %}
+{% block container %}    
     <div id="map-container" class="map-container">
         <div class="search">
-            <div class="accordion-group">
-                <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                        Collapsible Group Item #1
-                    </a>
-                </div>
-                <div id="collapseOne" class="accordion-body collapse in">
-                    <div class="accordion-inner">
-                        Anim pariatur cliche...
+            <h3>Filter Educators</h3>
+            
+            <ul class="breadcrumb">
+              
+            </ul>
+                        
+            <div class="accordion" id="accordion">           
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                            <i class="icon-plus-sign pull-right"></i>Career Stage
+                        </a>
                     </div>
-                    <div class="accordion-inner">
-                        Interdum et malesuada
+                    <div id="collapseTwo" class="accordion-body collapse">
+                        {% for s in career_stages %}
+                        <div class="accordion-inner">
+                            <input class="search_criteria" type="checkbox" name="career_stage" value="{{s.0}}" /> <span class="choice">{{s.1}}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>            
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                            <i class="icon-plus-sign pull-right"></i>Teaching Responsiblities
+                        </a>
+                    </div>
+                    <div id="collapseThree" class="accordion-body collapse">
+                        {% for r in teaching_responsibilities %}
+                        <div class="accordion-inner">
+                            <input class="search_criteria" type="checkbox" name="career_stage" value="{{r.id}}" /> <span class="choice">{{r.name}}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            <i class="icon-plus-sign pull-right"></i>Gender
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <input class="search_criteria" type="radio" name="gender" value="F" /> <span class="choice">Female</span>
+                        </div>
+                        <div class="accordion-inner">
+                            <input class="search_criteria" type="radio" name="gender" value="M" /> <span class="choice">Male</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                            <i class="icon-plus-sign pull-right"></i>Paid Time Commitments
+                        </a>
+                    </div>
+                    <div id="collapseFour" class="accordion-body collapse">
+                        {% for t in paid_time_commitments %}
+                        <div class="accordion-inner">
+                            <input class="search_criteria" type="checkbox" name="career_stage" value="{{t.id}}" /> <span class="choice">{{t.duration}}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                            <i class="icon-plus-sign pull-right"></i>Volunteer Time Commitments
+                        </a>
+                    </div>
+                    <div id="collapseFive" class="accordion-body collapse">
+                        {% for t in volunteer_time_commitments %}
+                        <div class="accordion-inner">
+                            <input class="search_criteria" type="checkbox" name="career_stage" value="{{t.id}}" /> <span class="choice">{{t.duration}}</span>
+                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
-            <br />
-            <div class="accordion-group">
-                <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                        Collapsible Group Item #2
-                    </a>
-                </div>
-                <div id="collapseTwo" class="accordion-body collapse">
-                    <div class="accordion-inner">
-                        Anim pariatur cliche...
-                    </div>
-                    <div class="accordion-inner">
-                        Interdum et malesuada
-                    </div>
-                </div>
-            </div>            
         </div>
         <div class="map">
              <div id="map-canvas" class="google-maps"></div>

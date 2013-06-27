@@ -17,11 +17,16 @@
         <% if (bio_summary !== null) { %>
             <div class="educator-bio-summary"><%= bio_summary %></div>
         <% } %>
-        <% if (headshot !== null) { %>
+        
             <div class="educator-headshot">
+                <% if (headshot !== null) { %>
                 <img src="<%= headshot %>" alt="headshot" />
+                <% } %>
+                <% if (headshot == null) { %>
+                <img src="<% if (gender == 'M') { %>/site_media/img/headshot_male.jpg<%}else{%>/site_media/img/headshot_female.jpg<% } %>" alt="headshot" />
+                <% } %>
             </div>
-        <% } %>
+        
         
         <a href="/profile/<%=id%>/">Link To Profile</a>        
     </script>

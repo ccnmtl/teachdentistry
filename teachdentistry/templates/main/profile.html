@@ -21,10 +21,238 @@
 
 {% block carousel_slideshow %}{% endblock %}
 {% block container %}
-    <div class="profile-container">
-        <h1>{{educator.educator_display_name}}</h1>
-        {{educator.gender}}<br />        
-        {{educator.contact_email}}<br />
+    <div class="span12">
+        <div class="section-thumbnail" style="margin-bottom: 0px;"><div class="section-slug thumbnail-map"></div><h3>SECTION: DENTAL EDUCATOR MAP</h3></div>
+        <div class="map_back_nav"><a href="/map/" class="pager_button"><b>&larr;</b> Return to Dental Educator Map</a></div>
+        <div class="profile-container">
+            
+            <div class="educator-name">{{educator.educator_display_name}}</div>
+            <div class="educator-headshot">
+            {% if educator.headshot %}
+                <img src="/uploads/{{educator.headshot}}" alt="headshot" class="headshot-thumb img-polaroid img-rounded" />
+            {% else %}
+                <img src="{% if educator.gender == 'M' %}/site_media/img/headshot_male.jpg{% else %}/site_media/img/headshot_female.jpg{% endif %}" alt="headshot" class="headshot-thumb img-polaroid img-rounded" />
+            {% endif %}
+            </div>
+             <div class="educator-info">
+                {% if educator.video %}
+                <div class="info-field">
+                    <div class="info-content">
+                        {{educator.video|safe}}
+                    </div>
+                </div>
+                {% endif %}
+                <div class="info-field">
+                    <div class="info-heading">
+                        I Teach Dentistry Because...
+                    </div>
+                    <div class="info-content">
+                        {{educator.teaching_reason}}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                        Academic Title
+                    </div>
+                    <div class="info-content">
+                        {{educator.academic_title}}
+                    </div>
+                </div>
+                {% if educator.contact_permission %}
+                <div class="info-field">
+                    <div class="info-heading">
+                        Email
+                    </div>
+                    <div class="info-content">
+                        {{educator.contact_email}}
+                    </div>
+                </div>
+                {% endif %}
+                <div class="info-field">
+                    <div class="info-heading">
+                        Clinical Field
+                    </div>
+                    <div class="info-content">
+                        {% for item in educator.clinical_field.all %}
+                            {{item.name}}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                        Degree
+                    </div>
+                    <div class="info-content">
+                        {% for item in educator.degree.all %}
+                            {{item.name}}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% if educator.other_degree %}
+                <div class="info-field">
+                    <div class="info-heading">
+                        Other Degree(s)
+                    </div>
+                    <div class="info-content">
+                        {{educator.other_degree}}
+                    </div>
+                </div>
+                {% endif %}
+                <div class="info-field">
+                    <div class="info-heading">
+                    Institution
+                    </div>
+                    <div class="info-content">
+                        {{educator.institution.name}}, {{educator.institution_state}}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                        Primary Trainees Type
+                    </div>
+                    <div class="info-content">
+                        {{educator.primary_trainees_type}}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                        Other Trainees Type
+                    </div>
+                    <div class="info-content">
+                        {{educator.other_trainees_type}}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                        Teaching Responsibility
+                    </div>
+                    <div class="info-content">
+                        {% for item in educator.teaching_responsibility.all %}
+                            {{item.name}}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                        Paid Time Commitment
+                    </div>
+                    <div class="info-content">
+                        {{educator.paid_time_commitment}}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                        Volunteer Time Commitment
+                    </div>
+                    <div class="info-content">
+                        {{educator.volunteer_time_commitment}}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                        Career Stage
+                    </div>
+                    <div class="info-content">
+                        {{educator.get_career_stage_display}}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                        Years Teaching
+                    </div>
+                    <div class="info-content">
+                        {{educator.years_teaching}}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                        Previous Dental Career
+                    </div>
+                    <div class="info-content">
+                        {{educator.previous_dental_career}}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                        Other Previous Dental Career
+                    </div>
+                    <div class="info-content">
+                        {{educator.other_previous_dental_career}}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                        Current Dental Career
+                    </div>
+                    <div class="info-content">
+                        {% for item in educator.current_dental_career.all %}
+                            {{item.name}}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                        Other Current Dental Career
+                    </div>
+                    <div class="info-content">
+                        {{educator.other_current_dental_career}}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                        Primary Motivation
+                    </div>
+                    <div class="info-content">
+                        {% for item in educator.primary_motivation.all %}
+                            {{item.name}}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                        Other Motivation
+                    </div>
+                    <div class="info-content">
+                        {{educator.other_motivation}}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                        Race
+                    </div>
+                    <div class="info-content">
+                        {{educator.get_race_display}}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                        Ethnicity
+                    </div>
+                    <div class="info-content">
+                        {{educator.get_ethnicity_display}}
+                    </div>
+                </div>
+                <div class="info-field">
+                    <div class="info-heading">
+                    </div>
+                    <div class="info-content">
+                        {{educator.}}
+                    </div>
+                </div>
+                {% comment %}<div class="info-field">
+                    <div class="info-heading">
+                    </div>
+                    <div class="info-content">
+                        {{educator.}}
+                    </div>
+                </div>{% endcomment %}
+             </div>
+          
+            
+                {% comment %}<h1></h1>
+                {{educator.gender}}<br />        
+                {{educator.contact_email}}<br />{% endcomment %}
+        </div>
     </div>
 {% endblock %}
 

@@ -195,6 +195,85 @@ div.educator-infowindow .headshot-thumb {
 
 
 /*--------------------------------------------------
+    Dental Educator Profile Page
+  --------------------------------------------------*/
+  
+div.profile-container {
+    padding-top: 20px;
+}
+
+div.profile-container div.educator-headshot {
+    float: left;
+}
+
+div.profile-container div.educator-info {
+    width: auto;
+    margin-left: 230px;
+}
+
+div.profile-container div.educator-name {
+    font-weight: normal;
+    font-size: 26px; 
+    line-height: 120%;
+    margin-bottom: 30px;
+}
+
+div.profile-container .headshot-thumb {
+    width: 200px;
+}
+
+div.profile-container .info-field {
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+div.profile-container .info-field .info-heading {
+    font-weight: normal;
+    font-size: 18px; 
+    line-height: 120%;
+    margin-bottom: 5px;
+}
+
+div.profile-container .info-field .info-content {
+    font-weight: normal;
+    font-size: 14px; 
+    margin-bottom: 5px;
+}
+
+.map_back_nav {
+    margin-left: 50px;
+    margin-bottom: 30px;
+}
+
+.map_back_nav a.pager_button
+{
+  padding: 5px 14px;
+  background-color: #99ccff;
+  border: 0;
+  -webkit-border-radius: 15px;
+     -moz-border-radius: 15px;
+          border-radius: 15px;
+}
+
+.map_back_nav a.pager_button {
+    color: #006699;
+}
+
+
+.map_back_nav a.pager_button:hover {
+  text-decoration: none;
+  background-color: #e0e0e0;
+  color: #666666  !important;
+}
+
+
+.map_back_nav div.pager_button:hover {
+  text-decoration: none;
+  background-color: #e0e0e0;
+}
+
+
+/*--------------------------------------------------
     Teach Dentistry CSS
   --------------------------------------------------*/
 #outer-container {
@@ -791,6 +870,13 @@ h2.tab-header {
     .ui-tabs-vertical .ui-tabs-panel {
         width: 760px;
     }
+    div.profile-container .headshot-thumb {
+        width: 260px;
+    }
+    div.profile-container div.educator-info {
+        width: auto;
+        margin-left: 290px;
+    }
 }
 
 /*---- Portrait tablet to landscape and desktop ----*/
@@ -876,6 +962,13 @@ h2.tab-header {
     .container-fluid {
         padding-left: 20px;
         padding-right: 20px;
+    }
+    div.profile-container .headshot-thumb {
+        width: 150px;
+    }
+    div.profile-container div.educator-info {
+        width: auto;
+        margin-left: 180px;
     }
 }
 
@@ -970,6 +1063,13 @@ h2.tab-header {
     #outer-container {
         box-shadow: none;
     }
+    div.profile-container .headshot-thumb {
+        width: 150px;
+    }
+    div.profile-container div.educator-info {
+        width: auto;
+        margin-left: 180px;
+    }
 }
 
 /*----------- Landscape phones and down ------------*/
@@ -1063,6 +1163,13 @@ h2.tab-header {
     #outer-container {
         box-shadow: none;
     }
+    div.profile-container .headshot-thumb {
+        width: 150px;
+    }
+    div.profile-container div.educator-info {
+        width: auto;
+        margin-left: 180px;
+    }
 }
 
 
@@ -1132,8 +1239,6 @@ h2.tab-header {
 	margin: 50px 0;
 	padding: 5px 0;
 	border: 0;
-	border-top: 1px dotted #6699cc;
-	border-bottom: 1px dotted #6699cc;
 	font-size: 16px;
 }
 
@@ -1164,28 +1269,28 @@ h2.tab-header {
 .content-nav a.pager_button,
 .content-nav div.pager_button
 {
-  padding: 5px 14px;
-  background-color: #fff;
-  border: 1px solid #e0e0e0;
+  padding: 10px 28px;
+  background-color: #99ccff;
+  border: 0;
   -webkit-border-radius: 15px;
      -moz-border-radius: 15px;
           border-radius: 15px;
 }
 
-.content-nav div.pager_button {
-    color: #999 !important;
+.content-nav a.pager_button {
+    color: #006699;
 }
 
 
 .content-nav a.pager_button:hover {
   text-decoration: none;
-  background-color: #efefef;
-  color: #006666  !important;
+  background-color: #e0e0e0;
+  color: #666666  !important;
 }
 
 
 .content-nav div.pager_button:hover {
   text-decoration: none;
-  background-color: #efefef;
+  background-color: #e0e0e0;
 }
 

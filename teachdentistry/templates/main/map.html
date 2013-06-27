@@ -13,22 +13,28 @@
     <script type="text/javascript" src="/site_media/js/app/map.js"></script>
     
     <script type="text/template" id="educator-template">
-        <div class="educator-name"><%= name %></div>
-        <% if (bio_summary !== null) { %>
-            <div class="educator-bio-summary"><%= bio_summary %></div>
-        <% } %>
-        
+        <div class="educator-infowindow">            
             <div class="educator-headshot">
                 <% if (headshot !== null) { %>
-                <img src="<%= headshot %>" alt="headshot" />
+                    <img src="<%= headshot %>" alt="headshot" class="headshot-thumb img-polaroid img-rounded" />
                 <% } %>
                 <% if (headshot == null) { %>
-                <img src="<% if (gender == 'M') { %>/site_media/img/headshot_male.jpg<%}else{%>/site_media/img/headshot_female.jpg<% } %>" alt="headshot" />
+                    <img src="<% if (gender == 'M') { %>/site_media/img/headshot_male.jpg<%}else{%>/site_media/img/headshot_female.jpg<% } %>" alt="headshot" class="headshot-thumb img-polaroid img-rounded" />
                 <% } %>
             </div>
-        
-        
-        <a href="/profile/<%=id%>/">Link To Profile</a>        
+            
+            <div class="educator-info">
+                <div class="educator-name"><%= name %></div>
+            <% if (bio_summary !== null) { %>
+                <div class="educator-bio-summary"><%= bio_summary %></div>
+            <% } %>
+            <div><a href="/profile/<%=id%>/" class="btn btn-primary btn-mini">Find out more...</a></div>
+            </div>
+            
+            
+
+
+        </div>
     </script>
     
     <script type="text/template" id="breadcrumbs-template">
@@ -64,9 +70,11 @@
 {% block carousel_slideshow %}{% endblock %}
 
 {% block container %}    
+
     <div id="map-container" class="map-container">
+    <div class="section-thumbnail" style="margin-bottom: 10px;"><div class="section-slug thumbnail-map"></div><h3>SECTION: DENTAL EDUCATOR MAP</h3></div>
         <div class="search">
-            <h3>Filter Educators</h3>
+            <h4>Show only...</h4>
             
             <ul class="breadcrumb">
               

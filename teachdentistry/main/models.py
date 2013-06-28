@@ -6,7 +6,7 @@ from django.db import models
 from pagetree.models import Section
 
 
-AGE_CHOICES = {
+AGE_CHOICES = (
     ('G1', 'Under 20'),
     ('G2', '20-29'),
     ('G3', '30-39'),
@@ -14,7 +14,7 @@ AGE_CHOICES = {
     ('G5', '50-59'),
     ('G6', '60-69'),
     ('G7', '70 or older'),
-}
+)
 
 AGREEMENT_CHOICES = (
     ('A1', 'Strongly agree'),
@@ -42,7 +42,7 @@ CAREER_STAGE_CHOICES = (
     ('L', 'Late career')
 )
 
-DEGREE_CHOICES = {
+DEGREE_CHOICES = (
     ('D1', 'High School diploma/GED'),
     ('D2', 'Associate Degree or Equivalent'),
     ('D3', "Bachelor's Degree or Equivalent"),
@@ -51,15 +51,15 @@ DEGREE_CHOICES = {
     ('D6', 'MD'),
     ('D7', 'PhD'),
     ('D8', 'Other Doctorate'),
-}
+)
 
-DISCIPLINE_CHOICES = {
+DISCIPLINE_CHOICES = (
     ('S1', 'Dentistry, general'),
     ('S2', 'Dentistry, pediatric'),
     ('S3', 'Dentistry, public health'),
     ('S4', 'Dentistry, Other'),
     ('S5', 'Other'),
-}
+)
 
 ETHNICITY_CHOICES = (
     ('E1', 'Hispanic or Latino'),

@@ -27,6 +27,10 @@ body > .container {
   min-height: 100%;
 }
 
+p {
+  margin: 0 0 15px 0;
+}
+
 #content {
   min-height: 100%;
 }
@@ -252,7 +256,8 @@ div.profile-container .info-field .info-content {
     margin-bottom: 30px;
 }
 
-.map_back_nav a.pager_button
+.map_back_nav a.pager_button,
+.opening-start a.pager_button
 {
   padding: 5px 14px;
   background-color: #99ccff;
@@ -262,21 +267,31 @@ div.profile-container .info-field .info-content {
           border-radius: 15px;
 }
 
-.map_back_nav a.pager_button {
+.map_back_nav a.pager_button,
+.opening-start a.pager_button {
     color: #006699;
 }
 
-
-.map_back_nav a.pager_button:hover {
+.map_back_nav a.pager_button:hover,
+.opening-start a.pager_button:hover {
   text-decoration: none;
   background-color: #e0e0e0;
   color: #666666  !important;
 }
 
-
 .map_back_nav div.pager_button:hover {
   text-decoration: none;
   background-color: #e0e0e0;
+}
+
+.opening-start {
+    text-align: right;
+    padding-top: 30px;
+}
+
+.opening-start a.pager_button {
+  padding: 10px 28px;
+  font-size: 16px;
 }
 
 
@@ -458,6 +473,12 @@ h2.tab-header {
     width: 480px;
     height: 270px;
     background-color: #ccc;
+}
+
+.opening-text {
+    font-size: 16px;
+    line-height: 150%;
+    font-weight: normal;
 }
 
 /*--------------------------------------------------

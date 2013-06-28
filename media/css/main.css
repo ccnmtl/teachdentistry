@@ -68,6 +68,13 @@ body > .container {
     clear: both;
 }
 
+.visualclear-bottom {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    clear: both;
+    height: 100px;
+}
 
 .container-fluid {
     padding-left: 40px;
@@ -425,9 +432,15 @@ h2.tab-header {
     border: 0;
 }
 
+.index-tabs .item-tab {
+    margin: 0 0 30px 0;
+    padding: 0;
+    border: 0;
+}
+
 .ui-tabs-vertical .ui-tabs-panel h2,
-.index-tabs h2 {
-    padding: 0 0 20px;
+.index-tabs .item-tab h2 {
+    padding: 0 0 0px 0;
     margin: 0;
     font-size: 30px;
     font-weight: normal;
@@ -435,7 +448,7 @@ h2.tab-header {
 }
 
 .ui-tabs-vertical .ui-tabs-panel p,
-.index-tabs p {
+.index-tabs .item-tab p {
     font-size: 20px;
     line-height: 150%;
     font-weight: normal;

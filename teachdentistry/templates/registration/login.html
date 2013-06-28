@@ -38,17 +38,11 @@ Log in
 
 <h2 class="tab-header">What Teach Dentistry has to offer</h2>
 
-<div id="tabs">
-	<ul>
-		<li><a href="#tabs-1">Watch a video <span class="pointer">&nbsp;&nbsp;&gt;&gt;</span></a></li>
-		<li><a href="#tabs-2">Where do I start? <span class="pointer">&nbsp;&nbsp;&gt;&gt;</span></a></li>
-		<li><a href="#tabs-3">What do I need to know? <span class="pointer">&nbsp;&nbsp;&gt;&gt;</span></a></li>
-		<li><a href="#tabs-4">Earn a CE credit <span class="pointer">&nbsp;&nbsp;&gt;&gt;</span></a></li>
-	</ul>
-	<div id="tabs-1">
+<div class="index-tabs" id="tabs">
+	{% comment %}<div id="tabs-1">
 		<h2>Watch a video</h2>
 		<p class="video-placeholder img-rounded"></p>
-	</div>
+	</div>{% endcomment %}
 	<div id="tabs-2">
 		<h2>Where do I start?</h2>
 		<p>Throughout this course you will learn from dentists working in academic settings. See what they have to say!
@@ -84,10 +78,6 @@ $(document).ready(function($){
         interval: 7000
     })
 });
-	$(function() {
-		$( "#tabs" ).tabs({hide:true}).addClass( "ui-tabs-vertical ui-helper-clearfix" );
-		$( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
-	});
 
 </script>
 {% endblock %}

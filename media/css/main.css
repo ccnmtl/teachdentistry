@@ -419,16 +419,23 @@ h2.tab-header {
     width: 530px;
 }
 
-.ui-tabs-vertical .ui-tabs-panel h2 {
+.index-tabs {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.ui-tabs-vertical .ui-tabs-panel h2,
+.index-tabs h2 {
     padding: 0 0 20px;
     margin: 0;
     font-size: 30px;
     font-weight: normal;
     color: #666;
-    display: none;
 }
 
-.ui-tabs-vertical .ui-tabs-panel p {
+.ui-tabs-vertical .ui-tabs-panel p,
+.index-tabs p {
     font-size: 20px;
     line-height: 150%;
     font-weight: normal;
@@ -698,8 +705,9 @@ h2.tab-header {
 #invitation #phrase2 {
     position: absolute;
     left: 10px;
-    bottom: 20px;
+    bottom: 15px;
     font-size: 24px;
+    line-height: 130%;
     z-index: 100;
 }
 
@@ -970,6 +978,9 @@ h2.tab-header {
         width: auto;
         margin-left: 180px;
     }
+    #invitation #phrase2 {
+        width: 400px;
+    }
 }
 
 /*------- Landscape phone to portrait tablet -------*/
@@ -1070,6 +1081,9 @@ h2.tab-header {
         width: auto;
         margin-left: 180px;
     }
+    #invitation #phrase2 {
+        width: 400px;
+    }
 }
 
 /*----------- Landscape phones and down ------------*/
@@ -1169,6 +1183,9 @@ h2.tab-header {
     div.profile-container div.educator-info {
         width: auto;
         margin-left: 180px;
+    }
+    #invitation #phrase2 {
+        width: 400px;
     }
 }
 

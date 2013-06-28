@@ -91,13 +91,7 @@
             {% if next %}
                 {% if not next.is_root %}
                     {% if next_unlocked %}
-                        {% if needs_submit %}
-                            {% if is_submitted %}
-                                <a href="{{next.get_absolute_url}}" id="next" class="pager_button">{{next.label}} <b>&rarr;</b></a>
-                            {% else %}
-                                <div id="next" class="pager_button">{{next.label}} <b>&rarr;</b></div>
-                            {% endif %}
-                        {% endif %}
+                        <a href="{{next.get_absolute_url}}" id="next" class="pager_button">{{next.label}} <b>&rarr;</b></a>
                     {% else %}
                         <div id="next" class="pager_button">{{next.label}} <b>&rarr;</b></div>
                     {% endif %}

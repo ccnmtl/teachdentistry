@@ -155,6 +155,7 @@ class UserProfile(models.Model):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
+        exclude = ['user', 'last_location']
 
 
 class UserVisited(models.Model):

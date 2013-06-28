@@ -6,6 +6,10 @@
 
 <form method="post" action="/signup/" class="register">
   {{ form.as_p }}
+  
+  {% with registration_form as rform %}
+  {{ rform.as_p }}
+  
   <input class="btn btn-primary" type="submit" value="{% trans 'Submit' %}" />
 </form>
 

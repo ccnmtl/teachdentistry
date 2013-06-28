@@ -23,7 +23,7 @@
     {% endfor %}
 
 {% if response %}<hr />
-<span style="color: red;">Let's look at other stuff (need replacement text)</span><br />
+<div class="other-choices">Let’s look at the other choices.</div>
 {% endif %}
 
     {% for answer in question.answer_set.all %}

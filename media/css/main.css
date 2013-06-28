@@ -1283,16 +1283,29 @@ h2.tab-header {
 .self-id-quiz .selection-block h3 {
     margin: 0;
     padding: 0;
-    font-size: 20px;
+    font-size: 22px;
     color: #666;
     font-weight: normal;
+}
+
+.self-id-quiz .selection-block h4 {
+    color: #666;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .self-id-quiz .highlighted h3 {
     color: #06c;
 }
 
-
+.self-id-quiz .other-choices {
+    margin: 0 0 0 0;
+    padding: 0 0 30px 0;
+    border: 0;
+    font-size: 22px;
+    color: #333;
+    font-weight: normal;
+}
 
 
 
@@ -1339,6 +1352,12 @@ h2.tab-header {
   -webkit-border-radius: 15px;
      -moz-border-radius: 15px;
           border-radius: 15px;
+}
+
+.content-nav div.pager_button
+{
+  background-color: #efefef;
+  color: #999;
 }
 
 .content-nav a.pager_button {

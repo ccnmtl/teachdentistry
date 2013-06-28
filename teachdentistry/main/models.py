@@ -106,16 +106,16 @@ GENDER_CHOICES = (
 WORK_CHOICES = (
     ('C1', 'Clinical practice, Full time private practice'),
     ('C2', 'Clinical practice, Part time private practice'),
-    ('C3', 'Clinical practice, Full time clinical safety net practice'),
-    ('C4', 'Clinical practice, Part time clinical safety net practice'),
-    ('C5', """Non-clinical practice: Full time non-clinical work in academica
+    ('C3', 'Clinical practice, Full time safety net practice'),
+    ('C4', 'Clinical practice, Part time safety net practice'),
+    ('C5', """Non-clinical practice: Full time in academia
         (includes teaching and research, advocacy, and the public sector)"""),
-    ('C6', """Non-clinical practice: Part time non-clinical work in academia
+    ('C6', """Non-clinical practice: Part time in academia
         (includes teaching and research, advocacy and
         the public health sector)"""),
-    ('C7', """Non-clinical practice: Full time non-clinical work in
+    ('C7', """Non-clinical practice: Full time in
         the corporate sector"""),
-    ('C8', """Non-clinical practice: part time non-clinical work in the
+    ('C8', """Non-clinical practice: Part time in the
         corporate sector"""),
 )
 
@@ -184,13 +184,21 @@ class UserProfile(models.Model):
 
 
 class UserProfileForm(RegistrationForm):
-    gender = forms.ChoiceField(initial="-----", choices=GENDER_CHOICES)
+    gender = forms.ChoiceField(
+        initial="-----", choices=GENDER_CHOICES, label='Your gender')
 
-    primary_discipline = forms.ChoiceField(choices=DISCIPLINE_CHOICES)
-    primary_other_dental_discipline = forms.CharField(max_length=1024,
-                                                      required=False)
-    primary_other_discipline = forms.CharField(max_length=1024,
-                                               required=False)
+    primary_discipline = forms.ChoiceField(
+        choices=DISCIPLINE_CHOICES,
+        label="Your primary professional discipline")
+
+    primary_other_dental_discipline = forms.CharField(
+        max_length=1024, required=False,
+        label='If "Dentistry, Other", please specify')
+
+    primary_other_discipline = forms.CharField(
+        max_length=1024, required=False,
+        label='If "Other", please specify')
+
     work_description = forms.MultipleChoiceField(choices=WORK_CHOICES)
     state = forms.MultipleChoiceField(choices=US_STATES)
     year_of_graduation = forms.IntegerField(min_value=1900, max_value=3000)
@@ -249,7 +257,7 @@ class UserProfileForm(RegistrationForm):
 
     def clean_highest_degree(self):
         return self.clean_choice('highest_degree')
-    
+
 
 class UserVisited(models.Model):
     user = models.ForeignKey(UserProfile)

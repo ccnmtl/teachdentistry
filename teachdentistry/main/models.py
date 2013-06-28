@@ -1,12 +1,14 @@
-from django import forms
 from django.contrib.auth.models import User
-from django.contrib.localflavor import us
 from django.contrib.localflavor.us.us_states import US_STATES
 from django.db import models
 from pagetree.models import Section
+from registration.forms import RegistrationForm
+from django import forms
+from django.utils.translation import ugettext_lazy as _
 
 
 AGE_CHOICES = (
+    ('-----', '-----'),
     ('G1', 'Under 20'),
     ('G2', '20-29'),
     ('G3', '30-39'),
@@ -17,6 +19,7 @@ AGE_CHOICES = (
 )
 
 AGREEMENT_CHOICES = (
+    ('-----', '-----'),
     ('A1', 'Strongly agree'),
     ('A2', 'Agree'),
     ('A3', 'Neutral'),
@@ -25,6 +28,7 @@ AGREEMENT_CHOICES = (
 )
 
 AGREEMENT_CHOICES_EX = (
+    ('-----', '-----'),
     ('A1', 'Strongly agree'),
     ('A2', 'Agree'),
     ('A3', 'Neutral'),
@@ -43,6 +47,7 @@ CAREER_STAGE_CHOICES = (
 )
 
 DEGREE_CHOICES = (
+    ('-----', '-----'),
     ('D1', 'High School diploma/GED'),
     ('D2', 'Associate Degree or Equivalent'),
     ('D3', "Bachelor's Degree or Equivalent"),
@@ -53,7 +58,13 @@ DEGREE_CHOICES = (
     ('D8', 'Other Doctorate'),
 )
 
+DENTAL_SCHOOL_CHOICES = (
+    ('-----', '-----'),
+    ('Institution', 'Institution Foo Bar'),
+)
+
 DISCIPLINE_CHOICES = (
+    ('-----', '-----'),
     ('S1', 'Dentistry, general'),
     ('S2', 'Dentistry, pediatric'),
     ('S3', 'Dentistry, public health'),
@@ -62,6 +73,7 @@ DISCIPLINE_CHOICES = (
 )
 
 ETHNICITY_CHOICES = (
+    ('-----', '-----'),
     ('E1', 'Hispanic or Latino'),
     ('E2', 'Non-Hispanic or Non-Latino')
 )
@@ -76,6 +88,7 @@ RACE_CHOICES = (
 )
 
 RACE_CHOICES_EX = (
+    ('-----', '-----'),
     ('R1', 'American Indian or Alaska Native'),
     ('R2', 'Chinese, Filipino, Japanese, Korean, Asian Indian, or Thai'),
     ('R3', 'Other Asian'),
@@ -85,8 +98,25 @@ RACE_CHOICES_EX = (
 )
 
 GENDER_CHOICES = (
+    ('-----', '-----'),
     ('M', 'Male'),
     ('F', 'Female')
+)
+
+WORK_CHOICES = (
+    ('C1', 'Clinical practice, Full time private practice'),
+    ('C2', 'Clinical practice, Part time private practice'),
+    ('C3', 'Clinical practice, Full time clinical safety net practice'),
+    ('C4', 'Clinical practice, Part time clinical safety net practice'),
+    ('C5', """Non-clinical practice: Full time non-clinical work in academica
+        (includes teaching and research, advocacy, and the public sector)"""),
+    ('C6', """Non-clinical practice: Part time non-clinical work in academia
+        (includes teaching and research, advocacy and
+        the public health sector)"""),
+    ('C7', """Non-clinical practice: Full time non-clinical work in
+        the corporate sector"""),
+    ('C8', """Non-clinical practice: part time non-clinical work in the
+        corporate sector"""),
 )
 
 
@@ -112,10 +142,11 @@ class UserProfile(models.Model):
         max_length=1024, null=True, blank=True)
     primary_other_discipline = models.CharField(
         max_length=1024, null=True, blank=True)
-    work_description = models.ManyToManyField(WorkDescription)
-    state = models.ManyToManyField(UnitedStates)
+    work_description = models.TextField()
+    state = models.TextField()
     year_of_graduation = models.PositiveIntegerField()
-    dental_school = models.ForeignKey(DentalSchool)
+    dental_school = models.CharField(max_length=1024,
+                                     choices=DENTAL_SCHOOL_CHOICES)
     postal_code = models.CharField(max_length=10)
     plan_to_teach = models.CharField(max_length=2,
         choices=AGREEMENT_CHOICES)
@@ -152,10 +183,73 @@ class UserProfile(models.Model):
         return True
 
 
-class UserProfileForm(forms.ModelForm):
-    class Meta:
-        model = UserProfile
+class UserProfileForm(RegistrationForm):
+    gender = forms.ChoiceField(initial="-----", choices=GENDER_CHOICES)
 
+    primary_discipline = forms.ChoiceField(choices=DISCIPLINE_CHOICES)
+    primary_other_dental_discipline = forms.CharField(max_length=1024,
+                                                      required=False)
+    primary_other_discipline = forms.CharField(max_length=1024,
+                                               required=False)
+    work_description = forms.MultipleChoiceField(choices=WORK_CHOICES)
+    state = forms.MultipleChoiceField(choices=US_STATES)
+    year_of_graduation = forms.IntegerField(min_value=1900, max_value=3000)
+    dental_school = forms.ChoiceField(choices=DENTAL_SCHOOL_CHOICES)
+    postal_code = forms.CharField(max_length=10)
+    plan_to_teach = forms.ChoiceField(choices=AGREEMENT_CHOICES)
+    qualified_to_teach = forms.ChoiceField(choices=AGREEMENT_CHOICES)
+    opportunities_to_teach = forms.ChoiceField(choices=AGREEMENT_CHOICES)
+    possible_to_teach = forms.ChoiceField(choices=AGREEMENT_CHOICES_EX)
+    ethnicity = forms.ChoiceField(choices=ETHNICITY_CHOICES)
+    race = forms.ChoiceField(choices=RACE_CHOICES_EX)
+    age = forms.ChoiceField(choices=AGE_CHOICES)
+    highest_degree = forms.ChoiceField(choices=DEGREE_CHOICES)
+
+    def clean(self):
+        return super(RegistrationForm, self).clean()
+
+    def clean_choice(self, field_name):
+        if self.cleaned_data[field_name] == u"-----":
+            msg = u"This field is required."
+            self._errors[field_name] = self.error_class([msg])
+            del self.cleaned_data[field_name]
+            return None
+        else:
+            return self.cleaned_data[field_name]
+
+    def clean_gender(self):
+        return self.clean_choice("gender")
+
+    def clean_primary_discipline(self):
+        return self.clean_choice('primary_discipline')
+
+    def clean_dental_school(self):
+        return self.clean_choice('dental_school')
+
+    def clean_plan_to_teach(self):
+        return self.clean_choice('plan_to_teach')
+
+    def clean_qualified_to_teach(self):
+        return self.clean_choice('qualified_to_teach')
+
+    def clean_opportunities_to_teach(self):
+        return self.clean_choice('opportunities_to_teach')
+
+    def clean_possible_to_teach(self):
+        return self.clean_choice('possible_to_teach')
+
+    def clean_ethnicity(self):
+        return self.clean_choice('ethnicity')
+
+    def clean_race(self):
+        return self.clean_choice('race')
+
+    def clean_age(self):
+        return self.clean_choice('age')
+
+    def clean_highest_degree(self):
+        return self.clean_choice('highest_degree')
+    
 
 class UserVisited(models.Model):
     user = models.ForeignKey(UserProfile)

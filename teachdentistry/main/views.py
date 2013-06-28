@@ -7,12 +7,12 @@ from django.template.context import RequestContext
 from pagetree.helpers import get_section_from_path, get_module, needs_submit, \
     submitted
 from quizblock.models import Submission
-from registration.backends.default.views import RegistrationView
+from registration.signals import user_registered
 from teachdentistry.main.helpers import get_or_create_profile, has_responses, \
     allow_redo, is_section_unlocked, primary_nav_sections
 from teachdentistry.main.models import UserProfile, DentalEducator, \
     CAREER_STAGE_CHOICES, TeachingResponsibility, TimeCommitment, \
-    PrimaryTraineesType
+    PrimaryTraineesType, UserProfileForm
 
 
 @login_required
@@ -147,10 +147,29 @@ def profile(request, educator_id):
                 root=section.hierarchy.get_root())
 
 
-#@allow_http("POST")
-def register(request):
-    # validate & store the results here
-    # return if invalid
-    # otherwise -- call the default processing code
+def user_created(sender, user, request, **kwargs):
+    form = UserProfileForm(request.POST)
+    user_profile = UserProfile.objects.get(user=user)
+    user_profile.gender = form.data['gender']
 
-    return RegistrationView.as_view(request)
+    user_profile.primary_discipline = form.data['primary_discipline']
+    user_profile.primary_other_dental_discipline =  \
+        form.data['primary_other_dental_discipline']
+    user_profile.primary_other_discipline = \
+        form.data['primary_other_discipline']
+    user_profile.work_description = form.data['work_description']
+    user_profile.state = form.data['state']
+    user_profile.year_of_graduation = form.data['year_of_graduation']
+    user_profile.dental_school = form.data['dental_school']
+    user_profile.postal_code = form.data['postal_code']
+    user_profile.plan_to_teach = form.data['plan_to_teach']
+    user_profile.qualified_to_teach = form.data['qualified_to_teach']
+    user_profile.opportunities_to_teach = form.data['opportunities_to_teach']
+    user_profile.possible_to_teach = form.data['possible_to_teach']
+    user_profile.ethnicity = form.data['ethnicity']
+    user_profile.race = form.data['race']
+    user_profile.age = form.data['age']
+    user_profile.highest_degree = form.data['highest_degree']
+    user_profile.save()
+
+user_registered.connect(user_created)

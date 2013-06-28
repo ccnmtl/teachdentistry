@@ -1,14 +1,11 @@
 {% extends "registration/base_registration.html" %}
-{% load i18n %}
+{% load i18n registrationform%}
 
 {% block registration_content %}
 <h2 class="pagetitle">Register</h2>Sign up for an account to use Learn.nynjaetc.org<br /><br />
 
-<form method="post" action="/signup/" class="register">
+<form method="post" action="." class="register">
   {{ form.as_p }}
-  
-  {% with registration_form as rform %}
-  {{ rform.as_p }}
   
   <input class="btn btn-primary" type="submit" value="{% trans 'Submit' %}" />
 </form>

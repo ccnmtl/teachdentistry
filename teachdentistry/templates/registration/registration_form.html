@@ -1,8 +1,16 @@
 {% extends "registration/base_registration.html" %}
 {% load i18n %}
+{% block title %}Sign up for an account{% endblock %}
 
 {% block registration_content %}
-<h2 class="pagetitle">Register</h2>Sign up for an account to use Learn.nynjaetc.org<br /><br />
+<h2 class="pagetitle signuptitle">Sign up for an account</h2>
+
+<div class="p">Use the following form to create a new account to access Teach Dentistry.</div>
+
+<div class="p">
+If you already have a username or password, but have forgotten either,
+    <a href="{% url auth_password_reset %}">reset them here</a>.
+</div>
 
 <form method="post" action="." class="register">
   {{ form.as_p }}
@@ -10,10 +18,6 @@
   <input class="btn btn-primary" type="submit" value="{% trans 'Submit' %}" />
 </form>
 
-<p>
-    If you already have a username or password, but have forgotten either,
-    <a href="{% url auth_password_reset %}">reset them here</a>.
-</p>
 {% endblock %}
 
 

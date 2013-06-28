@@ -1377,3 +1377,71 @@ h2.tab-header {
   background-color: #e0e0e0;
 }
 
+/* Sign up */
+
+.signup-block {
+    font-size: 16px;
+}
+
+.signup-block p {
+    margin: 0 0 15px 0;
+    clear: both;
+}
+
+div.p {
+  margin: 0 0 15px 0;
+}
+
+.signup-block form {
+    padding: 30px 0 0 0;
+}
+
+.signuptitle {
+    margin: 0;
+    padding: 30px 0 50px 0;
+    font-weight: normal;
+    font-size: 40px;
+}
+
+.signup-block label {
+    margin: 0;
+    padding: 0 10px 0 0;
+    width: 250px;
+    float: left;
+    text-align: right;
+}
+
+.signup-block #id_work_description {
+    width: 420px;
+}
+
+.password-reset label {
+    margin: 0;
+    padding: 0 10px 0 0;
+    width: 60px;
+    float: left;
+    text-align: right;
+}
+
+.password-reset .reset-account {
+    margin-left: 70px;
+}
+
+.signup-block .errorlist {
+    margin: 0;
+    padding: 0;
+    color: #cc0000;
+    font-size: 12px;
+    font-style: italic;
+    width: 250px;
+    text-align: right;
+    list-style: none;
+    line-height: 120%;
+}
+
+.signup-block .errorlist li {
+    font-size: 12px;
+    font-style: italic;
+    line-height: 120%;
+    padding-bottom: 5px;
+}

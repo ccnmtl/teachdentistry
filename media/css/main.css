@@ -382,7 +382,7 @@ footer img {
 }
 
 h2.tab-header {
-    padding: 30px 0 40px 0;
+    padding: 30px 0 30px 0;
     margin: 0;
     font-size: 36px;
     font-weight: normal;
@@ -442,17 +442,16 @@ h2.tab-header {
 .index-tabs .item-tab h2 {
     padding: 0 0 0px 0;
     margin: 0;
-    font-size: 30px;
+    font-size: 24px;
     font-weight: normal;
     color: #666;
 }
 
 .ui-tabs-vertical .ui-tabs-panel p,
 .index-tabs .item-tab p {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 150%;
     font-weight: normal;
-    color: #666;
 }
 
 .video-placeholder {
@@ -738,6 +737,10 @@ h2.tab-header {
     z-index: 100;
 }
 
+#invitation #signup a:focus {
+    outline: 0;
+}
+
 #invitation #login-overlay {
     position: relative;
     height: 100%;
@@ -792,20 +795,30 @@ h2.tab-header {
     border: 0;
 }
 
+#login-form form label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 30px;
+    line-height: 16px;
+}
+
+#login-form .forgot-password {
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 30px;
+    width: 300px;
+}
+
 #login-form #td_login {
     position: absolute;
     bottom: 1px;
     right: -1px;
 }
 
-#login-window .close {
-  font-size: 30px;
+#login-window #close-login {
   font-weight: bold;
-  color: #333;
-  opacity: 0.5;
-  filter: alpha(opacity=50);
-  width: 30px;
-  height: 30px;
+  color: #999;
+  font-size: 16px;
 }
 
 

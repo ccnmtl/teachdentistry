@@ -147,18 +147,20 @@ def profile(request, educator_id):
                 root=section.hierarchy.get_root())
 
 
-def user_created(sender, user, request, **kwargs):
+def update_user_profile(sender, user, request, **kwargs):
     form = UserProfileForm(request.POST)
-    user_profile = UserProfile.objects.get(user=user)
-    user_profile.gender = form.data['gender']
 
+    try:
+        user_profile = UserProfile.objects.get(user=user)
+    except UserProfile.DoesNotExist:
+        user_profile = UserProfile(user=user)
+
+    user_profile.gender = form.data['gender']
     user_profile.primary_discipline = form.data['primary_discipline']
     user_profile.primary_other_dental_discipline =  \
         form.data['primary_other_dental_discipline']
     user_profile.primary_other_discipline = \
         form.data['primary_other_discipline']
-    user_profile.work_description = form.data['work_description']
-    user_profile.state = form.data['state']
     user_profile.year_of_graduation = form.data['year_of_graduation']
     user_profile.dental_school = form.data['dental_school']
     user_profile.postal_code = form.data['postal_code']
@@ -170,6 +172,11 @@ def user_created(sender, user, request, **kwargs):
     user_profile.race = form.data['race']
     user_profile.age = form.data['age']
     user_profile.highest_degree = form.data['highest_degree']
+
+    user_profile.state = u','.join(request.POST.getlist('state'))
+    user_profile.work_description = \
+        u','.join(request.POST.getlist('work_description'))
+
     user_profile.save()
 
-user_registered.connect(user_created)
+user_registered.connect(update_user_profile)

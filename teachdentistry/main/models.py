@@ -249,7 +249,7 @@ class UserProfileForm(RegistrationForm):
 
     def clean_highest_degree(self):
         return self.clean_choice('highest_degree')
-
+    
 
 class UserVisited(models.Model):
     user = models.ForeignKey(UserProfile)

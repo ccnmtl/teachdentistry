@@ -18,10 +18,12 @@ site_media_root = os.path.join(os.path.dirname(__file__), "../media")
 urlpatterns = patterns(
     '',
     ('^accounts/', include('djangowind.urls')),
+    (r'^accounts/', include('registration.backends.default.urls')),
     (r'^logout/$',
      'django.contrib.auth.views.logout',
      {'next_page': '/'}),
     (r'^$', 'teachdentistry.main.views.index'),
+    (r'^signup/', 'teachdentistry.main.views.register'),
     (r'^_pagetree/', include('pagetree.urls')),
     (r'^_quiz/', include('quizblock.urls')),
     (r'^_main/api/', include(v1_api.urls)),

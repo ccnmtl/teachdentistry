@@ -1,11 +1,69 @@
-from django.db import models
+from django import forms
 from django.contrib.auth.models import User
+from django.contrib.localflavor import us
+from django.contrib.localflavor.us.us_states import US_STATES
+from django.db import models
 from pagetree.models import Section
 
 
-GENDER_CHOICES = (
-    ('M', 'Male'),
-    ('F', 'Female')
+AGE_CHOICES = {
+    ('G1', 'Under 20'),
+    ('G2', '20-29'),
+    ('G3', '30-39'),
+    ('G4', '40-49'),
+    ('G5', '50-59'),
+    ('G6', '60-69'),
+    ('G7', '70 or older'),
+}
+
+AGREEMENT_CHOICES = (
+    ('A1', 'Strongly agree'),
+    ('A2', 'Agree'),
+    ('A3', 'Neutral'),
+    ('A4', 'Disagree'),
+    ('A5', 'Strongly disagree')
+)
+
+AGREEMENT_CHOICES_EX = (
+    ('A1', 'Strongly agree'),
+    ('A2', 'Agree'),
+    ('A3', 'Neutral'),
+    ('A4', 'Disagree'),
+    ('A5', 'Strongly disagree'),
+    ('A6', "I don't know the benefits"),
+    ('A7', "I don't know the challenges"),
+    ('A8', "I don't know the benefits or the challenges")
+)
+
+
+CAREER_STAGE_CHOICES = (
+    ('E', 'Early career'),
+    ('M', 'Mid career'),
+    ('L', 'Late career')
+)
+
+DEGREE_CHOICES = {
+    ('D1', 'High School diploma/GED'),
+    ('D2', 'Associate Degree or Equivalent'),
+    ('D3', "Bachelor's Degree or Equivalent"),
+    ('D4', "Master's Degree"),
+    ('D5', 'DDS or DMD'),
+    ('D6', 'MD'),
+    ('D7', 'PhD'),
+    ('D8', 'Other Doctorate'),
+}
+
+DISCIPLINE_CHOICES = {
+    ('S1', 'Dentistry, general'),
+    ('S2', 'Dentistry, pediatric'),
+    ('S3', 'Dentistry, public health'),
+    ('S4', 'Dentistry, Other'),
+    ('S5', 'Other'),
+}
+
+ETHNICITY_CHOICES = (
+    ('E1', 'Hispanic or Latino'),
+    ('E2', 'Non-Hispanic or Non-Latino')
 )
 
 RACE_CHOICES = (
@@ -17,21 +75,60 @@ RACE_CHOICES = (
     ('R6', 'Other')
 )
 
-ETHNICITY_CHOICES = (
-    ('E1', 'Hispanic or Latino'),
-    ('E2', 'Non-Hispanic or Non-Latino')
+RACE_CHOICES_EX = (
+    ('R1', 'American Indian or Alaska Native'),
+    ('R2', 'Chinese, Filipino, Japanese, Korean, Asian Indian, or Thai'),
+    ('R3', 'Other Asian'),
+    ('R4', 'Black or African American'),
+    ('R5', 'Native Hawaiian or other Pacific Islander'),
+    ('R6', 'White'),
 )
 
-CAREER_STAGE_CHOICES = (
-    ('E', 'Early career'),
-    ('M', 'Mid career'),
-    ('L', 'Late career')
+GENDER_CHOICES = (
+    ('M', 'Male'),
+    ('F', 'Female')
 )
+
+
+class DentalSchool(models.Model):
+    name = models.CharField(max_length=1024)
+
+
+class UnitedStates(models.Model):
+    name = models.CharField(max_length=2, choices=US_STATES)
+
+
+class WorkDescription(models.Model):
+    description = models.CharField(max_length=1024)
 
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, related_name="application_user")
     last_location = models.CharField(max_length=255, default="/")
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    primary_discipline = models.CharField(max_length=2,
+        choices=DISCIPLINE_CHOICES)
+    primary_other_dental_discipline = models.CharField(
+        max_length=1024, null=True, blank=True)
+    primary_other_discipline = models.CharField(
+        max_length=1024, null=True, blank=True)
+    work_description = models.ManyToManyField(WorkDescription)
+    state = models.ManyToManyField(UnitedStates)
+    year_of_graduation = models.PositiveIntegerField()
+    dental_school = models.ForeignKey(DentalSchool)
+    postal_code = models.CharField(max_length=10)
+    plan_to_teach = models.CharField(max_length=2,
+        choices=AGREEMENT_CHOICES)
+    qualified_to_teach = models.CharField(max_length=2,
+        choices=AGREEMENT_CHOICES)
+    opportunities_to_teach = models.CharField(max_length=2,
+        choices=AGREEMENT_CHOICES)
+    possible_to_teach = models.CharField(max_length=2,
+        choices=AGREEMENT_CHOICES_EX)
+    ethnicity = models.CharField(max_length=2, choices=ETHNICITY_CHOICES)
+    race = models.CharField(max_length=2, choices=RACE_CHOICES_EX)
+    age = models.CharField(max_length=2, choices=AGE_CHOICES)
+    highest_degree = models.CharField(max_length=2, choices=DEGREE_CHOICES)
 
     def __unicode__(self):
         return self.user.username
@@ -53,6 +150,11 @@ class UserProfile(models.Model):
         return UserVisited.objects.filter(
             user=self, section=section).count() > 0
         return True
+
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
 
 
 class UserVisited(models.Model):

@@ -7,6 +7,7 @@ from django.template.context import RequestContext
 from pagetree.helpers import get_section_from_path, get_module, needs_submit, \
     submitted
 from quizblock.models import Submission
+from registration.backends.default.views import RegistrationView
 from teachdentistry.main.helpers import get_or_create_profile, has_responses, \
     allow_redo, is_section_unlocked, primary_nav_sections
 from teachdentistry.main.models import UserProfile, DentalEducator, \
@@ -144,3 +145,12 @@ def profile(request, educator_id):
                 module=get_module(section),
                 modules=primary_nav_sections(user_profile),
                 root=section.hierarchy.get_root())
+
+
+#@allow_http("POST")
+def register(request):
+    # validate & store the results here
+    # return if invalid
+    # otherwise -- call the default processing code
+
+    return RegistrationView.as_view(request)

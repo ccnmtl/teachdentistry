@@ -1440,7 +1440,6 @@ div.p {
     font-size: 12px;
     font-style: italic;
     width: 250px;
-    text-align: right;
     list-style: none;
     line-height: 120%;
 }
@@ -1450,4 +1449,87 @@ div.p {
     font-style: italic;
     line-height: 120%;
     padding-bottom: 5px;
+}
+
+.signup-block label[for=id_work_description_0],
+.signup-block label[for=id_work_description_1],
+.signup-block label[for=id_work_description_2],
+.signup-block label[for=id_work_description_3],
+.signup-block label[for=id_work_description_4],
+.signup-block label[for=id_work_description_5],
+.signup-block label[for=id_work_description_6],
+.signup-block label[for=id_work_description_7],
+.signup-block label[for=id_state],
+.signup-block label[for=id_plan_to_teach],
+.signup-block label[for=id_qualified_to_teach],
+.signup-block label[for=id_opportunities_to_teach],
+.signup-block label[for=id_possible_to_teach] {
+    float: none;
+    width: 400px;
+    text-align: left;
+}
+
+.signup-block label[for=id_state] {
+    margin: 0 0 15px 0;
+}
+
+
+.signup-block ul {
+    margin: 0 0 10px 25px;
+}
+
+.signup-block ul li {
+    list-style-type: none;
+    margin: 0;
+}
+
+/* ---- Registration Selector Widget ------------ */
+
+.selector {
+    margin: 0 0 30px 0;
+}
+
+.selector h2 {
+    margin: 0;
+    padding: 2px 5px 3px 5px;
+    font-size: 11px;
+    text-align: left;
+    font-weight: bold;
+    background: #7CA0C7 url(../img/default-bg.gif) top left repeat-x;
+    color: white;
+    line-height: 20px;
+}
+
+.selector select {
+    margin-bottom: 5px !important;
+}
+
+.selector .selector-filter label:before {
+    content: "" !important;
+}
+
+.selector div.selector-available select {
+    height: 150px;
+}
+
+.selector div.selector-chosen select {
+    height: 180px;
+}
+
+.selector h2 img.help-tooltip {
+    float: right;
+    margin-top: 1px;
+}
+
+.selector .selector-available input {
+    width: 210px !important;
+}
+
+a.selector-chooseall, a.selector-clearall {
+    font-size: 11px;
+    line-height: 20px;
+}
+
+.selector ul.selector-chooser {
+   margin: 6em 5px 0 5px !important;
 }

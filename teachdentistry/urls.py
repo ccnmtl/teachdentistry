@@ -26,7 +26,7 @@ urlpatterns = patterns(
     (r'^accounts/', include('registration.backends.default.urls')),
     (r'^logout/$',
      'django.contrib.auth.views.logout',
-     {'next_page': '/'}),
+     {'next_page': '/'}),                       
     (r'^$', 'teachdentistry.main.views.index'),
     (r'^_pagetree/', include('pagetree.urls')),
     (r'^_quiz/', include('quizblock.urls')),
@@ -47,6 +47,7 @@ urlpatterns = patterns(
     (r'^edit/(?P<path>.*)$', 'teachdentistry.main.views.edit_page',
      {}, 'edit-page'),
     (r'^pages/', include('django.contrib.flatpages.urls')),
+    (r'^jsi18n', 'django.views.i18n.javascript_catalog'),
 )
 
 if settings.DEBUG:

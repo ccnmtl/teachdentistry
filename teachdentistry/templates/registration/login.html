@@ -16,7 +16,7 @@ Log in
         <label for="id_username">Username: {{ form.username }}</label>
         <label for="id_password">Password: {{ form.password }}</label>
         <input type="submit" value="Log in" class="btn btn-large btn-primary" id="td_login" />
-        <input type="hidden" name="next" value="{{ next }}" />
+        <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}/{% endif %}" />
         </form>
         <p class="forgot-password"><a href="/accounts/password/reset/">Did you forget your username or password?</a></p>
     </div>

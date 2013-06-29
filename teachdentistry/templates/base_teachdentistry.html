@@ -23,6 +23,7 @@
     <![endif]-->
 
 {% block feeds %}{% endblock %}
+{% block extrahead %}{% endblock %}
 </head>
 <body>
 
@@ -145,11 +146,11 @@
     {% block js %}{% endblock %}
     
     <script type="text/javascript">
-    $(document).ready(function($){
+    jQuery(document).ready(function(jQuery){
         /* For Content Navigation */
-        $(".section-nav-tab-inner").click(function(){
-            $("#primarynav-inner").slideToggle("fast");
-            $(this).toggleClass("active");
+        jQuery(".section-nav-tab-inner").click(function(){
+            jQuery("#primarynav-inner").slideToggle("fast");
+            jQuery(this).toggleClass("active");
             return false;
         });
     });

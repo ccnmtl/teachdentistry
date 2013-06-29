@@ -1,10 +1,11 @@
+from django import forms
+from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.contrib.auth.models import User
 from django.contrib.localflavor.us.us_states import US_STATES
 from django.db import models
+from django.forms.widgets import CheckboxSelectMultiple
 from pagetree.models import Section
 from registration.forms import RegistrationForm
-from django import forms
-from django.utils.translation import ugettext_lazy as _
 
 
 AGE_CHOICES = (
@@ -184,6 +185,9 @@ class UserProfile(models.Model):
 
 
 class UserProfileForm(RegistrationForm):
+    first_name = forms.CharField(max_length=256)
+    last_name = forms.CharField(max_length=256)
+
     gender = forms.ChoiceField(
         initial="-----", choices=GENDER_CHOICES, label='Your gender')
 
@@ -199,19 +203,56 @@ class UserProfileForm(RegistrationForm):
         max_length=1024, required=False,
         label='If "Other", please specify')
 
-    work_description = forms.MultipleChoiceField(choices=WORK_CHOICES)
-    state = forms.MultipleChoiceField(choices=US_STATES)
-    year_of_graduation = forms.IntegerField(min_value=1900, max_value=3000)
-    dental_school = forms.ChoiceField(choices=DENTAL_SCHOOL_CHOICES)
-    postal_code = forms.CharField(max_length=10)
-    plan_to_teach = forms.ChoiceField(choices=AGREEMENT_CHOICES)
-    qualified_to_teach = forms.ChoiceField(choices=AGREEMENT_CHOICES)
-    opportunities_to_teach = forms.ChoiceField(choices=AGREEMENT_CHOICES)
-    possible_to_teach = forms.ChoiceField(choices=AGREEMENT_CHOICES_EX)
+    dental_school = forms.ChoiceField(
+        choices=DENTAL_SCHOOL_CHOICES,
+        label="Where did you attend dental school?")
+
+    year_of_graduation = forms.IntegerField(
+        min_value=1900, max_value=3000,
+        label="What year did you graduate?")
+
+    postal_code = forms.CharField(
+        max_length=10,
+        label="Zip code of your current residence")
+
     ethnicity = forms.ChoiceField(choices=ETHNICITY_CHOICES)
     race = forms.ChoiceField(choices=RACE_CHOICES_EX)
     age = forms.ChoiceField(choices=AGE_CHOICES)
-    highest_degree = forms.ChoiceField(choices=DEGREE_CHOICES)
+    highest_degree = forms.ChoiceField(
+        choices=DEGREE_CHOICES,
+        label="Highest degree earned")
+
+    state = forms.MultipleChoiceField(
+        choices=US_STATES,
+        label="Please tell us what state you work in (select all that apply)",
+        widget=FilteredSelectMultiple("States", is_stacked=False))
+
+    work_description = forms.MultipleChoiceField(
+        choices=WORK_CHOICES,
+        label="Please describe your work (select all that apply)",
+        widget=CheckboxSelectMultiple())
+
+    plan_to_teach = forms.ChoiceField(
+        choices=AGREEMENT_CHOICES,
+        label="""How much would you say you agree with this statement:
+        I plan to teach dentistry (full or part time) in the future:""")
+
+    qualified_to_teach = forms.ChoiceField(
+        choices=AGREEMENT_CHOICES,
+        label="""How much would you say you agree with this statement:
+        I feel confident that I  have the skills required to enter
+        dental academics:""")
+
+    opportunities_to_teach = forms.ChoiceField(
+        choices=AGREEMENT_CHOICES,
+        label="""How much would you say you agree with this statement:
+        I know where to find opportunities in dental academics:""")
+
+    possible_to_teach = forms.ChoiceField(
+        choices=AGREEMENT_CHOICES_EX,
+        label="""How much would you say you agree with this statement:
+        The benefits of entering dental academics outweigh the challenges:""")
+
 
     def clean(self):
         return super(RegistrationForm, self).clean()

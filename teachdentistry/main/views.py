@@ -155,6 +155,10 @@ def update_user_profile(sender, user, request, **kwargs):
     except UserProfile.DoesNotExist:
         user_profile = UserProfile(user=user)
 
+    user.first_name = form.data['first_name']
+    user.last_name = form.data['last_name']
+    user.save()
+
     user_profile.gender = form.data['gender']
     user_profile.primary_discipline = form.data['primary_discipline']
     user_profile.primary_other_dental_discipline =  \

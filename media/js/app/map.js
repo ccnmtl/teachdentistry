@@ -1,4 +1,13 @@
-(function (jQuery) {       
+(function (jQuery) {
+    
+    Backbone._sync = Backbone.sync;
+    Backbone.sync = function( method, model, options ) {
+        if (method === "delete" || method === "update") {
+            return;
+        }
+       
+        return Backbone._sync(method, model, options);
+    };
     
     Institution = Backbone.Model.extend({
         urlRoot: '/_main/api/v1/institution/',
@@ -29,6 +38,7 @@
     EducatorList = Backbone.Collection.extend({
         model: Educator,
         urlRoot: '/_main/api/v1/educator/',
+        queryParams: '',
         initialize: function (lst) {
             if (lst !== undefined && lst instanceof Array) {
                 for (var i = 0; i < lst.length; i++) {
@@ -55,6 +65,9 @@
                 a.push(item.toTemplate());
             });
             return a;
+        },
+        url: function() {
+            return this.urlRoot + '?' + this.queryParams;
         }
     });
     
@@ -86,12 +99,14 @@
             });
         },
         unrender: function () {
-            
+            this.marker.setMap(null);
         }
     });
     
     window.EducatorMapView = Backbone.View.extend({
         events: {
+            'click .search_criteria': 'onClickCriteria',
+            'click ul.selected_criteria li a': 'onRemoveCriteria'
         },
         initialize: function(options) {
             _.bindAll(this,
@@ -102,10 +117,14 @@
                       "onResetEducators",
                       "onResize",
                       "getVisibleViewport",
-                      "toggleAccordion");
+                      "toggleAccordion",
+                      "onClickCriteria",
+                      "onRemoveCriteria");
             
             this.educatorTemplate =
                 _.template(jQuery("#educator-template").html());
+            this.breadcrumbTemplate =
+                _.template(jQuery("#breadcrumbs-template").html());
 
             this.educators = new EducatorList();
             this.educators.on("add", this.onAddEducator);
@@ -135,14 +154,17 @@
             var viewportwidth;
             var viewportheight;
             
-            // the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
+            // the more standards compliant browsers
+            // (mozilla/netscape/opera/IE7) use window.innerWidth
+            // and window.innerHeight
             if (typeof window.innerWidth != 'undefined') {
                  viewportwidth = window.innerWidth;
                  viewportheight = window.innerHeight;
             } else if (typeof document.documentElement !== 'undefined' &&
                  typeof document.documentElement.clientWidth !=
                 'undefined' && document.documentElement.clientWidth !== 0) {
-                // IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
+                // IE6 in standards compliant mode (i.e. with a valid 
+                // doctype as the first line in the document)
                 viewportwidth = document.documentElement.clientWidth;
                 viewportheight = document.documentElement.clientHeight;
             } else {
@@ -153,7 +175,8 @@
             
             return { height: viewportheight -
                         (30 + document.getElementById("site-header").clientHeight +
-                                document.getElementById("primarynav").clientHeight),
+                         document.getElementById("primarynav").clientHeight + 
+                         document.getElementById("section-thumbnail").clientHeight),
                      width: viewportwidth };
         },
         render: function() {
@@ -170,6 +193,8 @@
                 content: markup,
                 maxWidth: 400});
             this.infowindow.open(this.mapInstance, marker);
+            
+            jQuery("div.educator-infowindow").parent().css("overflow", "hidden");
         },
         onAddEducator: function(educator) {
             var view = new EducatorPinView({
@@ -198,6 +223,36 @@
         toggleAccordion: function(event) {
             var prev = jQuery(event.currentTarget).prev();
             jQuery(prev).find('i').toggleClass('icon-plus-sign icon-minus-sign');
+        },
+        onClickCriteria: function(event) {
+            while (this.educators.pop());
+            
+            var self = this;
+            var queryParams = "";
+            var criteria = [];
+            var searchCriteria = jQuery('.search_criteria:checked'); 
+            searchCriteria.each(function() {
+                queryParams += jQuery(this).attr('name') + 
+                    "__in=" + jQuery(this).attr('value') + "&";
+                criteria.push({
+                    'name': jQuery(this).attr('name'),
+                    'value': jQuery(this).attr('value'),
+                    'display_name': jQuery(this).next().html()
+                });
+            });
+            this.educators.queryParams = queryParams;
+            this.educators.fetch();
+            
+            var markup = this.breadcrumbTemplate({'criteria': criteria});
+            jQuery("ul.selected_criteria").html(markup);
+
+        },
+        onRemoveCriteria: function(evt) {
+            var srcElement = evt.srcElement || evt.target || evt.originalTarget;
+            var elt = jQuery(srcElement).find('input[type=hidden]');
+            
+            jQuery('[name="' + jQuery(elt).attr('name') + '"]' + 
+                   '[value="' + jQuery(elt).attr('value') + '"]').trigger('click');
         }
     });
     

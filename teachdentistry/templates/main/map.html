@@ -30,16 +30,19 @@
             <% } %>
             <div><a href="/profile/<%=id%>/" class="btn btn-primary btn-mini">Find out more...</a></div>
             </div>
-            
-            
-
-
         </div>
     </script>
     
     <script type="text/template" id="breadcrumbs-template">
-        <% for (var i=0; i < criteria.length; i++;) { %>
-            <li><a href="#"><%=c.value%><input type="hidden" value="<%=c.id%>" name="<%=c.name%>"/></a></li>
+        <% for (var i=0; i < criteria.length; i++) { %>
+            <li>
+                <a href="#">
+                    <%=criteria[i].display_name%>
+                    <input type="hidden"
+                        name="<%=criteria[i].name%>"
+                        value="<%=criteria[i].value%>" />
+                </a>
+            </li>
         <% } %>
     </script>
     
@@ -70,16 +73,17 @@
 {% block carousel_slideshow %}{% endblock %}
 
 {% block container %}    
-
+    <div class="ajaxloader" style="display: none"></div>
     <div id="map-container" class="map-container">
-    <div class="section-thumbnail" style="margin-bottom: 10px;"><div class="section-slug thumbnail-map"></div><h3>SECTION: DENTAL EDUCATOR MAP</h3></div>
+    <div id="section-thumbnail" class="section-thumbnail" style="margin-bottom: 10px;"><div class="section-slug thumbnail-map"></div><h3>SECTION: DENTAL EDUCATOR MAP</h3></div>
         <div class="search">
             <h4>Show only...</h4>
             
-            <ul class="breadcrumb">
+            <ul class="breadcrumb selected_criteria">
               
             </ul>
-                        
+            
+            <form id="search-form" action="/map/filter/" method="post">
             <div class="accordion" id="accordion">           
                 <div class="accordion-group">
                     <div class="accordion-heading">
@@ -104,7 +108,7 @@
                     <div id="collapseThree" class="accordion-body collapse">
                         {% for r in teaching_responsibilities %}
                         <div class="accordion-inner">
-                            <input class="search_criteria" type="checkbox" name="career_stage" value="{{r.id}}" /> <span class="choice">{{r.name}}</span>
+                            <input class="search_criteria id" type="checkbox" name="teaching_responsibility__id" value="{{r.id}}" /> <span class="choice">{{r.name}}</span>
                         </div>
                         {% endfor %}
                     </div>
@@ -117,10 +121,10 @@
                     </div>
                     <div id="collapseOne" class="accordion-body collapse">
                         <div class="accordion-inner">
-                            <input class="search_criteria" type="radio" name="gender" value="F" /> <span class="choice">Female</span>
+                            <input class="search_criteria" type="checkbox" name="gender" value="F" /> <span class="choice">Female</span>
                         </div>
                         <div class="accordion-inner">
-                            <input class="search_criteria" type="radio" name="gender" value="M" /> <span class="choice">Male</span>
+                            <input class="search_criteria" type="checkbox" name="gender" value="M" /> <span class="choice">Male</span>
                         </div>
                     </div>
                 </div>
@@ -133,7 +137,7 @@
                     <div id="collapseFour" class="accordion-body collapse">
                         {% for t in paid_time_commitments %}
                         <div class="accordion-inner">
-                            <input class="search_criteria" type="checkbox" name="career_stage" value="{{t.id}}" /> <span class="choice">{{t.duration}}</span>
+                            <input class="search_criteria" type="checkbox" name="paid_time_commitment__id" value="{{t.id}}" /> <span class="choice">{{t.duration}}</span>
                         </div>
                         {% endfor %}
                     </div>
@@ -147,16 +151,39 @@
                     <div id="collapseFive" class="accordion-body collapse">
                         {% for t in volunteer_time_commitments %}
                         <div class="accordion-inner">
-                            <input class="search_criteria" type="checkbox" name="career_stage" value="{{t.id}}" /> <span class="choice">{{t.duration}}</span>
+                            <input class="search_criteria" type="checkbox" name="volunteer_time_commitment" value="{{t.id}}" /> <span class="choice">{{t.duration}}</span>
                         </div>
                         {% endfor %}
                     </div>
                 </div>
             </div>
+            </form>
         </div>
         <div class="map">
              <div id="map-canvas" class="google-maps"></div>
         </div>
     </div>
+    <div class="visualclear"></div> 
+    <div class="content-nav">
+        {% with section.get_previous as previous %}
+            {% if previous %}
+                {% ifnotequal previous section.get_module %}            
+                    <a href="{{previous.get_absolute_url}}" id="previous" class="pager_button"><b>&larr;</b> {{previous.label}}</a>
+                {% endifnotequal %}
+            {% endif %}
+        {% endwith %}
+        {% with section.get_next as next %}
+            {% if next %}
+                {% if not next.is_root %}
+                    {% if next_unlocked %}
+                        <a href="{{next.get_absolute_url}}" id="next" class="pager_button">{{next.label}} <b>&rarr;</b></a>
+                    {% else %}
+                        <div id="next" class="pager_button">{{next.label}} <b>&rarr;</b></div>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endwith %}
+        <div class="visualclear"></div>
+     </div><!-- div id="content-nav" -->
 {% endblock %}
 

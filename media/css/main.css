@@ -172,7 +172,9 @@ div.map-container div.map {
 }
 
 div.educator-infowindow {
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
 }
 
 div.educator-infowindow div.educator-headshot {
@@ -1532,4 +1534,25 @@ a.selector-chooseall, a.selector-clearall {
 
 .selector ul.selector-chooser {
    margin: 6em 5px 0 5px !important;
+}
+
+/** Global Progress Indications **/
+
+html.busy, html.busy * {  
+  cursor: wait;
+}
+
+.ajaxloader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -55px; /* -1 * image width / 2 */
+    margin-top: -15px;  /* -1 * image height / 2 */
+    display: block;
+    background-image: url(../img/ajax-loader.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 50px;
+    height: 50px;
+    z-index: 999;
 }

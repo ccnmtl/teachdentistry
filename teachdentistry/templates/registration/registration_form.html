@@ -7,10 +7,13 @@
 
 <div class="p">Use the following form to create a new account to access Teach Dentistry.</div>
 
+
 <div class="p">
 If you already have a username or password, but have forgotten either,
     <a href="{% url auth_password_reset %}">reset them here</a>.
 </div>
+
+<div class="p"><i><span style="color: #c00; font-size: 20px;">*</span> Indicates required field</i></div>
 
 <form method="post" action="." class="register">
   {{ form.as_p }}

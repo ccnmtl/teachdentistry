@@ -1423,6 +1423,12 @@ div.p {
     text-align: right;
 }
 
+.signup-block p.required label:before {
+    content: "*";
+    color: #c00;
+    font-size: 20px;
+}
+
 .password-reset .reset-account {
     margin-left: 70px;
 }

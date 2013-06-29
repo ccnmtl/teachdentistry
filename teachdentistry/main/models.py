@@ -6,119 +6,10 @@ from django.db import models
 from django.forms.widgets import CheckboxSelectMultiple
 from pagetree.models import Section
 from registration.forms import RegistrationForm
-
-
-AGE_CHOICES = (
-    ('-----', '-----'),
-    ('G1', 'Under 20'),
-    ('G2', '20-29'),
-    ('G3', '30-39'),
-    ('G4', '40-49'),
-    ('G5', '50-59'),
-    ('G6', '60-69'),
-    ('G7', '70 or older'),
-)
-
-AGREEMENT_CHOICES = (
-    ('-----', '-----'),
-    ('A1', 'Strongly agree'),
-    ('A2', 'Agree'),
-    ('A3', 'Neutral'),
-    ('A4', 'Disagree'),
-    ('A5', 'Strongly disagree')
-)
-
-AGREEMENT_CHOICES_EX = (
-    ('-----', '-----'),
-    ('A1', 'Strongly agree'),
-    ('A2', 'Agree'),
-    ('A3', 'Neutral'),
-    ('A4', 'Disagree'),
-    ('A5', 'Strongly disagree'),
-    ('A6', "I don't know the benefits"),
-    ('A7', "I don't know the challenges"),
-    ('A8', "I don't know the benefits or the challenges")
-)
-
-
-CAREER_STAGE_CHOICES = (
-    ('E', 'Early career'),
-    ('M', 'Mid career'),
-    ('L', 'Late career')
-)
-
-DEGREE_CHOICES = (
-    ('-----', '-----'),
-    ('D1', 'High School diploma/GED'),
-    ('D2', 'Associate Degree or Equivalent'),
-    ('D3', "Bachelor's Degree or Equivalent"),
-    ('D4', "Master's Degree"),
-    ('D5', 'DDS or DMD'),
-    ('D6', 'MD'),
-    ('D7', 'PhD'),
-    ('D8', 'Other Doctorate'),
-)
-
-DENTAL_SCHOOL_CHOICES = (
-    ('-----', '-----'),
-    ('Institution', 'Institution Foo Bar'),
-)
-
-DISCIPLINE_CHOICES = (
-    ('-----', '-----'),
-    ('S1', 'Dentistry, general'),
-    ('S2', 'Dentistry, pediatric'),
-    ('S3', 'Dentistry, public health'),
-    ('S4', 'Dentistry, Other'),
-    ('S5', 'Other'),
-)
-
-ETHNICITY_CHOICES = (
-    ('-----', '-----'),
-    ('E1', 'Hispanic or Latino'),
-    ('E2', 'Non-Hispanic or Non-Latino')
-)
-
-RACE_CHOICES = (
-    ('R1', 'Black/African American'),
-    ('R2', 'White'),
-    ('R3', 'Native Hawaiian or Other Pacific Islander'),
-    ('R4', 'Asian'),
-    ('R5', 'American Indian/Alaska Native'),
-    ('R6', 'Other')
-)
-
-RACE_CHOICES_EX = (
-    ('-----', '-----'),
-    ('R1', 'American Indian or Alaska Native'),
-    ('R2', 'Chinese, Filipino, Japanese, Korean, Asian Indian, or Thai'),
-    ('R3', 'Other Asian'),
-    ('R4', 'Black or African American'),
-    ('R5', 'Native Hawaiian or other Pacific Islander'),
-    ('R6', 'White'),
-)
-
-GENDER_CHOICES = (
-    ('-----', '-----'),
-    ('M', 'Male'),
-    ('F', 'Female')
-)
-
-WORK_CHOICES = (
-    ('C1', 'Clinical practice, Full time private practice'),
-    ('C2', 'Clinical practice, Part time private practice'),
-    ('C3', 'Clinical practice, Full time safety net practice'),
-    ('C4', 'Clinical practice, Part time safety net practice'),
-    ('C5', """Non-clinical practice: Full time in academia
-        (includes teaching and research, advocacy, and the public sector)"""),
-    ('C6', """Non-clinical practice: Part time in academia
-        (includes teaching and research, advocacy and
-        the public health sector)"""),
-    ('C7', """Non-clinical practice: Full time in
-        the corporate sector"""),
-    ('C8', """Non-clinical practice: Part time in the
-        corporate sector"""),
-)
+from teachdentistry.main.choices import GENDER_CHOICES, \
+    DISCIPLINE_CHOICES, AGREEMENT_CHOICES, AGREEMENT_CHOICES_EX, \
+    ETHNICITY_CHOICES, RACE_CHOICES_EX, AGE_CHOICES, DEGREE_CHOICES, \
+    WORK_CHOICES, RACE_CHOICES, CAREER_STAGE_CHOICES, DENTAL_SCHOOL_CHOICES
 
 
 class DentalSchool(models.Model):
@@ -138,7 +29,7 @@ class UserProfile(models.Model):
     last_location = models.CharField(max_length=255, default="/")
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     primary_discipline = models.CharField(max_length=2,
-        choices=DISCIPLINE_CHOICES)
+                                          choices=DISCIPLINE_CHOICES)
     primary_other_dental_discipline = models.CharField(
         max_length=1024, null=True, blank=True)
     primary_other_discipline = models.CharField(
@@ -150,13 +41,13 @@ class UserProfile(models.Model):
                                      choices=DENTAL_SCHOOL_CHOICES)
     postal_code = models.CharField(max_length=10)
     plan_to_teach = models.CharField(max_length=2,
-        choices=AGREEMENT_CHOICES)
+                                     choices=AGREEMENT_CHOICES)
     qualified_to_teach = models.CharField(max_length=2,
-        choices=AGREEMENT_CHOICES)
+                                          choices=AGREEMENT_CHOICES)
     opportunities_to_teach = models.CharField(max_length=2,
-        choices=AGREEMENT_CHOICES)
+                                              choices=AGREEMENT_CHOICES)
     possible_to_teach = models.CharField(max_length=2,
-        choices=AGREEMENT_CHOICES_EX)
+                                         choices=AGREEMENT_CHOICES_EX)
     ethnicity = models.CharField(max_length=2, choices=ETHNICITY_CHOICES)
     race = models.CharField(max_length=2, choices=RACE_CHOICES_EX)
     age = models.CharField(max_length=2, choices=AGE_CHOICES)
@@ -252,7 +143,6 @@ class UserProfileForm(RegistrationForm):
         choices=AGREEMENT_CHOICES_EX,
         label="""How much would you say you agree with this statement:
         The benefits of entering dental academics outweigh the challenges:""")
-
 
     def clean(self):
         return super(RegistrationForm, self).clean()

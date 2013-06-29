@@ -26,7 +26,7 @@ urlpatterns = patterns(
     (r'^accounts/', include('registration.backends.default.urls')),
     (r'^logout/$',
      'django.contrib.auth.views.logout',
-     {'next_page': '/'}),                       
+     {'next_page': '/'}),
     (r'^$', 'teachdentistry.main.views.index'),
     (r'^_pagetree/', include('pagetree.urls')),
     (r'^_quiz/', include('quizblock.urls')),

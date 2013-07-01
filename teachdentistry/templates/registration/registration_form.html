@@ -3,19 +3,40 @@
 {% block title %}Sign up for an account{% endblock %}
 
 {% block extrahead %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href='{% static "admin/css/widgets.css" %}' />        
+{% endblock %}
 
-<link rel="stylesheet" type="text/css" href='{% static "admin/css/widgets.css" %}' />
-
-<script type="text/javascript" src="/jsi18n/"></script>
-<script type="text/javascript" src='{% static "admin/js/core.js" %}'></script>
-<script type="text/javascript" src='{% static "admin/js/admin/RelatedObjectLookups.js" %}'></script>
-<script type="text/javascript" src='{% static "admin/js/jquery.js" %}'></script>
-<script type="text/javascript" src='{% static "admin/js/jquery.init.js" %}'></script>
-<script type="text/javascript" src='{% static "admin/js/actions.js" %}'></script>
-<script type="text/javascript" src='{% static "admin/js/SelectFilter2.js" %}'></script>
-<script type="text/javascript" src='{% static "admin/js/SelectBox.js" %}'></script>    
-
-
+{% block js %}
+    {{ block.super }}
+    <script type="text/javascript" src="/site_media/bootstrap-multiselect/js/bootstrap-multiselect.js"></script>
+   
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('#id_state').addClass("multiselect");
+            jQuery('#id_state').multiselect({
+              buttonClass: 'btn',
+              buttonWidth: 'auto',
+              buttonContainer: '<div class="btn-group" />',
+              maxHeight: false,
+              buttonText: function(options) {
+                if (options.length == 0) {
+                  return 'None selected <b class="caret"></b>';
+                }
+                else if (options.length > 3) {
+                  return options.length + ' selected  <b class="caret"></b>';
+                }
+                else {
+                  var selected = '';
+                  options.each(function() {
+                    selected += jQuery(this).text() + ', ';
+                  });
+                  return selected.substr(0, selected.length -2) + ' <b class="caret"></b>';
+                }
+              }
+            });
+        });
+    </script>    
 {% endblock %}
 
 {% block registration_content %}

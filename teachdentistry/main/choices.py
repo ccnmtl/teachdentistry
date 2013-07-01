@@ -90,10 +90,10 @@ GENDER_CHOICES = (
 )
 
 WORK_CHOICES = (
-    ('C1', 'Clinical practice, Full time private practice'),
-    ('C2', 'Clinical practice, Part time private practice'),
-    ('C3', 'Clinical practice, Full time safety net practice'),
-    ('C4', 'Clinical practice, Part time safety net practice'),
+    ('C1', 'Clinical practice, Full-time private practice'),
+    ('C2', 'Clinical practice, Part-time private practice'),
+    ('C3', 'Clinical practice, Full-time safety net practice'),
+    ('C4', 'Clinical practice, Part-time safety net practice'),
     ('C5', """Non-clinical practice: Full time in academia
         (includes teaching and research, advocacy, and the public sector)"""),
     ('C6', """Non-clinical practice: Part time in academia

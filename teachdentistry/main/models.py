@@ -1,5 +1,4 @@
 from django import forms
-from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.contrib.auth.models import User
 from django.contrib.localflavor.us.us_states import US_STATES
 from django.db import models
@@ -115,8 +114,7 @@ class UserProfileForm(RegistrationForm):
 
     state = forms.MultipleChoiceField(
         choices=US_STATES,
-        label="Please tell us what state you work in (select all that apply)",
-        widget=FilteredSelectMultiple("States", is_stacked=False))
+        label=" Please tell us what state you work in (select all that apply)")
 
     work_description = forms.MultipleChoiceField(
         choices=WORK_CHOICES,

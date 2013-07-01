@@ -1485,74 +1485,21 @@ div.p {
     margin: 0;
 }
 
-/* ---- Registration Selector Widget ------------ */
+/* ---- Registration MultiSelect Widget ------------ */
 
-.selector {
-    margin: 0 0 30px 0;
+ul.multiselect-container {
+    max-height: 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-.selector h2 {
-    margin: 0;
-    padding: 2px 5px 3px 5px;
-    font-size: 11px;
+ul.multiselect-container li a label.checkbox {
+    float: none;
     text-align: left;
-    font-weight: bold;
-    background: #7CA0C7 url(../img/default-bg.gif) top left repeat-x;
-    color: white;
-    line-height: 20px;
+    width: default;
+    padding: 0 0 0 20px;    
 }
 
-.selector select {
-    margin-bottom: 5px !important;
-}
-
-.selector .selector-filter label:before {
+ul.multiselect-container li a label.checkbox:before {
     content: "" !important;
-}
-
-.selector div.selector-available select {
-    height: 150px;
-}
-
-.selector div.selector-chosen select {
-    height: 180px;
-}
-
-.selector h2 img.help-tooltip {
-    float: right;
-    margin-top: 1px;
-}
-
-.selector .selector-available input {
-    width: 210px !important;
-}
-
-a.selector-chooseall, a.selector-clearall {
-    font-size: 11px;
-    line-height: 20px;
-}
-
-.selector ul.selector-chooser {
-   margin: 6em 5px 0 5px !important;
-}
-
-/** Global Progress Indications **/
-
-html.busy, html.busy * {  
-  cursor: wait;
-}
-
-.ajaxloader {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -55px; /* -1 * image width / 2 */
-    margin-top: -15px;  /* -1 * image height / 2 */
-    display: block;
-    background-image: url(../img/ajax-loader.gif);
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 50px;
-    height: 50px;
-    z-index: 999;
 }

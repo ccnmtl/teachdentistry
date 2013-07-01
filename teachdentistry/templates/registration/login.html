@@ -10,8 +10,24 @@ Log in
 <a href="/accounts/register/" class="btn btn-large btn-info add-box-shadow" id="signup">Sign up</a>
 
 <div class="well login-set" id="login-window">
+
     <button type="button" class="btn btn-small pull-right" id="close-login">X</button>
     <div id="login-form">
+        {% if form.username.errors or form.password.errors or form.errors %}
+        <div class="alert alert-error">
+            {% if form.username.errors %}
+                Please enter your username.
+            {% else %}    
+                {% if form.password.errors %}
+                    Please enter your password.
+                {% else %}                
+                    {% if form.errors %}
+                        Please enter a correct username and password.
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        </div>
+        {% endif %}
         <form method="post" action=".">
         <label for="id_username">Username: {{ form.username }}</label>
         <label for="id_password">Password: {{ form.password }}</label>
@@ -67,18 +83,22 @@ Log in
 
 {% block js %}
 <script type="text/javascript">
-$(document).ready(function($){
-    /* For Login page */
-    $("#invitation #login").click(function(){
-        $(".login-set").fadeIn("fast", "linear");
+    jQuery(document).ready(function(jQuery){
+        
+        {% if form.username.errors or form.password.errors or form.errors %}
+            jQuery(".login-set").fadeIn("fast", "linear");
+        {% endif %}
+        
+        /* For Login page */
+        jQuery("#invitation #login").click(function(){
+            jQuery(".login-set").fadeIn("fast", "linear");
+        });
+        jQuery("#login-window #close-login").click(function(){
+            jQuery(".login-set").fadeOut("fast", "linear");
+        });
+        jQuery('.carousel').carousel({
+            interval: 7000
+        })
     });
-    $("#login-window #close-login").click(function(){
-        $(".login-set").fadeOut("fast", "linear");
-    });
-    $('.carousel').carousel({
-        interval: 7000
-    })
-});
-
 </script>
 {% endblock %}

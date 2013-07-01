@@ -1529,3 +1529,8 @@ ul.multiselect-container li a label.checkbox:before {
     width: 90%;
 }
 
+.module-ce input[type="submit"] {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+}

@@ -1503,3 +1503,29 @@ ul.multiselect-container li a label.checkbox {
 ul.multiselect-container li a label.checkbox:before {
     content: "" !important;
 }
+
+/* ---- CE Credit ------------ */
+
+.ce-credit .cases {
+    margin: -1px 0 0 0;
+    border: 0;
+    padding: 10px 0;
+    border-bottom: 1px dotted #ccc;
+    border-top: 1px dotted #ccc;
+    border-collapse: collapse;
+}
+
+.ce-credit .cases .casetitle {
+    display: none;
+}
+
+.ce-credit .cases .question_text {
+    margin: 0;
+    border: 0;
+    padding: 0 0 10px 0;
+}
+
+.ce-credit .cases textarea {
+    width: 90%;
+}
+

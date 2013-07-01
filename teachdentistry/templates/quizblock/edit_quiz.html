@@ -27,6 +27,19 @@ var saveOrder = function() {
 
 </script>
 
+<script type="text/javascript">
+jQuery(function() {
+  jQuery("#questions").sortable({
+    containment : 'parent'
+    ,axis : 'y'
+    ,tolerance: 'pointer'
+    ,activeClass: 'dragging'
+    ,handle: '.draghandle'
+    ,stop: function (event,ui) { saveOrder();}
+  });
+  jQuery("#questions").disableSelection();
+});
+</script>
 <style type="text/css">
 	.draghandle {float: left;}
 	#questions {list-style-type: none; margin: 0; padding: 0;}
@@ -68,19 +81,6 @@ var saveOrder = function() {
 <input type="submit" value="add question" class="btn btn-primary" />
 </form>
 
-<script type="text/javascript">
-jQuery(function() {
-  jQuery("#questions").sortable({
-    containment : 'parent'
-    ,axis : 'y'
-    ,tolerance: 'pointer'
-    ,activeClass: 'dragging'
-    ,handle: '.draghandle'
-    ,stop: function (event,ui) { saveOrder();}
-  });
-  jQuery("#questions").disableSelection();
-});
-</script>
 
 {% endblock %}
 

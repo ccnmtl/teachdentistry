@@ -53,7 +53,12 @@ def page(request, path):
 
         section.submit(request.POST, request.user)
 
-        return HttpResponseRedirect(section.get_absolute_url())
+        if section.slug == "ce-credit":
+            next_section = section.get_next()
+            if next_section:
+                return HttpResponseRedirect(next_section.get_absolute_url())
+        else:
+            return HttpResponseRedirect(section.get_absolute_url())
     else:
         instructor_link = has_responses(section)
 

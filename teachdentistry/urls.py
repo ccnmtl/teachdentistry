@@ -44,6 +44,7 @@ urlpatterns = patterns(
     url(r'^profile/(?P<educator_id>\d+)/$',
         'teachdentistry.main.views.profile',
         name='profile-view'),
+    (r'^instructor/(?P<path>.*)$', 'teachdentistry.main.views.instructor_page'),
     (r'^edit/(?P<path>.*)$', 'teachdentistry.main.views.edit_page',
      {}, 'edit-page'),
     (r'^pages/', include('django.contrib.flatpages.urls')),

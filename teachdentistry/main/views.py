@@ -101,8 +101,8 @@ def instructor_page(request, path):
     if not request.user.is_superuser:
         return HttpResponseForbidden
 
-    hierarchy_name, slash, section_path = path.partition('/')
-    section = get_section_from_path(section_path, hierarchy=hierarchy_name)
+    # TD has only 'main' hierarchy
+    section = get_section_from_path(path, hierarchy='main')
 
     root = section.hierarchy.get_root()
 

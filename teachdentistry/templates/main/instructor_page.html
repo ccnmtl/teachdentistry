@@ -1,36 +1,36 @@
 {% extends "base_teachdentistry.html" %}
 
-{% block title %}{{section.label}} (instructor){% endblock %}
-{% block sidenav %}
-	<!-- ###### Secondary Navigation ###### -->
-	<div id="secondary_navigation">
-		<div id="fadetop"></div>
-		<div class="block">
-			<h3>Sections</h3>
-{% with "/instructor" as menu_base %}
-{% include "main/menu.html" %}
-{% endwith %}
-		</div><!-- div id="block" -->
-		<div id="fadebottom"></div>
-	</div><!-- div id="secondary_navigation" -->
+{% block title %}{{section.label}} (View Responses){% endblock %}
+{% block pagetitle %}<h2 class="pagetitle">{{section.label}}</h2>{% endblock %}
+{% block section_thumbnail %}
+<div class="section-thumbnail"><div class="section-slug thumbnail-{{module.slug}}"></div><h3>SECTION: {{module.slug|upper}}</h3></div>
 {% endblock %}
+{% block sidenav %}{% endblock %}
 
 
 {% block carousel_slideshow %}{% endblock %}
 
-{% block content %}
-<a href="{{section.get_absolute_url}}">student view of page</a>
-<h1>{{ section.label }}</h1>
+{% block instructor-view-responses %}
+<br />
+<ul class="nav nav-pills">
+    <li><a style="color: #000;"><b>Page mode:</b></a></li>
+    <li><a href="{{section.get_absolute_url}}">View</a></li>
+    <li class="active"><a >Responses</a></li>
+</ul>
+<hr />
+{% endblock %}
 
+
+{% block content %}
 {% if quizzes %}
 {% for quiz in quizzes %}
-<h3>quiz {{quiz.id}}</h3>
+<h3>Quiz {{quiz.id}}</h3>
 
 {% if quiz.submission_set.count %}
-<table width="100%">
+<table class="responses-table">
 {% for submission in quiz.submission_set.all %}
 <tr class="submissionheader">
-<th>{{submission.user.first_name}} {{submission.user.last_name}} ({{submission.user.username}})</th>
+<th>Response from: {{submission.user.first_name}} {{submission.user.last_name}} | Username: {{submission.user.username}}</th>
 <td>{{submission.submitted}}</td>
 </tr>
 {% for response in submission.response_set.all %}
@@ -42,25 +42,27 @@
 {% endfor %}
 </table>
 {% else %}
-<p>no submissions</p>
+<p>There are no responses submitted for this quiz.</p>
 {% endif %}
 
 {% endfor %}
 {% else %}
-<p>no quizzes on this page</p>
+<p>There are no quizzes on this page.</p>
 {% endif %}
 
 <br style="clear:both"/>
 {% endblock %}
 
 {% block content-nav %}
-
-{% if section.get_previous %}
-<a href="/instructor{{section.get_previous.get_absolute_url}}" id="previous">« {{section.get_previous.label}}</a>
-{% endif %}
-
-{% if section.get_next %}
-<a href="/instructor{{section.get_next.get_absolute_url}}" id="next">{{section.get_next.label}} »</a>
-{% endif %}
-
+    {% comment %}
+    {% if section.get_previous %}
+    <a href="/instructor{{section.get_previous.get_absolute_url}}" id="previous">« {{section.get_previous.label}}</a>
+    {% endif %}
+    
+    {% if section.get_next %}
+    <a href="/instructor{{section.get_next.get_absolute_url}}" id="next">{{section.get_next.label}} »</a>
+    {% endif %}
+    {% endcomment %}
 {% endblock %}
+
+

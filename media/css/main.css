@@ -85,7 +85,19 @@ p {
     padding-right: 40px;
 }
 
-
+.admin-sign {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    float: right;
+    z-index: 0;
+    color: #99CCFF;
+    font-weight: normal;
+    font-size: 60px;
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+    -moz-opacity:0.3;
+}
 
 
 /*--------------------------------------------------
@@ -100,6 +112,18 @@ p {
 
 #sidebar div.locked {
     color: lightgray;
+}
+
+
+
+/*--------------------------------------------------
+    Instructor View Responses
+  --------------------------------------------------*/
+
+.responses-table {
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
 

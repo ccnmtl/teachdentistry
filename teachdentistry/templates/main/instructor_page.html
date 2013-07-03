@@ -22,35 +22,38 @@
 
 
 {% block content %}
-{% if quizzes %}
-{% for quiz in quizzes %}
-<h3>Quiz {{quiz.id}}</h3>
-
-{% if quiz.submission_set.count %}
-<table class="responses-table">
-{% for submission in quiz.submission_set.all %}
-<tr class="submissionheader">
-<th>Response from: {{submission.user.first_name}} {{submission.user.last_name}} | Username: {{submission.user.username}}</th>
-<td>{{submission.submitted}}</td>
-</tr>
-{% for response in submission.response_set.all %}
-<tr class="submissionresponse">
-<td>Question {{response.question.ordinality}}: {{response.question.text}}</td>
-<td class="{% if response.question.answerable %}{% if response.is_correct %}correct{% else %}incorrect{% endif %}{% endif %}">{{response.value}}</td>
-</tr>
-{% endfor %}
-{% endfor %}
-</table>
-{% else %}
-<p>There are no responses submitted for this quiz.</p>
-{% endif %}
-
-{% endfor %}
-{% else %}
-<p>There are no quizzes on this page.</p>
-{% endif %}
-
-<br style="clear:both"/>
+    {% if quizzes %}
+        {% for quiz in quizzes %}
+            <h3>Quiz {{quiz.id}}</h3>
+            {% if quiz.submission_set.count %}
+                {% for submission in quiz.submission_set.all %}
+                <div class="responses-table">
+                <table>
+                     <tr class="submissiontitle">
+                        <td class="column1"><b>Response from:</b> {{submission.user.first_name}} {{submission.user.last_name}} | <b>Username:</b> {{submission.user.username}}</td>
+                        <td class="column2">{{submission.submitted}}</td>
+                    </tr>
+                     <tr class="submissionheader">
+                        <td class="column1">Question</td>
+                        <td class="column2">Response</td>
+                    </tr>
+                        {% for response in submission.response_set.all %}
+                        <tr class="submissionresponse {% cycle 'odd' 'even' %}">
+                            <td class="column1">{{response.question.ordinality}}: {{response.question.text}}</td>
+                            <td class="{% if response.question.answerable %}{% if response.is_correct %}correct{% else %}incorrect{% endif %}{% endif %} column2">{{response.value}}</td>
+                        </tr>
+                        {% endfor %}
+                </table>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>There are no responses submitted for this quiz.</p>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <p>There are no quizzes on this page.</p>
+    {% endif %}
+     <br style="clear:both"/>
 {% endblock %}
 
 {% block content-nav %}

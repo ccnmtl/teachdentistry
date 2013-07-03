@@ -121,12 +121,87 @@ p {
   --------------------------------------------------*/
 
 .responses-table {
+    margin: 0 0 20px 0;
+    padding: 0;
+    border: 0;
+    border: 1px solid #9cf;
+    border-top: 3px solid #9cf;
+    width: 99%;
+    -webkit-border-radius: 6px !important;
+       -moz-border-radius: 6px !important;
+            border-radius: 6px !important;
+}
+
+.responses-table table {
     margin: 0;
     padding: 0;
     border: 0;
+    width: 100%;
 }
 
+.responses-table .column1 {
+    margin: 0;
+    padding: 5px;
+    border: 0;
+    width: 70%;
+}
 
+.responses-table .column2 {
+    margin: 0;
+    padding: 5px;
+    border: 0;
+    width: 30%;
+}
+
+.responses-table td {
+    margin: 0;
+    padding: 5px;
+    border: 0;
+}
+
+.responses-table tr.odd {
+    background-color: #f3f6fa;
+}
+
+.responses-table .submissiontitle {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 16px;
+}
+
+.responses-table .submissionheader {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+    color: #666;
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, left bottom, right bottom, from(#cccccc), to(#efefef));
+    
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(bottom, #efefef, #cccccc);
+    
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(bottom, #efefef, #cccccc);
+    
+    /* IE 10 */
+    background: -ms-linear-gradient(bottom, #efefef, #cccccc);
+    
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(bottom, #efefef, #cccccc);
+    /* display: none; temporary */
+ }
+
+.responses-table .submissionheader .column1 {
+    border-right: 1px solid #ccc;
+}
+
+.responses-table .submissionheader .column2 {
+    border-left: 1px solid #fff;
+}
 /*--------------------------------------------------
     Searchable Educator Map
   --------------------------------------------------*/

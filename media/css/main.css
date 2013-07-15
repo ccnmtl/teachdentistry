@@ -1538,10 +1538,6 @@ div.p {
     font-size: 20px;
 }
 
-.password-reset .reset-account {
-    margin-left: 70px;
-}
-
 .signup-block label[for=id_work_description_1],
 .signup-block label[for=id_work_description_2],
 .signup-block label[for=id_work_description_3],
@@ -1599,6 +1595,30 @@ div.p {
     font-style: italic;
     line-height: 120%;
     padding-bottom: 5px;
+}
+
+.password-reset .reset-account {
+    margin-left: 70px;
+}
+
+.password-reset p label:before {
+    content: "*";
+    color: #c00;
+    font-size: 20px;
+}
+
+.password-reset p label {
+    margin: 0;
+    padding: 0 10px 0 0;
+    width: 250px;
+    float: left;
+    text-align: right;
+}
+
+.password-reset input[type="submit"] {
+    clear: both;
+    display: block;
+    margin: 10px 0 0 300px;
 }
 
 /* ---- Registration MultiSelect Widget ------------ */

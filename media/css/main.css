@@ -65,6 +65,13 @@ p {
     font-size: 40px;
 }
 
+.flatpagetitle {
+    margin: 0;
+    padding: 30px 0 50px 0;
+    font-weight: normal;
+    font-size: 40px;
+}
+
 .visualclear {
     margin: 0;
     padding: 0;
@@ -1485,7 +1492,8 @@ h2.tab-header {
 }
 
 .signup-block p {
-    margin: 0 0 15px 0;
+    margin: 0;
+    padding: 20px 0 0 0;
     clear: both;
 }
 
@@ -1534,25 +1542,6 @@ div.p {
     margin-left: 70px;
 }
 
-.signup-block .errorlist {
-    margin: 0;
-    padding: 0;
-    color: #cc0000;
-    font-size: 12px;
-    font-style: italic;
-    width: 250px;
-    list-style: none;
-    line-height: 120%;
-}
-
-.signup-block .errorlist li {
-    font-size: 12px;
-    font-style: italic;
-    line-height: 120%;
-    padding-bottom: 5px;
-}
-
-.signup-block label[for=id_work_description_0],
 .signup-block label[for=id_work_description_1],
 .signup-block label[for=id_work_description_2],
 .signup-block label[for=id_work_description_3],
@@ -1560,13 +1549,14 @@ div.p {
 .signup-block label[for=id_work_description_5],
 .signup-block label[for=id_work_description_6],
 .signup-block label[for=id_work_description_7],
-.signup-block label[for=id_state],
+.signup-block ul label[for=id_work_description_0]
+/*.signup-block label[for=id_state],
 .signup-block label[for=id_plan_to_teach],
 .signup-block label[for=id_qualified_to_teach],
 .signup-block label[for=id_opportunities_to_teach],
-.signup-block label[for=id_possible_to_teach] {
+.signup-block label[for=id_possible_to_teach]*/ {
     float: none;
-    width: 400px;
+    width: auto;
     text-align: left;
 }
 
@@ -1576,12 +1566,39 @@ div.p {
 
 
 .signup-block ul {
-    margin: 0 0 10px 25px;
+    margin: 0 0 0px 260px;
+    padding: 0 0 15px 0;
+    border: 0;
 }
 
 .signup-block ul li {
     list-style-type: none;
-    margin: 0;
+    margin: 0 0 5px 0;
+}
+
+.signup-block input[type="submit"] {
+    clear: both;
+    display: block;
+    margin: 100px 0 0 300px;
+}
+
+.signup-block .errorlist {
+    margin: 10px 0 -25px 260px;
+    padding: 0;
+    color: #cc0000;
+    font-size: 12px;
+    font-style: italic;
+    list-style: none;
+    line-height: 120%;
+    clear: both;
+    display: block;
+}
+
+.signup-block .errorlist li {
+    font-size: 12px;
+    font-style: italic;
+    line-height: 120%;
+    padding-bottom: 5px;
 }
 
 /* ---- Registration MultiSelect Widget ------------ */
@@ -1590,6 +1607,8 @@ ul.multiselect-container {
     max-height: 150px;
     overflow-y: auto;
     overflow-x: hidden;
+    margin-left: 0px;
+    border: 1px solid #e0e0e0;
 }
 
 ul.multiselect-container li a label.checkbox {

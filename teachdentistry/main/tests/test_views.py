@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.test.client import Client
 
 
-class BasicTest(TestCase):
+class BasicViewTest(TestCase):
     def setUp(self):
         self.c = Client()
 
@@ -13,4 +13,7 @@ class BasicTest(TestCase):
     def test_smoketest(self):
         response = self.c.get("/smoketest/")
         self.assertEquals(response.status_code, 200)
-        assert "PASS" in response.content
+        # this test is just to check that the smoketests are able to
+        # run without an error. They are not expected to have to pass
+
+

@@ -99,7 +99,7 @@ def page(request, path):
 @render_to("main/instructor_page.html")
 def instructor_page(request, path):
     if not request.user.is_superuser:
-        return HttpResponseForbidden
+        return HttpResponseForbidden()
 
     # TD has only 'main' hierarchy
     section = get_section_from_path(path, hierarchy='main')

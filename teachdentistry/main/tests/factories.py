@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from teachdentistry.main.models import UserProfile, DentalEducator
 from teachdentistry.main.models import Institution, PrimaryTraineesType
 from teachdentistry.main.models import TimeCommitment
+from pagetree.models import Hierarchy, Section
 import factory
 
 
@@ -42,3 +43,16 @@ class DentalEducatorFactory(factory.DjangoModelFactory):
     primary_trainees_type = factory.SubFactory(PrimaryTraineesTypeFactory)
     paid_time_commitment = factory.SubFactory(TimeCommitmentFactory)
     volunteer_time_commitment = factory.SubFactory(TimeCommitmentFactory)
+
+
+class HierarchyFactory(factory.DjangoModelFactory):
+    FACTORY_FOR = Hierarchy
+    name = "main"
+    base_url = ""
+
+
+class RootSectionFactory(factory.DjangoModelFactory):
+    FACTORY_FOR = Section
+    hierarchy = factory.SubFactory(HierarchyFactory)
+    label = "Root"
+    slug = ""

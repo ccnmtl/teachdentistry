@@ -21,3 +21,6 @@ class DentalEducatorTest(TestCase):
         de = DentalEducatorFactory()
         self.assertEqual(de.educator_display_name(),
                          "%s %s" % (de.first_name, de.last_name))
+        de.display_name = "this one instead"
+        self.assertEqual(de.educator_display_name(),
+                         "this one instead")

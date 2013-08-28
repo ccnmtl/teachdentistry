@@ -66,7 +66,7 @@ django-extensions==1.1.0
 django-treebeard==1.61
 django-pagetree==0.12.1
 django-pageblocks==0.5.9
-django-quizblock==0.6.9.1
+django-quizblock==0.6.11
 django-pagetree_export==0.4
 django-stagingcontext==0.1.0
 django-registration==0.8

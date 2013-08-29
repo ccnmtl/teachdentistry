@@ -952,6 +952,64 @@ h2.tab-header {
 
 
 
+
+/* VIDEO DISPLAY */
+
+/* default */
+
+.video-display {
+    background-color: #d8e4ee;
+    margin: 5px 0;
+    padding: 6px;
+    height: 296px;
+    -webkit-border-radius: 6px !important;
+       -moz-border-radius: 6px !important;
+            border-radius: 6px !important;
+}
+
+.video-display h4 {
+    margin: 0;
+    padding: 10px 0 0 0;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    width: 340px;
+    height: 60px;
+    margin-left: 500px;
+    font: 20px normal "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #006699;
+}
+
+.video-display h4:before {
+    content: "“"; /* 1 */
+}
+
+.video-display h4:after {
+    content: "”"; /* 1 */
+}
+
+.video-display iframe {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    float: left;
+    margin-top: -70px;
+}
+
+.video-display p {
+    margin: 0;
+    padding: 20px 0 0 0;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-left: 500px;
+    width: 340px;
+}
+
+.video-display .download-transcript {
+    color: inherit;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
 /*--------------------------------------------------
     Bootstrap Responsive Addition
   --------------------------------------------------*/
@@ -1039,6 +1097,16 @@ h2.tab-header {
     div.profile-container div.educator-info {
         width: auto;
         margin-left: 290px;
+    }
+    .video-display h4 {
+        width: 550px;
+        height: 30px;
+    }
+    .video-display iframe {
+        margin-top: -40px;
+    }
+    .video-display p {
+        width: 550px;
     }
 }
 
@@ -1135,6 +1203,24 @@ h2.tab-header {
     }
     #invitation #phrase2 {
         width: 400px;
+    }
+    .video-display {
+        width: 480px;
+        display: block;
+        height: auto;
+    }
+    .video-display h4 {
+        width: auto;
+        height: auto;
+        margin-left: 0;
+    }
+    .video-display iframe {
+        margin-top: 0;
+        float: none;
+    }
+    .video-display p {
+        margin-left: 0;
+        width: auto;
     }
 }
 
@@ -1239,6 +1325,24 @@ h2.tab-header {
     #invitation #phrase2 {
         width: 400px;
     }
+    .video-display {
+        width: 480px;
+        display: block;
+        height: auto;
+    }
+    .video-display h4 {
+        width: auto;
+        height: auto;
+        margin-left: 0;
+    }
+    .video-display iframe {
+        margin-top: 0;
+        float: none;
+    }
+    .video-display p {
+        margin-left: 0;
+        width: auto;
+    }
 }
 
 /*----------- Landscape phones and down ------------*/
@@ -1341,6 +1445,24 @@ h2.tab-header {
     }
     #invitation #phrase2 {
         width: 400px;
+    }
+    .video-display {
+        width: 480px;
+        display: block;
+        height: auto;
+    }
+    .video-display h4 {
+        width: auto;
+        height: auto;
+        margin-left: 0;
+    }
+    .video-display iframe {
+        margin-top: 0;
+        float: none;
+    }
+    .video-display p {
+        margin-left: 0;
+        width: auto;
     }
 }
 

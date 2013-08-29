@@ -1480,6 +1480,7 @@ h2.tab-header {
     font-size: 30px;
     color: #06c;
     font-weight: normal;
+    line-height: 100%;
 }
 
 .self-id-quiz .selection {
@@ -1793,4 +1794,15 @@ ul.multiselect-container li a label.checkbox:before {
     display: block;
     width: 200px;
     margin: 20px auto;
+}
+
+.pull-right {
+    margin-left: 10px;
+}
+
+.caption p {
+    margin: 0;
+    padding: 5px;
+    color: #333;
+    font-style: italic;
 }

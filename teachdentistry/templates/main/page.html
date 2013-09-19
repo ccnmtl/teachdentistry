@@ -42,6 +42,18 @@
     </script>
     {% endif %}
 
+    {% if needs_submit %}
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            {% if is_submitted %}
+                jQuery("div.side-photo").hide();
+            {% else %}
+                jQuery("div.side-photo").show();
+            {% endif %}
+        });
+    </script>
+    {% endif %}
+
 {% endblock %}
 
 {% block css %}

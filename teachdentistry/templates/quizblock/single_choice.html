@@ -8,7 +8,7 @@
             {% if response %}
                 {% ifequal response.value answer.value %}
                     <div class="selection-block highlighted">
-                    <h3>“{{answer.label}}”</h3>
+                    <h3>{{answer.label}}</h3>
                     
                     {{answer.explanation|safe}}
                     </div>
@@ -31,8 +31,8 @@
         {% else %}
             {% if response %}
                 {% ifnotequal response.value answer.value %}
-             <div class="selection-block">
-                   <h3>“{{answer.label}}”</h3>
+             <div class="selection-block unselected">
+                   <h3>{{answer.label}}</h3>
                     
                     {{answer.explanation|safe}}
              </div>

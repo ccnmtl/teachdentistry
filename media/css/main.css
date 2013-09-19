@@ -1527,6 +1527,21 @@ h2.tab-header {
 
 .self-id-quiz .highlighted h3 {
     color: #06c;
+    margin: 0;
+    padding: 5px 0;
+    margin-bottom: 10px;
+    border: 0;
+    border-bottom: 1px solid #9cb7ce;
+    line-height: 100%;
+    font-size: 24px;
+}
+
+.self-id-quiz .highlighted {
+    background-color: #d8e4ee;
+    padding: 10px;
+    -webkit-border-radius: 6px !important;
+       -moz-border-radius: 6px !important;
+            border-radius: 6px !important;
 }
 
 .self-id-quiz .other-choices {
@@ -1538,6 +1553,25 @@ h2.tab-header {
     font-weight: normal;
 }
 
+.self-id-quiz .unselected {
+    background-color: #efefef;
+    margin: 0 0 20px 0;
+    padding: 10px;
+    -webkit-border-radius: 6px !important;
+       -moz-border-radius: 6px !important;
+            border-radius: 6px !important;
+}
+
+.self-id-quiz .unselected h3 {
+    color: #666;
+    margin: 0;
+    padding: 5px 0;
+    margin-bottom: 10px;
+    border: 0;
+    border-bottom: 1px solid #666;
+    line-height: 100%;
+    font-size: 24px;
+}
 
 
 /* pager navigation */
@@ -1798,6 +1832,10 @@ ul.multiselect-container li a label.checkbox:before {
 
 .pull-right {
     margin-left: 10px;
+}
+
+.side-photo {
+    display: none;
 }
 
 .caption p {

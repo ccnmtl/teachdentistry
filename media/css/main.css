@@ -325,9 +325,13 @@ div.profile-container div.educator-headshot {
     float: left;
 }
 
+div.profile-container div.educator-headshot img {
+    width: 100px;
+}
+
 div.profile-container div.educator-info {
     width: auto;
-    margin-left: 230px;
+    margin-left: 150px;
 }
 
 div.profile-container div.educator-name {
@@ -335,6 +339,7 @@ div.profile-container div.educator-name {
     font-size: 26px; 
     line-height: 120%;
     margin-bottom: 30px;
+    margin-left: 150px;
 }
 
 div.profile-container .headshot-thumb {
@@ -347,20 +352,27 @@ div.profile-container .info-field {
 }
 
 div.profile-container .info-field .info-heading {
-    font-weight: normal;
-    font-size: 18px; 
+    font-weight: bold;
+    font-size: 14px; 
     line-height: 120%;
     margin-bottom: 5px;
+    float: left;
+    width: 200px;
+    padding-right: 10px;
+    text-align: right;
 }
 
 div.profile-container .info-field .info-content {
     font-weight: normal;
+    line-height: 120%;
     font-size: 14px; 
     margin-bottom: 5px;
+    float: left;
+    width: 450px;
 }
 
 .map_back_nav {
-    margin-left: 50px;
+    margin-left: 150px;
     margin-bottom: 30px;
 }
 
@@ -1096,7 +1108,9 @@ h2.tab-header {
     }
     div.profile-container div.educator-info {
         width: auto;
-        margin-left: 290px;
+    }
+    div.profile-container .info-field .info-content {
+        width: 500px;
     }
     .video-display h4 {
         width: 550px;
@@ -1199,7 +1213,9 @@ h2.tab-header {
     }
     div.profile-container div.educator-info {
         width: auto;
-        margin-left: 180px;
+    }
+    div.profile-container .info-field .info-content {
+        width: 320px;
     }
     #invitation #phrase2 {
         width: 400px;
@@ -1320,7 +1336,9 @@ h2.tab-header {
     }
     div.profile-container div.educator-info {
         width: auto;
-        margin-left: 180px;
+    }
+    div.profile-container .info-field .info-content {
+        width: 320px;
     }
     #invitation #phrase2 {
         width: 400px;
@@ -1441,7 +1459,9 @@ h2.tab-header {
     }
     div.profile-container div.educator-info {
         width: auto;
-        margin-left: 180px;
+    }
+    div.profile-container .info-field .info-content {
+        width: 320px;
     }
     #invitation #phrase2 {
         width: 400px;

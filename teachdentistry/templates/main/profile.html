@@ -26,7 +26,6 @@
         <div class="map_back_nav"><a href="/map/" class="pager_button"><b>&larr;</b> Return to Dental Educator Map</a></div>
         <div class="profile-container">
             
-            <div class="educator-name">{{educator.educator_display_name}}</div>
             <div class="educator-headshot">
             {% if educator.headshot %}
                 <img src="/uploads/{{educator.headshot}}" alt="headshot" class="headshot-thumb img-polaroid img-rounded" />
@@ -34,12 +33,14 @@
                 <img src="{% if educator.gender == 'M' %}/site_media/img/headshot_male.jpg{% else %}/site_media/img/headshot_female.jpg{% endif %}" alt="headshot" class="headshot-thumb img-polaroid img-rounded" />
             {% endif %}
             </div>
+            <div class="educator-name">{{educator.educator_display_name}}</div>
              <div class="educator-info">
                 {% if educator.video %}
                 <div class="info-field">
                     <div class="info-content">
                         {{educator.video|safe}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
                 {% endif %}
                 <div class="info-field">
@@ -49,188 +50,218 @@
                     <div class="info-content">
                         {{educator.teaching_reason}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
                 <div class="info-field">
                     <div class="info-heading">
-                        Academic Title
+                        Academic Title:
                     </div>
                     <div class="info-content">
                         {{educator.academic_title}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
                 {% if educator.contact_permission %}
                 <div class="info-field">
                     <div class="info-heading">
-                        Email
+                        Email:
                     </div>
                     <div class="info-content">
                         {{educator.contact_email}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
                 {% endif %}
                 <div class="info-field">
                     <div class="info-heading">
-                        Clinical Field
+                        Clinical Field:
                     </div>
                     <div class="info-content">
                         {% for item in educator.clinical_field.all %}
                             {{item.name}}
                         {% endfor %}
                     </div>
+                <div class="visualclear"></div>
                 </div>
                 <div class="info-field">
                     <div class="info-heading">
-                        Degree
+                        Degree:
                     </div>
                     <div class="info-content">
                         {% for item in educator.degree.all %}
                             {{item.name}}
                         {% endfor %}
                     </div>
+                <div class="visualclear"></div>
                 </div>
                 {% if educator.other_degree %}
                 <div class="info-field">
                     <div class="info-heading">
-                        Other Degree(s)
+                        Other Degree(s):
                     </div>
                     <div class="info-content">
                         {{educator.other_degree}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
                 {% endif %}
                 <div class="info-field">
                     <div class="info-heading">
-                    Institution
+                    Institution:
                     </div>
                     <div class="info-content">
                         {{educator.institution.name}}, {{educator.institution_state}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
                 <div class="info-field">
                     <div class="info-heading">
-                        Primary Trainees Type
+                        Primary Trainees Type:
                     </div>
                     <div class="info-content">
                         {{educator.primary_trainees_type}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
+                {% if educator.other_trainees_type %}
                 <div class="info-field">
                     <div class="info-heading">
-                        Other Trainees Type
+                        Other Trainees Type:
                     </div>
                     <div class="info-content">
                         {{educator.other_trainees_type}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
+                {% endif %}
                 <div class="info-field">
                     <div class="info-heading">
-                        Teaching Responsibility
+                        Teaching Responsibility:
                     </div>
                     <div class="info-content">
                         {% for item in educator.teaching_responsibility.all %}
                             {{item.name}}
                         {% endfor %}
                     </div>
+                <div class="visualclear"></div>
                 </div>
                 <div class="info-field">
                     <div class="info-heading">
-                        Paid Time Commitment
+                        Paid Time Commitment:
                     </div>
                     <div class="info-content">
                         {{educator.paid_time_commitment}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
                 <div class="info-field">
                     <div class="info-heading">
-                        Volunteer Time Commitment
+                        Volunteer Time Commitment:
                     </div>
                     <div class="info-content">
                         {{educator.volunteer_time_commitment}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
                 <div class="info-field">
                     <div class="info-heading">
-                        Career Stage
+                        Career Stage:
                     </div>
                     <div class="info-content">
                         {{educator.get_career_stage_display}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
                 <div class="info-field">
                     <div class="info-heading">
-                        Years Teaching
+                        Years Teaching:
                     </div>
                     <div class="info-content">
                         {{educator.years_teaching}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
                 <div class="info-field">
                     <div class="info-heading">
-                        Previous Dental Career
+                        Previous Dental Career:
                     </div>
                     <div class="info-content">
                         {{educator.previous_dental_career}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
+                {% if educator.other_previous_dental_career %}
                 <div class="info-field">
                     <div class="info-heading">
-                        Other Previous Dental Career
+                        Other Previous Dental Career:
                     </div>
                     <div class="info-content">
                         {{educator.other_previous_dental_career}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
+                {% endif %}
                 <div class="info-field">
                     <div class="info-heading">
-                        Current Dental Career
+                        Current Dental Career:
                     </div>
                     <div class="info-content">
                         {% for item in educator.current_dental_career.all %}
                             {{item.name}}
                         {% endfor %}
                     </div>
+                <div class="visualclear"></div>
                 </div>
+                {% if educator.other_current_dental_career %}
                 <div class="info-field">
                     <div class="info-heading">
-                        Other Current Dental Career
+                        Other Current Dental Career:
                     </div>
                     <div class="info-content">
                         {{educator.other_current_dental_career}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
+                {% endif %}
                 <div class="info-field">
                     <div class="info-heading">
-                        Primary Motivation
+                        Primary Motivation:
                     </div>
                     <div class="info-content">
                         {% for item in educator.primary_motivation.all %}
                             {{item.name}}
                         {% endfor %}
                     </div>
+                <div class="visualclear"></div>
                 </div>
+                {% if educator.other_motivation %}
                 <div class="info-field">
                     <div class="info-heading">
-                        Other Motivation
+                        Other Motivation:
                     </div>
                     <div class="info-content">
                         {{educator.other_motivation}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
+                {% endif %}
                 <div class="info-field">
                     <div class="info-heading">
-                        Race
+                        Race:
                     </div>
                     <div class="info-content">
                         {{educator.get_race_display}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
                 <div class="info-field">
                     <div class="info-heading">
-                        Ethnicity
+                        Ethnicity:
                     </div>
                     <div class="info-content">
                         {{educator.get_ethnicity_display}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
                 <div class="info-field">
                     <div class="info-heading">
@@ -238,6 +269,7 @@
                     <div class="info-content">
                         {{educator.}}
                     </div>
+                <div class="visualclear"></div>
                 </div>
                 {% comment %}<div class="info-field">
                     <div class="info-heading">

@@ -319,10 +319,13 @@ div.educator-infowindow .headshot-thumb {
   
 div.profile-container {
     padding-top: 20px;
+    position: relative;
 }
 
 div.profile-container div.educator-headshot {
-    float: left;
+    position: absolute;
+    top: 20px;
+    left: 0;
 }
 
 div.profile-container div.educator-headshot img {

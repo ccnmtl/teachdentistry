@@ -54,6 +54,7 @@ class DentalEducatorResource(ModelResource):
                                                   full=True)
 
     class Meta:
+        limit = 256
         queryset = DentalEducator.objects.all()
         resource_name = 'educator'
         allowed_methods = ['get']

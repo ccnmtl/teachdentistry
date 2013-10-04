@@ -17,7 +17,7 @@ except:
 def skip_selenium():
     return (os.environ.get('LETTUCE_SKIP_SELENIUM', False)
             or (hasattr(settings, 'LETTUCE_SKIP_SELENIUM')
-            and settings.LETTUCE_SKIP_SELENIUM))
+                and settings.LETTUCE_SKIP_SELENIUM))
 
 
 @before.harvest

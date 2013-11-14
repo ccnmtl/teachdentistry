@@ -54,7 +54,7 @@ PROJECT_APPS = [
     'teachdentistry.main',
 ]
 
-ALLOWED_HOSTS = ['localhost', '.ccnmtl.columbia.edu', 'teachdentistry.org']
+ALLOWED_HOSTS = ['localhost', '.ccnmtl.columbia.edu', '.teachdentistry.org']
 
 USE_TZ = True
 TIME_ZONE = 'America/New_York'

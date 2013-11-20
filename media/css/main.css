@@ -1025,6 +1025,16 @@ h2.tab-header {
     margin-top: 10px;
 }
 
+.promo-video {
+    float: right;
+    padding-left: 20px !important;
+}
+
+.promo-video iframe {
+    border: 1px solid #ccc;
+    padding: 0;
+}
+
 /*--------------------------------------------------
     Bootstrap Responsive Addition
   --------------------------------------------------*/
@@ -1241,6 +1251,10 @@ h2.tab-header {
         margin-left: 0;
         width: auto;
     }
+    .promo-video {
+        float: none !important;
+        padding-left: 0px !important;
+    }
 }
 
 /*------- Landscape phone to portrait tablet -------*/
@@ -1363,6 +1377,10 @@ h2.tab-header {
     .video-display p {
         margin-left: 0;
         width: auto;
+    }    
+    .promo-video {
+        float: none !important;
+        padding-left: 0px !important;
     }
 }
 
@@ -1486,6 +1504,10 @@ h2.tab-header {
     .video-display p {
         margin-left: 0;
         width: auto;
+    }
+    .promo-video {
+        float: none !important;
+        padding-left: 0px !important;
     }
 }
 

@@ -62,4 +62,4 @@ django-pageblocks==0.5.11
 django-quizblock==0.6.13
 django-pagetree_export==0.4
 django-stagingcontext==0.1.0
-django-registration==0.8
+django-registration==1.0

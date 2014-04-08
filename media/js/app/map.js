@@ -84,8 +84,22 @@
         render: function () {
             var self = this; 
             var institution = this.model.get('institution');
+
             this.latlng = new google.maps.LatLng(institution.get('latitude'),
                                                  institution.get('longitude'));
+            
+            for (i=0; i < this.parentView.mapMarkers.length; i++) {
+                var pos = this.parentView.mapMarkers[i].getPosition();
+
+                //if a marker already exists in the same position as this marker
+                if (this.latlng.equals(pos)) {
+                    //update the position of the coincident marker by applying a small multipler to its coordinates
+                    var newLat = this.latlng.lat() + (Math.random() - 0.5) / 1500;
+                    var newLng = this.latlng.lng() + (Math.random() - 0.5) / 1500;
+                    this.latlng = new google.maps.LatLng(newLat, newLng);
+                }
+            }
+            
             
             this.marker = new google.maps.Marker({
                 position: this.latlng, 
@@ -130,7 +144,6 @@
             this.educators.on("add", this.onAddEducator);
             this.educators.on("remove", this.onRemoveEducator);
             this.educators.on("reset", this.onResetEducators);
-            this.educators.fetch();
             
             jQuery(window).on('resize', this.onResize);
             
@@ -144,11 +157,13 @@
             };
             
             var mapCanvas = document.getElementById("map-canvas");
-            this.mapInstance = new google.maps.Map(mapCanvas, mapOptions);
+            this.mapInstance = new google.maps.Map(mapCanvas, mapOptions);            
+            this.mapMarkers = [];
             
             this.on("markerClicked", this.renderPopup);
             
             jQuery(window).trigger("resize");
+            this.educators.fetch();
         },
         getVisibleViewport: function() {
             var viewportwidth;
@@ -207,12 +222,21 @@
         },
         onResetEducators: function(collection, options) {
             var self = this;
+            self.mapMarkers = [];
+            if (self.markerClusterer) {
+                self.markerClusterer.clearMarkers();
+            }
+            
             collection.forEach(function(obj) {
                 var view = new EducatorPinView({
                     model: obj,
                     parentView: self
                 });
+                self.mapMarkers.push(view.marker);
             });
+            
+            this.markerClusterer = new MarkerClusterer(this.mapInstance,
+                                                       this.mapMarkers);
         },
         onResize: function() {
             var viewport = this.getVisibleViewport();

@@ -94,8 +94,8 @@
                 //if a marker already exists in the same position as this marker
                 if (this.latlng.equals(pos)) {
                     //update the position of the coincident marker by applying a small multipler to its coordinates
-                    var newLat = this.latlng.lat() + (Math.random() - 0.5) / 1500;
-                    var newLng = this.latlng.lng() + (Math.random() - 0.5) / 1500;
+                    var newLat = this.latlng.lat() + (Math.random() - 0.5) / 500;
+                    var newLng = this.latlng.lng() + (Math.random() - 0.5) / 500;
                     this.latlng = new google.maps.LatLng(newLat, newLng);
                 }
             }
@@ -235,8 +235,8 @@
                 self.mapMarkers.push(view.marker);
             });
             
-            this.markerClusterer = new MarkerClusterer(this.mapInstance,
-                                                       this.mapMarkers);
+            self.markerClusterer = new MarkerClusterer(self.mapInstance,
+                                                       self.mapMarkers);
         },
         onResize: function() {
             var viewport = this.getVisibleViewport();

@@ -105,7 +105,7 @@
                 position: this.latlng, 
                 title: this.model.get('name'),
                 map: this.parentView.mapInstance,
-                icon: 'http://teachdentistry.org/site_media/img/blue-dot.png'
+                icon: 'http://teachdentistry.org/site_media/img/icon-pointer-indigo.png'
              });
             
             google.maps.event.addListener(this.marker, 'click', function() {

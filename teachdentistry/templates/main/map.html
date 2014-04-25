@@ -26,7 +26,12 @@
             </div>
             
             <div class="educator-info">
-                <div class="educator-name"><%= name %></div>
+                <div class="educator-name"><%= name %>
+                <% if (video !== null) { %>
+                    <img src="/site_media/img/icon-camera.png" />
+                <% } %>
+                
+                </div>
             <% if (bio_summary !== null) { %>
                 <div class="educator-bio-summary"><%= bio_summary %></div>
             <% } %>

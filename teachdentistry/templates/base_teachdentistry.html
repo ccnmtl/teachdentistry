@@ -32,14 +32,14 @@
         <div id="logo-project"><a href="/"></a></div>
         <ul id="sitewide-pages">
         {% block usernav %}
-            <li id="user-status">
+            
             {% if request.user.is_anonymous %}
-                <a href="/accounts/login/?next=/" class="btn btn-small btn-primary">Log in</a>
+                <li class="flatpages"><a href="/accounts/login/?next=/"><i class="icon-home"></i> HOME</a></li>
             {% else %}
-                Hello, {% if request.user.first_name %}{{request.user.first_name}}{% else %}{{request.user.username}}{% endif %}
-                <a href="/logout/" class="btn btn-mini btn-danger">Log out</a>
+                <li id="user-status">Hello, {% if request.user.first_name %}{{request.user.first_name}}{% else %}{{request.user.username}}{% endif %}
+                 <a href="/logout/" class="btn btn-mini btn-danger">Log out</a></li>
             {% endif %}
-            </li>
+            
         {% endblock %}
             <li class="flatpages"><a href="/pages/about/">ABOUT</a></li>
             <li class="flatpages"><a href="/pages/help/">HELP & CONTACT</a></li>

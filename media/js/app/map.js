@@ -100,12 +100,15 @@
                 }
             }
             
-            
+            var icon_url = self.model.get('video').length < 1 ?
+                'http://teachdentistry.org/site_media/img/icon-pointer-indigo.png' :
+                    'http://teachdentistry.org/site_media/img/icon-pointer-red.png';
+                
             this.marker = new google.maps.Marker({
                 position: this.latlng, 
                 title: this.model.get('name'),
                 map: this.parentView.mapInstance,
-                icon: 'http://teachdentistry.org/site_media/img/icon-pointer-indigo.png'
+                icon: icon_url
              });
             
             google.maps.event.addListener(this.marker, 'click', function() {

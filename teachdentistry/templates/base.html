@@ -42,6 +42,10 @@
                         {% else %}
                             logged in as {{request.user.first_name}} {{request.user.last_name}}
                             <a href="/logout/" class="btn btn-inverse">logout</a>
+                            
+                            {% if request.user.has_usable_password %}
+                                <li><a href="/accounts/password/change/">Change Password</a></li>
+                            {% endif %}                            
                         {% endif %}
                     {% endblock %}
                 </p>    

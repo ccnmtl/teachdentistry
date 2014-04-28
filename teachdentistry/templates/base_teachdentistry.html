@@ -38,6 +38,10 @@
             {% else %}
                 <li id="user-status">Hello, {% if request.user.first_name %}{{request.user.first_name}}{% else %}{{request.user.username}}{% endif %}
                  <a href="/logout/" class="btn btn-mini btn-danger">Log out</a></li>
+                            
+                {% if request.user.has_usable_password %}
+                    <li><a href="/accounts/password/change/">Change Password</a></li>
+                {% endif %}                            
             {% endif %}
             
         {% endblock %}

@@ -12,7 +12,7 @@ from teachdentistry.main.helpers import get_or_create_profile, has_responses, \
     allow_redo, is_section_unlocked, primary_nav_sections
 from teachdentistry.main.models import UserProfile, DentalEducator, \
     CAREER_STAGE_CHOICES, TeachingResponsibility, TimeCommitment, \
-    PrimaryTraineesType, UserProfileForm
+    PrimaryTraineesType, UserProfileForm, ClinicalField
 
 
 @login_required
@@ -80,6 +80,8 @@ def page(request, path):
         elif path.startswith('map'):
             template_name = 'main/map.html'
             items['career_stages'] = CAREER_STAGE_CHOICES
+            items['clinical_fields'] = \
+                ClinicalField.objects.all().distinct().order_by('name')
             items['teaching_responsibilities'] = \
                 TeachingResponsibility.objects.all().order_by('name')
             items['paid_time_commitments'] = TimeCommitment.objects.all()

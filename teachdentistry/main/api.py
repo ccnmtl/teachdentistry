@@ -3,13 +3,21 @@ from tastypie.authentication import Authentication
 from tastypie.constants import ALL, ALL_WITH_RELATIONS
 from tastypie.resources import ModelResource
 from teachdentistry.main.models import DentalEducator, Institution, \
-    TeachingResponsibility, TimeCommitment
+    TeachingResponsibility, TimeCommitment, ClinicalField
 
 
 class LoggedInAuthentication(Authentication):
     # All users must be logged in before accessing the json API
     def is_authenticated(self, request, **kwargs):
         return request.user.is_authenticated()
+
+
+class ClinicalFieldResource(ModelResource):
+    class Meta:
+        queryset = ClinicalField.objects.all()
+        allowed_methods = ['get']
+        authentication = LoggedInAuthentication()
+        filtering = {'id': ALL}
 
 
 class InstitutionResource(ModelResource):
@@ -36,18 +44,23 @@ class TimeCommitmentResource(ModelResource):
 
 
 class DentalEducatorResource(ModelResource):
+    clinical_field = fields.ManyToManyField(
+        ClinicalFieldResource,
+        'clinical_field',
+        full=True)
+
     institution = fields.ForeignKey(InstitutionResource,
                                     'institution',
                                     full=True)
+
+    paid_time_commitment = fields.ForeignKey(TimeCommitmentResource,
+                                             'paid_time_commitment',
+                                             full=True)
 
     teaching_responsibility = fields.ManyToManyField(
         TeachingResponsibilityResource,
         'teaching_responsibility',
         full=True)
-
-    paid_time_commitment = fields.ForeignKey(TimeCommitmentResource,
-                                             'paid_time_commitment',
-                                             full=True)
 
     volunteer_time_commitment = fields.ForeignKey(TimeCommitmentResource,
                                                   'volunteer_time_commitment',
@@ -62,6 +75,7 @@ class DentalEducatorResource(ModelResource):
         authentication = LoggedInAuthentication()
         filtering = {
             'career_stage': ALL,
+            'clinical_field': ALL_WITH_RELATIONS,
             'gender': ALL,
             'teaching_responsibility': ALL_WITH_RELATIONS,
             'paid_time_commitment': ALL_WITH_RELATIONS,

@@ -105,14 +105,28 @@
                         </div>
                         {% endfor %}
                     </div>
-                </div>            
+                </div>
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                            <i class="icon-plus-sign pull-right"></i>Teaching Responsiblities
+                            <i class="icon-plus-sign pull-right"></i>Clinical Field
                         </a>
                     </div>
                     <div id="collapseThree" class="accordion-body collapse">
+                        {% for c in clinical_fields %}
+                        <div class="accordion-inner">
+                            <input class="search_criteria id" type="checkbox" name="clinical_field__id" value="{{c.id}}" /> <span class="choice">{{c.name}}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>            
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                            <i class="icon-plus-sign pull-right"></i>Teaching Responsiblities
+                        </a>
+                    </div>
+                    <div id="collapseFour" class="accordion-body collapse">
                         {% for r in teaching_responsibilities %}
                         <div class="accordion-inner">
                             <input class="search_criteria id" type="checkbox" name="teaching_responsibility__id" value="{{r.id}}" /> <span class="choice">{{r.name}}</span>
@@ -122,11 +136,11 @@
                 </div>
                 <div class="accordion-group">
                     <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
                             <i class="icon-plus-sign pull-right"></i>Gender
                         </a>
                     </div>
-                    <div id="collapseOne" class="accordion-body collapse">
+                    <div id="collapseFive" class="accordion-body collapse">
                         <div class="accordion-inner">
                             <input class="search_criteria" type="checkbox" name="gender" value="F" /> <span class="choice">Female</span>
                         </div>
@@ -137,11 +151,11 @@
                 </div>
                 <div class="accordion-group">
                     <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
                             <i class="icon-plus-sign pull-right"></i>Paid Time Commitments
                         </a>
                     </div>
-                    <div id="collapseFour" class="accordion-body collapse">
+                    <div id="collapseSix" class="accordion-body collapse">
                         {% for t in paid_time_commitments %}
                         <div class="accordion-inner">
                             <input class="search_criteria" type="checkbox" name="paid_time_commitment__id" value="{{t.id}}" /> <span class="choice">{{t.duration}}</span>
@@ -151,11 +165,11 @@
                 </div>
                 <div class="accordion-group">
                     <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
                             <i class="icon-plus-sign pull-right"></i>Volunteer Time Commitments
                         </a>
                     </div>
-                    <div id="collapseFive" class="accordion-body collapse">
+                    <div id="collapseSeven" class="accordion-body collapse">
                         {% for t in volunteer_time_commitments %}
                         <div class="accordion-inner">
                             <input class="search_criteria" type="checkbox" name="volunteer_time_commitment" value="{{t.id}}" /> <span class="choice">{{t.duration}}</span>

@@ -12,6 +12,7 @@
     <link href="/site_media/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="/site_media/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="/site_media/css/main.css" rel="stylesheet">
+    <link href="/site_media/css/main-print.css" rel="stylesheet" media="print" />
 {% endcompress %}
     <link rel="shortcut icon" type="image/png" href="/site_media/img/favicon.png" />
   
@@ -50,6 +51,10 @@
         </ul>
         {% block topnavbarleftitems %}{% endblock %}
         {% block topnavbarrightitems %}{% endblock %}
+    </div>
+    
+    <div class="print-block">
+    <img src="/site_media/img/logo_project_print.png" width="200px"  />
     </div>
 {% endblock %}
 
@@ -116,7 +121,7 @@
                         {% block mode-edit %}<li><a href="/edit{{section.get_absolute_url}}">Edit</a></li>{% endblock %}
                         {% if instructor_link %}<li><a href="/instructor{{request.path}}">Responses</a></li>{% endif %}
                     </ul>
-                    <hr />
+                    <hr class="screen-delim" />
                     {% endif %}
                     {% block section_thumbnail %}{% endblock %}
                     {% block pagetitle %}{% endblock %}
@@ -134,6 +139,11 @@
     <footer class="footer">
         <a href="http://dental.columbia.edu/" target="_blank" title="Columbia University College of Dental Medicine"><img src="/site_media/img/logo_dental_school.png" /></a>
         <a href="http://ccnmtl.columbia.edu" target="_blank" title="Columbia Center for New Media Teaching and Learning"><img src="/site_media/img/logo_ccnmtl.png" /></a>
+    </footer>
+    <footer class="print-block">
+        <img src="/site_media/img/logo_dental_school.png" />
+        <img src="/site_media/img/logo_ccnmtl.png" /><br />
+        http://teachdentistry.org
     </footer>
     {% endblock %}
 

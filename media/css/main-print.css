@@ -1,0 +1,113 @@
+body {
+  background: transparent;
+}
+
+
+#primarynav,
+#site-header,
+.nav-pills,
+.admin-sign,
+.screen-delim,
+.content-nav,
+.section-slug,
+footer.footer {
+  display: none;
+}
+
+.print-block {
+  border-bottom: 1px dotted #999;
+  padding-bottom: 10px;
+  display: block;
+}
+
+footer.print-block {
+  border-bottom: none;
+  border-top: 1px dotted #999;
+  margin-top: -70px;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+#outer-container {
+  border: 0;
+  box-shadow: none;
+}
+
+.pagetitle {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 20px;
+}
+
+.section-thumbnail {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: auto;
+}
+
+.section-thumbnail h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 14px;
+  float: none;
+  line-height: 100%;
+}
+
+.self-id-quiz .highlighted {
+    border: 1px solid #9cf;
+    -webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+            border-radius: 6px;
+}
+
+/* ---- CE Credit Certificate ------------ */
+
+.certification {
+  font-size: 13px;
+  line-height: 140%;
+}
+
+.certification h3 {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.certification h2 {
+  font: bold 30px Garamond, "times new roman";
+  font-style: italic;
+}
+
+#cert-person, #cert-event, #cert-date {
+  font-size: 13px;
+  margin-top: 20px;
+}
+
+#cert-person hr {
+  padding-top: 30px;
+}
+
+#cert-event h3 {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.cert-note {
+  font-size: 10px;
+  line-height: 130%;
+  margin-top: 20px;
+}
+
+#cert-date h4 {
+  font-size: 13px;
+  margin: 0;
+  padding: 0;
+}

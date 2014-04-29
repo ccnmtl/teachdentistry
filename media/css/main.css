@@ -438,6 +438,10 @@ div.profile-container .info-field .info-content {
     height: 60px;
 }
 
+.print-block {
+  display: none;
+}
+
 #logo-project {
     float: left;
     width: 270px;
@@ -1888,4 +1892,46 @@ ul.multiselect-container li a label.checkbox:before {
     padding: 5px;
     color: #333;
     font-style: italic;
+}
+
+/* ---- CE Credit Certificate ------------ */
+
+.certification {
+  border: 6px solid #cad6d6;
+  padding: 2px;
+  text-align: center;
+}
+
+#certificate {
+  border: 24px solid #bed4e9;
+  padding: 2px;
+}
+
+#cert-txt {
+  border: 3px solid #e5efe7;
+  padding: 10px;
+}
+
+.certification h2 {
+  font: bold 36px Garamond, "times new roman";
+  font-style: italic;
+}
+
+#cert-person, #cert-event, #cert-date {
+  font-size: 20px;
+  margin-top: 40px;
+}
+
+#cert-person hr {
+  padding-top: 50px;
+}
+
+#cert-event h3 {
+  line-height: 130%;
+  margin-bottom: 20px;
+}
+
+.cert-note {
+  margin-top: 40px;
+  font-size: 12px;
 }

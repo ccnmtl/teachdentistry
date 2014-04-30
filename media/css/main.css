@@ -212,6 +212,10 @@ p {
 /*--------------------------------------------------
     Searchable Educator Map
   --------------------------------------------------*/
+
+.map {
+  position: relative;
+}
   
 div.map-container div.search {
     float: left;
@@ -312,6 +316,48 @@ div.educator-infowindow .headshot-thumb {
     width: 75px;
 }
 
+.map .icon-facetime-video {
+background-position: -432px -46px;
+}
+
+.map .map-legend {
+  width: 95px;
+  height: 55px;
+  position: absolute;
+  bottom: 22px;
+  right: 1px;
+  border: 1px solid #666;
+  /*background-color: #fff;*/
+  z-index: 100;
+font-family: Roboto, Arial, sans-serif;
+font-size: 11px;
+padding: 0px;
+border-bottom-left-radius: 2px;
+border-top-left-radius: 2px;
+border: 1px solid rgba(0, 0, 0, 0.14902);
+box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
+-webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
+}
+
+.map-legend-bg {
+  width: 95px;
+  height: 55px;
+  opacity:0.7;
+  filter:alpha(opacity=70); /* For IE8 and earlier */
+  background-color: #fff;
+}
+
+.map-legend-set {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.map-legend-item {
+  height: 20px;
+  padding: 3px;
+  line-height: 20px;
+}
 
 /*--------------------------------------------------
     Dental Educator Profile Page

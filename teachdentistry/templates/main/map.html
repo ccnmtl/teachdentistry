@@ -26,16 +26,13 @@
             </div>
             
             <div class="educator-info">
-                <div class="educator-name"><%= name %>
-                <% if (video.length > 0) { %>
-                    <img src="/site_media/img/icon-camera.png" />
-                <% } %>
-                
-                </div>
+                <div class="educator-name"><%= name %></div>
             <% if (bio_summary !== null) { %>
                 <div class="educator-bio-summary"><%= bio_summary %></div>
             <% } %>
-            <div><a href="/profile/<%=id%>/" class="btn btn-primary btn-mini">Find out more...</a></div>
+            <div><a href="/profile/<%=id%>/" class="btn btn-primary btn-mini">
+             <% if (video.length > 0) { %><i class="icon-facetime-video icon-white"></i><% } %>
+            Find out more...</a></div>
             </div>
         </div>
     </script>
@@ -181,6 +178,19 @@
             </form>
         </div>
         <div class="map">
+             <div class="map-legend">
+                <div class="map-legend-bg"></div>
+                <div class="map-legend-set">
+                  <div class="map-legend-item">
+                    <img src="/site_media/img/icon-legend-red.png" />
+                    With video
+                  </div>
+                  <div class="map-legend-item">
+                    <img src="/site_media/img/icon-legend-indigo.png" />
+                    Without video
+                  </div>
+                </div>
+             </div>
              <div id="map-canvas" class="google-maps"></div>
         </div>
     </div>

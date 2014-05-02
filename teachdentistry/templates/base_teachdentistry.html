@@ -38,17 +38,19 @@
                 <li class="flatpages"><a href="/accounts/login/?next=/"><i class="icon-home"></i> HOME</a></li>
             {% else %}
                 <li id="user-status">Hello, {% if request.user.first_name %}{{request.user.first_name}}{% else %}{{request.user.username}}{% endif %}
-                 <a href="/logout/" class="btn btn-mini btn-danger">Log out</a></li>
-                            
-                {% if request.user.has_usable_password %}
-                    <li><a href="/accounts/password/change/">Change Password</a></li>
-                {% endif %}                            
+                 <a href="/logout/" class="btn btn-mini btn-danger">Log out</a></li>                           
             {% endif %}
             
         {% endblock %}
             <li class="flatpages"><a href="/pages/about/">ABOUT</a></li>
             <li class="flatpages"><a href="/pages/help/">HELP & CONTACT</a></li>
         </ul>
+        {% if request.user.has_usable_password %}
+        <ul id="change-password">
+            <li class="flatpages"><a href="/accounts/password/change/">CHANGE PASSWORD</a></li>
+         </ul>
+       {% endif %}         
+        
         {% block topnavbarleftitems %}{% endblock %}
         {% block topnavbarrightitems %}{% endblock %}
     </div>

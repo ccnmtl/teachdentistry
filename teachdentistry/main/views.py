@@ -22,6 +22,13 @@ def index(request):
     return {'modules': primary_nav_sections(profile)}
 
 
+def can_user_edit(request):
+    can_edit = False
+    if not request.user.is_anonymous():
+        can_edit = request.user.is_staff
+    return can_edit
+
+
 @login_required
 def page(request, path):
     section = get_section_from_path(path)
@@ -33,9 +40,7 @@ def page(request, path):
     if accessible:
         user_profile.save_visit(section)
 
-    can_edit = False
-    if not request.user.is_anonymous():
-        can_edit = request.user.is_staff
+    can_edit = can_user_edit(request)
 
     first_leaf = hierarchy.get_first_leaf(section)
     ancestors = first_leaf.get_ancestors()

@@ -75,10 +75,8 @@ def page(request, path):
                      next_unlocked=is_section_unlocked(user_profile,
                                                        section.get_next()))
 
-        if not accessible:
-            template_name = 'main/inaccessible.html'
-        elif path.startswith('map'):
-            template_name = 'main/map.html'
+        template_name = template_from_path(accessible, path)
+        if accessible and path.startswith('map'):
             items['career_stages'] = CAREER_STAGE_CHOICES
             items['clinical_fields'] = \
                 ClinicalField.objects.all().distinct().order_by('name')
@@ -87,14 +85,21 @@ def page(request, path):
             items['paid_time_commitments'] = TimeCommitment.objects.all()
             items['volunteer_time_commitments'] = TimeCommitment.objects.all()
             items['trainee_types'] = PrimaryTraineesType.objects.all()
-        elif path.startswith('profile'):
-            template_name = 'main/profile.html'
-        else:
-            template_name = 'main/page.html'
 
         return render_to_response(template_name,
                                   items,
                                   context_instance=RequestContext(request))
+
+
+def template_from_path(accessible, path):
+    if not accessible:
+        return 'main/inaccessible.html'
+    elif path.startswith('map'):
+        return 'main/map.html'
+    elif path.startswith('profile'):
+        return 'main/profile.html'
+    else:
+        return 'main/page.html'
 
 
 @login_required

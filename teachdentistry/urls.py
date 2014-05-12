@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
 from registration.backends.default.views import RegistrationView
@@ -7,7 +7,6 @@ from tastypie.api import Api
 from teachdentistry.main.api import DentalEducatorResource, InstitutionResource
 from teachdentistry.main.models import UserProfileForm
 import os.path
-import staticmedia
 
 v1_api = Api(api_name='v1')
 v1_api.register(DentalEducatorResource())
@@ -32,7 +31,6 @@ urlpatterns = patterns(
     (r'^_quiz/', include('quizblock.urls')),
     (r'^_main/api/', include(v1_api.urls)),
     (r'^admin/', include(admin.site.urls)),
-    (r'^munin/', include('munin.urls')),
     (r'^stats/$', TemplateView.as_view(template_name="stats.html")),
     (r'smoketest/', include('smoketest.urls')),
     (r'^site_media/(?P<path>.*)$',
@@ -61,4 +59,4 @@ if settings.DEBUG:
 urlpatterns += patterns(
     '',
     (r'^(?P<path>.*)$', 'teachdentistry.main.views.page'),
-) + staticmedia.serve()
+)

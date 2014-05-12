@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.localflavor.us.us_states import US_STATES
+from localflavor.us.us_states import US_STATES
 from django.db import models
 from django.forms.widgets import CheckboxSelectMultiple
 from pagetree.models import Section
@@ -262,8 +262,8 @@ class DentalEducator(models.Model):
     bio_summary = models.TextField(default='', null=True, blank=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     contact_email = models.CharField(max_length=256, null=True, blank=True)
-    contact_permission = models.BooleanField()
-    release_consent = models.BooleanField()
+    contact_permission = models.BooleanField(default=False)
+    release_consent = models.BooleanField(default=False)
     race = models.CharField(max_length=2, choices=RACE_CHOICES,
                             null=True, blank=True)
     ethnicity = models.CharField(max_length=2, choices=ETHNICITY_CHOICES,

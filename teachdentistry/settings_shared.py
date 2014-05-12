@@ -46,7 +46,6 @@ NOSE_ARGS = [
 JENKINS_TASKS = (
     'django_jenkins.tasks.run_pylint',
     'django_jenkins.tasks.with_coverage',
-    'django_jenkins.tasks.django_tests',
     'django_jenkins.tasks.run_pep8',
     'django_jenkins.tasks.run_pyflakes',
 )
@@ -106,13 +105,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.flatpages',
-    'django.contrib.markup',
-    'staticmedia',
     'sorl.thumbnail',
     'django.contrib.admin',
     'tagging',
     'typogrify',
-    'munin',
     'south',
     'django_nose',
     'compressor',
@@ -129,7 +125,9 @@ INSTALLED_APPS = [
     'pageblocks',
     'quizblock',
     'treebeard',
-    'registration'
+    'registration',
+    'django_markwhat',
+    'localflavor',
 ]
 
 PAGEBLOCKS = [
@@ -150,13 +148,11 @@ INTERNAL_IPS = ('127.0.0.1', )
 DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.version.VersionDebugPanel',
     'debug_toolbar.panels.timer.TimerDebugPanel',
-    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
     'debug_toolbar.panels.headers.HeaderDebugPanel',
     'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
     'debug_toolbar.panels.template.TemplateDebugPanel',
     'debug_toolbar.panels.sql.SQLDebugPanel',
     'debug_toolbar.panels.signals.SignalDebugPanel',
-    'debug_toolbar.panels.logger.LoggingPanel',
 )
 
 
@@ -164,7 +160,6 @@ STATSD_CLIENT = 'statsd.client'
 STATSD_PREFIX = 'teachdentistry'
 STATSD_HOST = '127.0.0.1'
 STATSD_PORT = 8125
-STATSD_PATCHES = ['django_statsd.patches.db', ]
 
 THUMBNAIL_SUBDIR = "thumbs"
 EMAIL_SUBJECT_PREFIX = "[teachdentistry] "

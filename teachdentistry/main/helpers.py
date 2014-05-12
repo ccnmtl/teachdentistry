@@ -9,24 +9,22 @@ def is_section_unlocked(profile, section):
         return False
     if not section:
         return True
-    if section.is_root():
-        return True
-    if profile.has_visited(section):
+    if section.is_root() or profile.has_visited(section):
         return True
 
     previous = section.get_previous()
     if not previous:
         return True
-    else:
-        if not profile.has_visited(previous):
-            return False
+
+    if not profile.has_visited(previous):
+        return False
 
     # if the previous page had blocks to submit
     # we only let them by if they submitted
     for p in previous.pageblock_set.all():
-        if hasattr(p.block(), 'unlocked'):
-            if not p.block().unlocked(profile.user):
-                return False
+        if (hasattr(p.block(), 'unlocked')
+                and not p.block().unlocked(profile.user)):
+            return False
 
     return profile.has_visited(previous)
 

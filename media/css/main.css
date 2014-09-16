@@ -1935,6 +1935,36 @@ div.p {
     margin: 10px 0 0 300px;
 }
 
+/* consent */
+
+.consent-checkbox label {
+    margin: 0;
+    padding: 0 0 0 0;
+    width: auto;
+    float: none;
+    text-align: left;
+    font-size: 16px;
+    display: inline;
+}
+
+.consent-checkbox input[type="checkbox"] {
+    margin: 0;
+    padding: 0 0 0 0;
+    width: auto;
+    float: none;
+    text-align: left;
+    font-size: 20px;
+}
+
+#consent-text h3 {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-size: 30px;
+}
+
+
+
 /* ---- Registration MultiSelect Widget ------------ */
 
 ul.multiselect-container {

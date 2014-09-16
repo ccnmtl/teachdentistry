@@ -31,6 +31,11 @@ AGREEMENT_CHOICES_EX = (
 )
 
 
+CONSENT_CHOICES = (
+    ('C0', 'Have not consented'),
+    ('C1', 'Consented')
+)
+
 CAREER_STAGE_CHOICES = (
     ('E', 'Early career'),
     ('M', 'Mid career'),

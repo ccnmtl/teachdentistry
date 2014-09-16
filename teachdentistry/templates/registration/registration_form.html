@@ -37,14 +37,81 @@
             });
         });
     </script>    
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('#id_consent').change(function() {
+                if (jQuery('#id_consent').is(':checked')) {
+                    jQuery("#consent-text").hide();
+                    jQuery("div.consent-checkbox").hide();
+                    jQuery("#consented-signup").show();
+                } else {
+                    jQuery("#consent-text").show();
+                    jQuery("div.consent-checkbox").show();
+                    jQuery("#consented-signup").hide();
+                }
+            });
+           if (jQuery('#id_consent').attr('checked')) {
+                jQuery("#consent-text").hide();
+                jQuery("div.consent-checkbox").hide();
+                jQuery("#consented-signup").show();
+            }
+            else {
+                jQuery("#consent-text").show();
+                jQuery("div.consent-checkbox").show();
+                jQuery("#consented-signup").hide();
+            }
+
+             jQuery('#id_not_consent').change(function() {
+                if (jQuery('#id_not_consent').is(':checked')) {
+                var url = "/";
+                jQuery(location).attr('href',url)
+                }
+            });
+        });
+    </script>
 {% endblock %}
 
 {% block registration_content %}
     <h2 class="pagetitle signuptitle">Sign up for an account</h2>
     
+    <form method="post" action="." class="register" style="padding-top: 0;">
+   <div id="consent-text">
+   
+    <div class="p">
+    If you already have a username or password, but have forgotten either,
+        <a href="{% url 'auth_password_reset' %}">reset them here</a>.
+    </div>
+    <div class="p">Please review the following terms of consent. By signing up for an account, you are agreeing to participate in this study.</div>
+    
+   <div class="well">
+   <h3>Terms of Consent</h3>
+	<p>This project seeks to evaluate your interest, confidence, and knowledge about dental academic careers, through a web-based learning module (http://www.teachdentistry.org). It provides detailed information about dental academic careers and highlights exemplars in the field. In addition to the module content, the study involves an initial registration survey of participant characteristics, and a follow up survey asking about module ease of use and utility.</p>
+
+	<p>Participation in this project is voluntary, refusal to participate will involve no penalty, and you may discontinue participation at any time. Any information you provide during this program will be kept confidential. Your information will help to improve the module for future users. All information obtained from this project will be stored on an encrypted storage device and only accessible to approved project personnel. All related future publications will be free of identifiable information. The Columbia University Medical Center IRB and the Office for Human Research Protections may have access to the project.</p>
+
+	<p>We foresee minimal risk for participating in this project You will not receive personal (direct) benefit from taking part in this research study. However, the information collected from this research may help others in the future. You will receive one continuing education credit for completion of this module and the follow up survey.</p>
+
+	<p>If there are any questions or concerns please contact the Principal Investigator, Dr. Burton Edelstein, Chair of the Section of Social and Behavioral Sciences and Professor of Dentistry and Health Policy & Management, at the Columbia University College of Dental Medicine (212) 342-3505 or by email at ble22@columbia.edu. You may also contact the Medical Center Institutional Review Board at (212) 305-5883. (reference # IRB-AAAM3657)   </p>
+	</div>
+	</div>
+   
+	<div class="consent-checkbox">
+		<div>
+			<input id="id_consent" name="consent" type="checkbox" />
+			<label> I have read the consent agreement and agree to the terms and condition.</label>
+			
+		 </div>
+<br clear />
+		 <div>
+			<input id="id_not_consent" name="not_consent" type="checkbox" />
+			<label> I have read the consent agreement and do not agree to the terms and condition. I will not be signing up for an account.</label>
+			
+		 </div>
+   </div>
+   <div id="consented-signup">
+   
     <div class="p">Use the following form to create a new account to access Teach Dentistry.</div>
-    
-    
+
     <div class="p">
     If you already have a username or password, but have forgotten either,
         <a href="{% url 'auth_password_reset' %}">reset them here</a>.
@@ -52,11 +119,11 @@
     
     <div class="p"><i><span style="color: #c00; font-size: 20px;">*</span> Indicates required field</i></div>
     
-    <form method="post" action="." class="register">
       {{ form.as_p }}
       
       <input class="btn btn-primary" type="submit" value="{% trans 'Sign up!' %}" />
-    </form>
+</div>
+</form>
 
 {% endblock %}
 

@@ -30,7 +30,6 @@ AGREEMENT_CHOICES_EX = (
     ('A8', "I don't know the benefits or the challenges")
 )
 
-
 CONSENT_CHOICES = (
     ('C0', 'Have not consented'),
     ('C1', 'Consented')

@@ -39,8 +39,8 @@
     </script>    
     <script type="text/javascript">
         jQuery(document).ready(function() {
-            jQuery('#id_consent').change(function() {
-                if (jQuery('#id_consent').is(':checked')) {
+            jQuery('input[name="consented"]').change(function() {
+                if (jQuery('input[name="consented"]').is(':checked')) {
                     jQuery("#consent-text").hide();
                     jQuery("div.consent-checkbox").hide();
                     jQuery("#consented-signup").show();
@@ -50,7 +50,7 @@
                     jQuery("#consented-signup").hide();
                 }
             });
-           if (jQuery('#id_consent').attr('checked')) {
+           if (jQuery('input[name="consented"]').attr('checked')) {
                 jQuery("#consent-text").hide();
                 jQuery("div.consent-checkbox").hide();
                 jQuery("#consented-signup").show();
@@ -61,8 +61,8 @@
                 jQuery("#consented-signup").hide();
             }
 
-             jQuery('#id_not_consent').change(function() {
-                if (jQuery('#id_not_consent').is(':checked')) {
+             jQuery('input[name="not_consented"]').change(function() {
+                if (jQuery('input[name="not_consented"]').is(':checked')) {
                 var url = "/";
                 jQuery(location).attr('href',url)
                 }
@@ -97,13 +97,13 @@
    
 	<div class="consent-checkbox">
 		<div>
-			<input id="id_consent" name="consent" type="checkbox" />
+			{{form.consented}}
 			<label> I have read the consent agreement and agree to the terms and condition.</label>
 			
 		 </div>
 <br clear />
 		 <div>
-			<input id="id_not_consent" name="not_consent" type="checkbox" />
+			<input id="id_not_consent" name="not_consented" type="checkbox" />
 			<label> I have read the consent agreement and do not agree to the terms and condition. I will not be signing up for an account.</label>
 			
 		 </div>
@@ -119,7 +119,145 @@
     
     <div class="p"><i><span style="color: #c00; font-size: 20px;">*</span> Indicates required field</i></div>
     
-      {{ form.as_p }}
+      {{form.username.errors}}
+      <p class="required">
+      <label for="id_username">{{form.username.label}}:</label>
+      {{form.username}}
+      </p>
+    
+      {{form.email.errors}}
+      <p class="required">
+      <label for="id_email">{{form.email.label}}:</label>
+      {{form.email}}
+      </p>
+    
+      {{form.password1.errors}}
+      <p class="required">
+      <label for="id_password1">{{form.password1.label}}:</label>
+      {{form.password1}}
+      </p>
+    
+      {{form.password2.errors}}
+      <p class="required">
+      <label for="id_password2">{{form.password2.label}}:</label>
+      {{form.password2}}
+      </p>
+
+      {{form.first_name.errors}}
+      <p class="required">
+      <label for="id_first_name">{{form.first_name.label}}:</label>
+      {{form.first_name}}
+      </p>
+
+      {{form.last_name.errors}}
+      <p class="required">
+      <label for="id_last_name">{{form.last_name.label}}:</label>
+      {{form.last_name}}
+      </p>
+
+      {{form.gender.errors}}
+      <p class="required">
+      <label for="id_gender">{{form.gender.label}}:</label>
+      {{form.gender}}
+      </p>
+
+      {{form.primary_discipline.errors}}
+      <p class="required">
+      <label for="id_primary_discipline">{{form.primary_discipline.label}}:</label>
+      {{form.primary_discipline}}
+      </p>
+
+      {{form.primary_other_dental_discipline.errors}}
+      <p>
+      <label for="id_primary_other_discipline">{{form.primary_other_dental_discipline.label}}:</label>
+      {{form.primary_other_dental_discipline}}
+      </p>
+      
+      {{form.primary_other_discipline.errors}}
+      <p>
+      <label for="id_primary_other_discipline">{{form.primary_other_discipline.label}}:</label>
+      {{form.primary_other_discipline}}
+      </p>
+      
+      {{form.dental_school.errors}}
+      <p class="required">
+      <label for="id_dental_school">{{form.dental_school.label}}</label>
+      {{form.dental_school}}
+      </p>
+      
+      {{form.year_of_graduation.errors}}
+      <p class="required">
+      <label for="id_year_of_graduation">{{form.year_of_graduation.label}}</label>
+      {{form.year_of_graduation}}
+      </p>
+      
+      {{form.postal_code.errors}}
+      <p class="required">
+      <label for="id_postal_code">{{form.postal_code.label}}:</label>
+      {{form.postal_code}}
+      </p>
+      
+      {{form.ethnicity.errors}}
+      <p class="required">
+      <label for="id_ethnicity">{{form.ethnicity.label}}:</label>
+      {{form.ethnicity}}
+      </p>
+      
+      {{form.race.errors}}
+      <p class="required">
+      <label for="id_race">{{form.race.label}}:</label>
+      {{form.race}}
+      </p>
+      
+      {{form.age.errors}}
+      <p class="required">
+      <label for="id_age">{{form.age.label}}:</label>
+      {{form.age}}
+      </p>
+      
+      {{form.highest_degree.errors}}
+      <p class="required">
+      <label for="id_highest_degree">{{form.highest_degree.label}}:</label>
+      {{form.highest_degree}}
+      </p>
+      
+      {{form.state.errors}}
+      <p class="required">
+      <label for="id_state">{{form.state.label}}:</label>
+      {{form.state}}
+      </p>
+      
+      {{form.work_description.errors}}
+      <p class="required">
+      <label for="id_work_description_0">{{form.work_description.label}}:</label>
+      {{form.work_description}}
+      </p>
+      
+      {{form.plan_to_teach.errors}}
+      <p class="required">
+      <label for="id_plan_to_teach">{{form.plan_to_teach.label}}:</label>
+      {{form.plan_to_teach}}
+      </p>
+      
+      {{form.qualified_to_teach.errors}}
+      <p class="required">
+      <label for="id_qualified_to_teach">{{form.qualified_to_teach.label}}:</label>
+      {{form.qualified_to_teach}}
+      </p>
+      
+      {{form.opportunities_to_teach.errors}}
+      <p class="required">
+      <label for="id_opportunities_to_teach">{{form.opportunities_to_teach.label}}:</label>
+      {{form.opportunities_to_teach}}
+      </p>
+      
+      {{form.possible_to_teach.errors}}
+      <p class="required">
+      <label for="id_possible_to_teach">{{form.possible_to_teach.label}}:</label>
+      {{form.possible_to_teach}}
+      </p>
+
+      {% comment %}{{ form.as_p }}{% endcomment %}
       
       <input class="btn btn-primary" type="submit" value="{% trans 'Sign up!' %}" />
 </div>

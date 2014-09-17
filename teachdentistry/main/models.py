@@ -51,6 +51,7 @@ class UserProfile(models.Model):
     race = models.CharField(max_length=2, choices=RACE_CHOICES_EX)
     age = models.CharField(max_length=2, choices=AGE_CHOICES)
     highest_degree = models.CharField(max_length=2, choices=DEGREE_CHOICES)
+    consented = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.user.username
@@ -75,6 +76,10 @@ class UserProfile(models.Model):
 
 
 class UserProfileForm(RegistrationForm):
+    consented = forms.BooleanField(
+        label="""I have read the consent agreement and agree to the terms
+        and conditions.""")
+
     first_name = forms.CharField(max_length=256)
     last_name = forms.CharField(max_length=256)
 
@@ -124,23 +129,23 @@ class UserProfileForm(RegistrationForm):
     plan_to_teach = forms.ChoiceField(
         choices=AGREEMENT_CHOICES,
         label="""How much would you say you agree with this statement:
-        I plan to teach dentistry (full or part time) in the future:""")
+        I plan to teach dentistry (full or part time) in the future""")
 
     qualified_to_teach = forms.ChoiceField(
         choices=AGREEMENT_CHOICES,
         label="""How much would you say you agree with this statement:
         I feel confident that I  have the skills required to enter
-        dental academics:""")
+        dental academics""")
 
     opportunities_to_teach = forms.ChoiceField(
         choices=AGREEMENT_CHOICES,
         label="""How much would you say you agree with this statement:
-        I know where to find opportunities in dental academics:""")
+        I know where to find opportunities in dental academics""")
 
     possible_to_teach = forms.ChoiceField(
         choices=AGREEMENT_CHOICES_EX,
         label="""How much would you say you agree with this statement:
-        The benefits of entering dental academics outweigh the challenges:""")
+        The benefits of entering dental academics outweigh the challenges""")
 
     def clean(self):
         return super(RegistrationForm, self).clean()

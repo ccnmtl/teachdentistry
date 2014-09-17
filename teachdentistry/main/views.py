@@ -193,6 +193,7 @@ def update_user_profile(sender, user, request, **kwargs):
     user_profile.race = form.data['race']
     user_profile.age = form.data['age']
     user_profile.highest_degree = form.data['highest_degree']
+    user_profile.consented = form.data['consented']
 
     user_profile.state = u','.join(request.POST.getlist('state'))
     user_profile.work_description = \

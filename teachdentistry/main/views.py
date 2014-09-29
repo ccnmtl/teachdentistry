@@ -1,9 +1,13 @@
 from annoying.decorators import render_to
+from pagetree.models import Hierarchy
 from django.contrib.admin.views.decorators import staff_member_required
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect, HttpResponseForbidden
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.utils.decorators import method_decorator
+from django.http import HttpResponseRedirect, HttpResponseForbidden, \
+    HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template.context import RequestContext
+from django.views.generic.base import View
 from pagetree.helpers import get_section_from_path, get_module, needs_submit, \
     submitted
 from quizblock.models import Submission
@@ -13,6 +17,10 @@ from teachdentistry.main.helpers import get_or_create_profile, has_responses, \
 from teachdentistry.main.models import UserProfile, DentalEducator, \
     CAREER_STAGE_CHOICES, TeachingResponsibility, TimeCommitment, \
     PrimaryTraineesType, UserProfileForm, ClinicalField
+from teachdentistry.main.models import TeachDentistryReport
+from zipfile import ZipFile
+from StringIO import StringIO
+import csv
 
 
 @login_required
@@ -202,3 +210,48 @@ def update_user_profile(sender, user, request, **kwargs):
     user_profile.save()
 
 user_registered.connect(update_user_profile)
+
+
+class LoggedInMixinSuperuser(object):
+    @method_decorator(user_passes_test(lambda u: u.is_superuser))
+    def dispatch(self, *args, **kwargs):
+        return super(LoggedInMixinSuperuser, self).dispatch(*args, **kwargs)
+
+
+class ReportView(LoggedInMixinSuperuser, View):
+
+    def get(self, request):
+        report = TeachDentistryReport()
+
+        # setup zip file for the key & value file
+        response = HttpResponse(mimetype='application/zip')
+
+        disposition = 'attachment; filename=teachdentistry.zip'
+        response['Content-Disposition'] = disposition
+
+        z = ZipFile(response, 'w')
+
+        output = StringIO()  # temp output file
+        writer = csv.writer(output)
+
+        # report on all hierarchies
+        hierarchies = Hierarchy.objects.filter(name='main')
+
+        # Key file
+        for row in report.metadata(hierarchies):
+            writer.writerow(row)
+
+        z.writestr("teachdentistry_key.csv", output.getvalue())
+
+        # Results file
+        output.truncate(0)
+        output.seek(0)
+
+        writer = csv.writer(output)
+
+        for row in report.values(hierarchies):
+            writer.writerow(row)
+
+        z.writestr("teachdentistry_values.csv", output.getvalue())
+
+        return response

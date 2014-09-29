@@ -570,8 +570,56 @@ div.profile-container .info-field .info-content {
 }
 
 #sitewide-pages li#user-status {
-    border-right: 1px solid #999;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+            border-radius: 6px;
+}
+
+#sitewide-pages li#user-status a.user-identity {
+    background: transparent url('/site_media/img/arrow-down.png') right center no-repeat;
     padding-right: 15px;
+    text-decoration: none;
+}
+
+#sitewide-pages #user-menu {
+  padding: 0;
+  margin: 0;
+}
+
+#sitewide-pages .popover-content {
+  padding: 5px 0;
+}
+
+#sitewide-pages .popover-content ul {
+  padding: 0;
+  margin: 0;
+}
+
+#sitewide-pages .popover-content li {
+  display: block;
+  float: none;
+  padding: 0;
+  margin: 0;
+}
+
+#sitewide-pages .popover-content li a {
+  display: block;
+  padding: 3px 10px;
+  text-decoration: none;
+}
+
+#sitewide-pages .popover-content li:hover {
+  background-color: #efefef;
+}
+
+#sitewide-pages .popover-content hr{
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  border-top: #ccc solid 1px;
 }
 
 #change-password {

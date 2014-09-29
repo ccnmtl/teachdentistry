@@ -6,6 +6,7 @@ from registration.backends.default.views import RegistrationView
 from tastypie.api import Api
 from teachdentistry.main.api import DentalEducatorResource, InstitutionResource
 from teachdentistry.main.models import UserProfileForm
+from teachdentistry.main.views import ReportView
 import os.path
 
 v1_api = Api(api_name='v1')
@@ -48,6 +49,7 @@ urlpatterns = patterns(
      {}, 'edit-page'),
     (r'^pages/', include('django.contrib.flatpages.urls')),
     (r'^jsi18n', 'django.views.i18n.javascript_catalog'),
+    (r'^report/$', ReportView.as_view()),
 )
 
 if settings.DEBUG:

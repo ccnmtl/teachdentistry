@@ -37,20 +37,28 @@
             {% if request.user.is_anonymous %}
                 <li class="flatpages"><a href="/accounts/login/?next=/"><i class="icon-home"></i> HOME</a></li>
             {% else %}
-                <li id="user-status">Hello, {% if request.user.first_name %}{{request.user.first_name}}{% else %}{{request.user.username}}{% endif %}
-                 <a href="/logout/" class="btn btn-mini btn-danger">Log out</a></li>                           
+                <li id="user-status">Hello, <a href="#" id="popover-bottom" data-toggle="popover" class="user-identity">{% if request.user.first_name %}{{request.user.first_name}}{% else %}{{request.user.username}}{% endif %}</a></li> 
+<div id="user-menu" style="display: none">
+  <ul>
+    <li><a href="/logout/">Log out</a></li>
+    {% if request.user.has_usable_password %}
+    <li><a href="/accounts/password/change/">Change password</a></li>
+    {% endif %}
+  </ul>
+  {% comment %}{% if request.user.is_superuser %}
+  <hr />
+  <ul>
+    <li><a href="/report/">Download CSV</a></li>
+  </ul>
+  {% endif %}{% endcomment %}
+</div>
+                                           
             {% endif %}
             
         {% endblock %}
             <li class="flatpages"><a href="/pages/about/">ABOUT</a></li>
             <li class="flatpages"><a href="/pages/help/">HELP & CONTACT</a></li>
         </ul>
-        {% if request.user.has_usable_password %}
-        <ul id="change-password">
-            <li class="flatpages"><a href="/accounts/password/change/">CHANGE PASSWORD</a></li>
-         </ul>
-       {% endif %}         
-        
         {% block topnavbarleftitems %}{% endblock %}
         {% block topnavbarrightitems %}{% endblock %}
     </div>
@@ -126,7 +134,7 @@
                     <hr class="screen-delim" />
                     {% endif %}
                     {% block section_thumbnail %}{% endblock %}
-                    {% block pagetitle %}{% endblock %}
+                    {% block pagetitle %}{% endblock %} 
                     {% block content %}{% endblock %}
                     <div class="visualclear"></div>
                     {% block content-nav %}{% endblock %}
@@ -177,9 +185,19 @@
             jQuery(this).toggleClass("active");
             return false;
         });
+        //add popover for user menu
+        jQuery("#popover-bottom").popover({
+          placement: 'bottom',
+          html: true,
+          title: '',
+          content: function() {
+            return jQuery('#user-menu').html();
+          }
+        });
     });
     
     </script>
+
 
 {% if STAGING_ENV %}
     <div class="alert alert-error" style="position: fixed; bottom: 0px;">

@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from pagetree.reports import PagetreeReport, StandaloneReportColumn
 from localflavor.us.us_states import US_STATES
 from django.db import models
 from django.forms.widgets import CheckboxSelectMultiple
@@ -317,3 +318,17 @@ class DentalEducator(models.Model):
 
     def __unicode__(self):
         return self.educator_display_name()
+
+
+class TeachDentistryReport(PagetreeReport):
+
+    def users(self):
+        users = User.objects.filter(
+            is_superuser=False)
+        return users.order_by('id')
+
+    def standalone_columns(self):
+        return [
+            StandaloneReportColumn(
+                "username", 'profile', 'string',
+                'Unique Username', lambda x: x.username)]

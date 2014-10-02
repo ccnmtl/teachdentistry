@@ -22,10 +22,3 @@ class HelpersTest(TestCase):
                           self.root))
         # Logged in user with profile
         self.assertEquals(get_or_create_profile(self.user, self.root), self.up)
-        # Logged in user without profile
-        # user = UserFactory()
-        # profile = get_or_create_profile(user, self.root)
-        # self.assertEquals(profile,UserProfile.objects.get(user=user))
-        # self.assertTrue(profile.has_visited(self.root))
-        # self.assertFalse(profile.has_visited(self.root.get_next()))
-        # UserFactory, , DentalEducatorFactory

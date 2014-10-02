@@ -37,7 +37,7 @@
             {% if request.user.is_anonymous %}
                 <li class="flatpages"><a href="/accounts/login/?next=/"><i class="icon-home"></i> HOME</a></li>
             {% else %}
-                <li id="user-status">Hello, <a href="#" id="popover-bottom" data-toggle="popover" class="user-identity">{% if request.user.first_name %}{{request.user.first_name}}{% else %}{{request.user.username}}{% endif %}</a></li> 
+                <li id="user-status"><i class="icon-user"></i> Hello, <a href="#" id="popover-bottom" data-toggle="popover" class="user-identity">{% if request.user.first_name %}{{request.user.first_name}}{% else %}{{request.user.username}}{% endif %}</a></li> 
 <div id="user-menu" style="display: none">
   <ul>
     <li><a href="/logout/">Log out</a></li>

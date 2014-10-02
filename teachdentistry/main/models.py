@@ -73,7 +73,6 @@ class UserProfile(models.Model):
     def has_visited(self, section):
         return UserVisited.objects.filter(
             user=self, section=section).count() > 0
-        return True
 
 
 class UserProfileForm(RegistrationForm):

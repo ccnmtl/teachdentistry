@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.test.client import Client, RequestFactory
 from teachdentistry.main.models import UserProfile
-from teachdentistry.main.views import update_user_profile
+from teachdentistry.main.views import update_user_profile, template_from_path
 from .factories import UserFactory, UserProfileFactory, DentalEducatorFactory
 from .factories import HierarchyFactory
 
@@ -68,6 +68,14 @@ class BasicViewTest(TestCase):
         self.assertEquals(qs[0].age, 'G3')
         self.assertEquals(qs[0].highest_degree, 'D3')
         self.assertEquals(qs[0].consented, True)
+
+    def test_template_from_path(self):
+        self.assertEquals(template_from_path(False, ''),
+                          'main/inaccessible.html')
+        self.assertEquals(template_from_path(True, 'map/'), 'main/map.html')
+        self.assertEquals(template_from_path(True, 'profile/1'),
+                          'main/profile.html')
+        self.assertEquals(template_from_path(True, ''), 'main/page.html')
 
 
 class LoggedInViewTest(TestCase):

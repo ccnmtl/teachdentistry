@@ -346,9 +346,67 @@ class TeachDentistryReport(PagetreeReport):
                 DISCIPLINE_CHOICES,
                 lambda x: self.get_profile_value(x, 'primary_discipline')),
             StandaloneReportColumn(
+                "primary_other_dental_discipline", 'profile', 'string',
+                'Primary other dental discipline',
+                lambda x: self.get_profile_value(
+                    x, 'primary_other_dental_discipline')),
+            StandaloneReportColumn(
+                "primary_other_discipline", 'profile', 'string',
+                'Primary other discipline',
+                lambda x: self.get_profile_value(
+                    x, 'primary_other_discipline')),
+            StandaloneReportColumn(
                 "work_description", 'profile', 'string',
                 'Work description',
                 lambda x: self.get_profile_value(x, 'work_description')),
+            StandaloneReportColumn(
+                "state", 'profile', 'string',
+                'State',
+                lambda x: self.get_profile_value(x, 'state')),
+            StandaloneReportColumn(
+                "year_of_graduation", 'profile', 'integer',
+                'Year of graduation',
+                lambda x: self.get_profile_value(x, 'year_of_graduation')),
+            StandaloneReportColumn(
+                "dental_school", 'profile', 'string',
+                DENTAL_SCHOOL_CHOICES,
+                lambda x: self.get_profile_value(x, 'dental_school')),
+            StandaloneReportColumn(
+                "postal_code", 'profile', 'string',
+                'Postal code',
+                lambda x: self.get_profile_value(x, 'postal_code')),
+            StandaloneReportColumn(
+                "plan_to_teach", 'profile', 'string',
+                AGREEMENT_CHOICES,
+                lambda x: self.get_profile_value(x, 'plan_to_teach')),
+            StandaloneReportColumn(
+                "qualified_to_teach", 'profile', 'string',
+                AGREEMENT_CHOICES,
+                lambda x: self.get_profile_value(x, 'qualified_to_teach')),
+            StandaloneReportColumn(
+                "opportunities_to_teach", 'profile', 'string',
+                AGREEMENT_CHOICES,
+                lambda x: self.get_profile_value(x, 'opportunities_to_teach')),
+            StandaloneReportColumn(
+                "possible_to_teach", 'profile', 'string',
+                AGREEMENT_CHOICES_EX,
+                lambda x: self.get_profile_value(x, 'possible_to_teach')),
+            StandaloneReportColumn(
+                "ethnicity", 'profile', 'string',
+                ETHNICITY_CHOICES,
+                lambda x: self.get_profile_value(x, 'ethnicity')),
+            StandaloneReportColumn(
+                "race", 'profile', 'string',
+                RACE_CHOICES_EX,
+                lambda x: self.get_profile_value(x, 'race')),
+            StandaloneReportColumn(
+                "age", 'profile', 'string',
+                AGE_CHOICES,
+                lambda x: self.get_profile_value(x, 'age')),
+            StandaloneReportColumn(
+                "highest_degree", 'profile', 'string',
+                DEGREE_CHOICES,
+                lambda x: self.get_profile_value(x, 'highest_degree')),
             StandaloneReportColumn(
                 "consented", 'profile', 'boolean',
                 'Consent given',

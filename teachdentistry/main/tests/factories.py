@@ -15,7 +15,24 @@ class UserFactory(factory.DjangoModelFactory):
 class UserProfileFactory(factory.DjangoModelFactory):
     FACTORY_FOR = UserProfile
     user = factory.SubFactory(UserFactory)
+    gender = 'M'
     year_of_graduation = 2000
+    primary_discipline = 'S1'
+    primary_other_dental_discipline = ''
+    primary_other_discipline = ''
+    work_description = 'coding'
+    state = 'NY'
+    dental_school = 'Other'
+    postal_code = '10027'
+    plan_to_teach = 'A3'
+    qualified_to_teach = 'A3'
+    opportunities_to_teach = 'A3'
+    possible_to_teach = 'A3'
+    ethnicity = 'E2'
+    race = 'R6'
+    age = 'G3'
+    highest_degree = 'D3'
+    consented = True
 
 
 class InstitutionFactory(factory.DjangoModelFactory):

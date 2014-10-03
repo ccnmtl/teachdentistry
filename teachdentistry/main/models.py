@@ -25,7 +25,8 @@ class WorkDescription(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.ForeignKey(User, related_name="application_user")
+    #user = models.ForeignKey(User, related_name="application_user")
+    user = models.OneToOneField(User, related_name="profile")
     last_location = models.CharField(max_length=255, default="/")
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     primary_discipline = models.CharField(max_length=2,
@@ -326,8 +327,29 @@ class TeachDentistryReport(PagetreeReport):
             is_superuser=False)
         return users.order_by('id')
 
+    def get_profile_value(self, user, attr_name):
+        try:
+            return getattr(user.profile, attr_name)
+        except:
+            return 'nothing'
+
     def standalone_columns(self):
         return [
             StandaloneReportColumn(
                 "username", 'profile', 'string',
-                'Unique Username', lambda x: x.username)]
+                'Unique Username', lambda x: x.username),
+            StandaloneReportColumn(
+                "gender", 'profile', 'char',
+                GENDER_CHOICES, lambda x: self.get_profile_value(x, 'gender')),
+            StandaloneReportColumn(
+                "primary_discipline", 'profile', 'string',
+                DISCIPLINE_CHOICES,
+                lambda x: self.get_profile_value(x, 'primary_discipline')),
+            StandaloneReportColumn(
+                "work_description", 'profile', 'string',
+                'Work description',
+                lambda x: self.get_profile_value(x, 'work_description')),
+            StandaloneReportColumn(
+                "consented", 'profile', 'boolean',
+                'Consent given',
+                lambda x: self.get_profile_value(x, 'consented'))]

@@ -45,12 +45,12 @@
     <li><a href="/accounts/password/change/">Change password</a></li>
     {% endif %}
   </ul>
-  {% comment %}{% if request.user.is_superuser %}
+  {% if request.user.is_superuser %}
   <hr />
   <ul>
     <li><a href="/report/">Download CSV</a></li>
   </ul>
-  {% endif %}{% endcomment %}
+  {% endif %}
 </div>
                                            
             {% endif %}

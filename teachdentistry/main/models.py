@@ -346,15 +346,15 @@ class TeachDentistryReport(PagetreeReport):
                 DISCIPLINE_CHOICES,
                 lambda x: self.get_profile_value(x, 'primary_discipline')),
             StandaloneReportColumn(
-                "primary_other_dental_discipline", 'profile', 'string',
-                'Primary other dental discipline',
-                lambda x: self.get_profile_value(
-                    x, 'primary_other_dental_discipline')),
-            StandaloneReportColumn(
                 "primary_other_discipline", 'profile', 'string',
                 'Primary other discipline',
                 lambda x: self.get_profile_value(
                     x, 'primary_other_discipline')),
+            StandaloneReportColumn(
+                "primary_other_dental_discipline", 'profile', 'string',
+                'Primary other dental discipline',
+                lambda x: self.get_profile_value(
+                    x, 'primary_other_dental_discipline')),
             StandaloneReportColumn(
                 "work_description", 'profile', 'string',
                 'Work description',

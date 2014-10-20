@@ -74,7 +74,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
     'django.core.context_processors.request',
-    'stagingcontext.staging_processor'
+    'stagingcontext.staging_processor',
+    'djangowind.context.context_processor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -177,10 +178,9 @@ COMPRESS_ROOT = "media/"
 
 # WIND settings
 
-AUTHENTICATION_BACKENDS = ('djangowind.auth.WindAuthBackend',
+AUTHENTICATION_BACKENDS = ('djangowind.auth.SAMLAuthBackend',
                            'django.contrib.auth.backends.ModelBackend', )
-WIND_BASE = "https://wind.columbia.edu/"
-WIND_SERVICE = "cnmtl_full_np"
+CAS_BASE = "https://cas.columbia.edu/"
 WIND_PROFILE_HANDLERS = ['djangowind.auth.CDAPProfileHandler']
 WIND_AFFIL_HANDLERS = ['djangowind.auth.AffilGroupMapper',
                        'djangowind.auth.StaffMapper',
@@ -191,6 +191,8 @@ WIND_SUPERUSER_MAPPER_GROUPS = ['anp8', 'jb2410', 'zm4', 'egr2107',
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_COOKIE_HTTPONLY = True
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
 LOGGING = {
     'version': 1,

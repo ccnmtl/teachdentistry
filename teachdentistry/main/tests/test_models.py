@@ -68,7 +68,7 @@ class TeachDentistryReportTest(TestCase):
         self.assertEquals(rows.next(), "")
 
         # username
-        self.assertEquals(rows.next()[1], 'username')
+        self.assertEquals(rows.next()[1], 'userid')
         self.assertEquals(rows.next()[1], 'gender')
         self.assertEquals(rows.next()[1], 'primary_discipline')
         self.assertEquals(rows.next()[1], 'primary_other_discipline')
@@ -93,7 +93,7 @@ class TeachDentistryReportTest(TestCase):
         rows.next()  # header
 
         row = rows.next()
-        self.assertEquals(row[0], self.profile.user.username)
+        self.assertEquals(row[0], self.profile.user.pk)
         self.assertEquals(row[1], 'M')
         self.assertEquals(row[2], 'S1')
         self.assertEquals(row[3], '')

@@ -336,8 +336,8 @@ class TeachDentistryReport(PagetreeReport):
     def standalone_columns(self):
         return [
             StandaloneReportColumn(
-                "username", 'profile', 'string',
-                'Unique Username', lambda x: x.username),
+                "userid", 'profile', 'string',
+                'Unique ID', lambda x: x.pk),
             StandaloneReportColumn(
                 "gender", 'profile', 'char',
                 GENDER_CHOICES, lambda x: self.get_profile_value(x, 'gender')),

@@ -336,6 +336,9 @@ class TeachDentistryReport(PagetreeReport):
     def standalone_columns(self):
         return [
             StandaloneReportColumn(
+                "date_joined", 'profile', 'string',
+                'Date joined', lambda x: x.date_joined),
+            StandaloneReportColumn(
                 "userid", 'profile', 'string',
                 'Unique ID', lambda x: x.pk),
             StandaloneReportColumn(

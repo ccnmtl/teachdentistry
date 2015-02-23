@@ -1,4 +1,4 @@
-Pass
+Teach Dentistry
 ==========
 
 Teach Dentistry aims to inform and provide confidence to dental practitioners interested in entering dental academics by:

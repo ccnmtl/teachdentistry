@@ -36,7 +36,6 @@ if 'test' in sys.argv or 'jenkins' in sys.argv:
     }
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-SOUTH_TESTS_MIGRATE = False
 
 NOSE_ARGS = [
     '--with-coverage',
@@ -74,6 +73,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'stagingcontext.staging_processor',
     'djangowind.context.context_processor',
+    'django.core.context_processors.static',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,11 +104,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'django.contrib.staticfiles',
     'sorl.thumbnail',
     'django.contrib.admin',
     'tagging',
     'typogrify',
-    'south',
     'django_nose',
     'compressor',
     'django_statsd',
@@ -173,6 +173,13 @@ STATICMEDIA_MOUNTS = (
 
 COMPRESS_URL = "/site_media/"
 COMPRESS_ROOT = "media/"
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
 
 # WIND settings
 

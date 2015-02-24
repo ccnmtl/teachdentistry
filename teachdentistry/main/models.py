@@ -25,7 +25,6 @@ class WorkDescription(models.Model):
 
 
 class UserProfile(models.Model):
-    #user = models.ForeignKey(User, related_name="application_user")
     user = models.OneToOneField(User, related_name="profile")
     last_location = models.CharField(max_length=255, default="/")
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)

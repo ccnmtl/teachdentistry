@@ -224,7 +224,7 @@ class ReportView(LoggedInMixinSuperuser, View):
         report = TeachDentistryReport()
 
         # setup zip file for the key & value file
-        response = HttpResponse(mimetype='application/zip')
+        response = HttpResponse(content_type='application/zip')
 
         disposition = 'attachment; filename=teachdentistry.zip'
         response['Content-Disposition'] = disposition

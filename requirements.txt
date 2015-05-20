@@ -44,7 +44,7 @@ typogrify==1.0
 django-indexer==0.2.1
 django-templatetag-sugar==0.1
 django-paging==0.2.2
-django-annoying==0.8.0
+django-annoying==0.8.1
 django-appconf==0.6
 BeautifulSoup==3.2.1
 django-compressor==1.5

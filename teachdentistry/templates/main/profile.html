@@ -30,7 +30,7 @@
             {% if educator.headshot %}
                 <img src="/uploads/{{educator.headshot}}" alt="headshot" class="headshot-thumb img-polaroid img-rounded" />
             {% else %}
-                <img src="{% if educator.gender == 'M' %}/site_media/img/headshot_male.jpg{% else %}/site_media/img/headshot_female.jpg{% endif %}" alt="headshot" class="headshot-thumb img-polaroid img-rounded" />
+                <img src="{% if educator.gender == 'M' %}{{STATIC_URL}}img/headshot_male.jpg{% else %}{{STATIC_URL}}img/headshot_female.jpg{% endif %}" alt="headshot" class="headshot-thumb img-polaroid img-rounded" />
             {% endif %}
             </div>
             <div class="educator-name">{{educator.educator_display_name}}</div>

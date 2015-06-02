@@ -54,6 +54,7 @@ SITE_ID = 1
 USE_I18N = False
 MEDIA_ROOT = "/var/www/teachdentistry/uploads/"
 MEDIA_URL = '/uploads/'
+STATIC_ROOT = os.path.join(os.path.dirname(__file__), "../media")
 STATIC_URL = '/media/'
 SECRET_KEY = ')ng#)ef_u@_^zvvu@dxm7ql-yb^_!a6%v3v^j3b(mp+)l+5%@h'
 
@@ -69,6 +70,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'stagingcontext.staging_processor',
     'djangowind.context.context_processor',
     'django.core.context_processors.static',
+    'teachdentistry.main.views.context_processor'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -165,7 +167,7 @@ STATICMEDIA_MOUNTS = (
     ('/sitemedia', 'sitemedia'),
 )
 
-COMPRESS_URL = "/site_media/"
+COMPRESS_URL = "/media/"
 COMPRESS_ROOT = "media/"
 
 STATICFILES_FINDERS = (

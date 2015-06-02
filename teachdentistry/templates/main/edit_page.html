@@ -21,9 +21,8 @@
 	</style>
 {% endcompress %}
 
-<script src="/site_media/js/jquery-ui-1.10.3.min.js"></script>
+<script src="{{STATIC_URL}}js/jquery-ui-1.10.3.min.js"></script>
 
-{% compress js %}
 <script type="text/javascript">
 var saveOrderOfChildren = function() {
     var url = "{% url 'reorder-section-children' section.id %}?";
@@ -84,7 +83,6 @@ $(function() {
 });
 </script>
 
-{% endcompress %}
 {% endblock %}
 
 {% block moduletabs %}

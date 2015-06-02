@@ -101,7 +101,7 @@
                 }
             }
 
-            var iconURL = this.staticURL +
+            var iconURL = this.staticURL + 'img/' +
                 (self.model.get('video').length < 1 ?
                 'icon-pointer-indigo.png' : 'icon-pointer-red.png');
 
@@ -227,7 +227,7 @@
             var view = new window.EducatorPinView({
                 model: educator,
                 parentView: this,
-                staticUrl: this.staticUrl
+                staticURL: this.staticURL
             });
         },
         onRemoveEducator: function(educator) {
@@ -244,7 +244,7 @@
                 var view = new window.EducatorPinView({
                     model: obj,
                     parentView: self,
-                    staticUrl: self.staticURL
+                    staticURL: self.staticURL
                 });
                 self.mapMarkers.push(view.marker);
             });

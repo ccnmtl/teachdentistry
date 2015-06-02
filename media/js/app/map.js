@@ -74,7 +74,7 @@
             _.bindAll(this,
                       'render',
                       'unrender');
-
+            this.staticURL = options.staticURL;
             this.parentView = options.parentView;
             this.model.bind('destroy', this.unrender);
             this.render();
@@ -101,11 +101,9 @@
                 }
             }
 
-            var iconURL = self.model.get('video').length < 1 ?
-                ('https://teachdentistry.org/site_media/img/' +
-                 'icon-pointer-indigo.png') :
-                    ('https://teachdentistry.org/site_media/img/' +
-                     'icon-pointer-red.png');
+            var iconURL = this.staticURL +
+                (self.model.get('video').length < 1 ?
+                'icon-pointer-indigo.png' : 'icon-pointer-red.png');
 
             this.marker = new google.maps.Marker({
                 position: this.latlng,
@@ -141,6 +139,8 @@
                       'toggleAccordion',
                       'onClickCriteria',
                       'onRemoveCriteria');
+
+            this.staticURL = options.staticURL;
 
             this.educatorTemplate =
                 _.template(jQuery('#educator-template').html());
@@ -226,7 +226,8 @@
         onAddEducator: function(educator) {
             var view = new window.EducatorPinView({
                 model: educator,
-                parentView: this
+                parentView: this,
+                staticUrl: this.staticUrl
             });
         },
         onRemoveEducator: function(educator) {
@@ -242,7 +243,8 @@
             collection.forEach(function(obj) {
                 var view = new window.EducatorPinView({
                     model: obj,
-                    parentView: self
+                    parentView: self,
+                    staticUrl: self.staticURL
                 });
                 self.mapMarkers.push(view.marker);
             });

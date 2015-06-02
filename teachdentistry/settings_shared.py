@@ -52,10 +52,6 @@ TIME_ZONE = 'America/New_York'
 LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
 USE_I18N = False
-MEDIA_ROOT = "/var/www/teachdentistry/uploads/"
-MEDIA_URL = '/uploads/'
-STATIC_ROOT = os.path.join(os.path.dirname(__file__), "../media")
-STATIC_URL = '/media/'
 SECRET_KEY = ')ng#)ef_u@_^zvvu@dxm7ql-yb^_!a6%v3v^j3b(mp+)l+5%@h'
 
 TEMPLATE_LOADERS = (
@@ -88,12 +84,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'teachdentistry.urls'
 
-TEMPLATE_DIRS = (
-    "/var/www/teachdentistry/templates/",
-    os.path.join(os.path.dirname(__file__), "templates"),
-    os.path.join(os.path.dirname(__file__),
-                 "../ve/lib/python2.7/site-packages/treebeard/templates")
-)
+TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), "templates"),)
 
 INSTALLED_APPS = [
     'django.contrib.auth',
@@ -123,6 +114,8 @@ INSTALLED_APPS = [
     'registration',
     'django_markwhat',
     'localflavor',
+    'gunicorn',
+    'storages'
 ]
 
 PAGEBLOCKS = [
@@ -162,19 +155,19 @@ EMAIL_HOST = 'localhost'
 SERVER_EMAIL = "teachdentistry@ccnmtl.columbia.edu"
 DEFAULT_FROM_EMAIL = SERVER_EMAIL
 
-# put any static media here to override app served static media
-STATICMEDIA_MOUNTS = (
-    ('/sitemedia', 'sitemedia'),
-)
-
-COMPRESS_URL = "/media/"
-COMPRESS_ROOT = "media/"
-
+MEDIA_URL = "/uploads/"
+MEDIA_ROOT = 'uploads'
+STATIC_URL = "/media/"
+STATIC_ROOT = "/tmp/teachdentistry/static"
+STATICFILES_DIRS = ('media/',)
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 )
+COMPRESS_URL = "/media/"
+COMPRESS_ROOT = "media/"
+AWS_QUERYSTRING_AUTH = False
 
 
 # WIND settings

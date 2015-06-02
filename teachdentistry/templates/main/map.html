@@ -2,17 +2,17 @@
 {% load render %}
 
 {% block js %}
-    <script src="/site_media/js/json2.js" type="text/javascript" ></script>
-    <script src="/site_media/js/underscore-min.js" type="text/javascript" ></script>
-    <script src="/site_media/js/backbone-min.js" type="text/javascript" ></script>
-    <script src="/site_media/js/backbone-tastypie.js" type="text/javascript" ></script>
+    <script src="{{STATIC_URL}}js/json2.js" type="text/javascript" ></script>
+    <script src="{{STATIC_URL}}js/underscore-min.js" type="text/javascript" ></script>
+    <script src="{{STATIC_URL}}js/backbone-min.js" type="text/javascript" ></script>
+    <script src="{{STATIC_URL}}js/backbone-tastypie.js" type="text/javascript" ></script>
 
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key={{settings.GOOGLE_API_KEY}}&sensor=false">
     </script>
-    <script src="/site_media/markerclusterer/src/markerclusterer.min.js" type="text/javascript" ></script>
+    <script src="{{STATIC_URL}}markerclusterer/src/markerclusterer.min.js" type="text/javascript" ></script>
     
-    <script type="text/javascript" src="/site_media/js/app/map.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/app/map.js"></script>
     
     <script type="text/template" id="educator-template">
         <div class="educator-infowindow">            
@@ -21,7 +21,7 @@
                     <img src="<%= headshot %>" alt="headshot" class="headshot-thumb img-polaroid img-rounded" />
                 <% } %>
                 <% if (headshot == null) { %>
-                    <img src="<% if (gender == 'M') { %>/site_media/img/headshot_male.jpg<%}else{%>/site_media/img/headshot_female.jpg<% } %>" alt="headshot" class="headshot-thumb img-polaroid img-rounded" />
+                    <img src="<% if (gender == 'M') { %>{{STATIC_URL}}img/headshot_male.jpg<%}else{%>{{STATIC_URL}}img/headshot_female.jpg<% } %>" alt="headshot" class="headshot-thumb img-polaroid img-rounded" />
                 <% } %>
             </div>
             
@@ -199,11 +199,11 @@
                 <div class="map-legend-bg"></div>
                 <div class="map-legend-set">
                   <div class="map-legend-item">
-                    <img src="/site_media/img/icon-legend-red.png" />
+                    <img src="{{STATIC_URL}}img/icon-legend-red.png" />
                     With video
                   </div>
                   <div class="map-legend-item">
-                    <img src="/site_media/img/icon-legend-indigo.png" />
+                    <img src="{{STATIC_URL}}img/icon-legend-indigo.png" />
                     Without video
                   </div>
                 </div>

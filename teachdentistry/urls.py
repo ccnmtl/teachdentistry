@@ -1,5 +1,3 @@
-import os.path
-
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
@@ -18,8 +16,6 @@ v1_api.register(DentalEducatorResource())
 v1_api.register(InstitutionResource())
 
 admin.autodiscover()
-
-site_media_root = os.path.join(os.path.dirname(__file__), "../media")
 
 urlpatterns = patterns(
     '',
@@ -52,8 +48,6 @@ urlpatterns = patterns(
     (r'^admin/', include(admin.site.urls)),
     (r'^stats/$', TemplateView.as_view(template_name="stats.html")),
     (r'smoketest/', include('smoketest.urls')),
-    (r'^site_media/(?P<path>.*)$',
-     'django.views.static.serve', {'document_root': site_media_root}),
     (r'^uploads/(?P<path>.*)$',
      'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     (r'^_pagetree/', include('pagetree.urls')),

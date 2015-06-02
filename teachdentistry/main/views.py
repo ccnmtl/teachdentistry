@@ -1,26 +1,35 @@
+from StringIO import StringIO
+import csv
+from zipfile import ZipFile
+
 from annoying.decorators import render_to
-from pagetree.models import Hierarchy
+from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.utils.decorators import method_decorator
 from django.http import HttpResponseRedirect, HttpResponseForbidden, \
     HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template.context import RequestContext
+from django.utils.decorators import method_decorator
 from django.views.generic.base import View
 from pagetree.helpers import get_section_from_path, get_module, needs_submit, \
     submitted
+from pagetree.models import Hierarchy
 from quizblock.models import Submission
 from registration.signals import user_registered
+
 from teachdentistry.main.helpers import get_or_create_profile, has_responses, \
     allow_redo, is_section_unlocked, primary_nav_sections
+from teachdentistry.main.models import TeachDentistryReport
 from teachdentistry.main.models import UserProfile, DentalEducator, \
     CAREER_STAGE_CHOICES, TeachingResponsibility, TimeCommitment, \
     PrimaryTraineesType, UserProfileForm, ClinicalField
-from teachdentistry.main.models import TeachDentistryReport
-from zipfile import ZipFile
-from StringIO import StringIO
-import csv
+
+
+def context_processor(request):
+    ctx = {}
+    ctx['MEDIA_URL'] = settings.MEDIA_URL
+    return ctx
 
 
 @login_required

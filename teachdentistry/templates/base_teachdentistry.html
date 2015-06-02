@@ -9,12 +9,12 @@
     <meta name="author" content="CCNMTL">
 
 {% compress css %}
-    <link href="/site_media/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="/site_media/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="/site_media/css/main.css" rel="stylesheet">
-    <link href="/site_media/css/main-print.css" rel="stylesheet" media="print" />
+    <link href="{{STATIC_URL}}bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/main-print.css" rel="stylesheet" media="print" />
 {% endcompress %}
-    <link rel="shortcut icon" type="image/png" href="/site_media/img/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="{{STATIC_URL}}img/favicon.png" />
   
 {% block css %}{% endblock %}
 
@@ -64,7 +64,7 @@
     </div>
     
     <div class="print-block">
-    <img src="/site_media/img/logo_project_print.png" width="200px"  />
+    <img src="{{STATIC_URL}}img/logo_project_print.png" width="200px"  />
     </div>
 {% endblock %}
 
@@ -100,10 +100,10 @@
             <div id="TDCarousel" class="carousel slide">
                 <!-- Carousel items -->
                 <div class="carousel-inner">
-                    <div class="active item"><img src="/site_media/img/slideshow_01.jpg" /></div>
-                    <div class="item"><img src="/site_media/img/slideshow_02.jpg" /></div>
-                    <div class="item"><img src="/site_media/img/slideshow_03.jpg" /></div>
-                    <div class="item"><img src="/site_media/img/slideshow_04.jpg" /></div>
+                    <div class="active item"><img src="{{STATIC_URL}}img/slideshow_01.jpg" /></div>
+                    <div class="item"><img src="{{STATIC_URL}}img/slideshow_02.jpg" /></div>
+                    <div class="item"><img src="{{STATIC_URL}}img/slideshow_03.jpg" /></div>
+                    <div class="item"><img src="{{STATIC_URL}}img/slideshow_04.jpg" /></div>
                 </div>
             </div>
             <div class="text-content" id="phrase2">
@@ -147,21 +147,21 @@
 
     {% block footer %}
     <footer class="footer">
-        <a href="http://dental.columbia.edu/" target="_blank" title="Columbia University College of Dental Medicine"><img src="/site_media/img/logo_dental_school.png" /></a>
-        <a href="http://ccnmtl.columbia.edu" target="_blank" title="Columbia Center for New Media Teaching and Learning"><img src="/site_media/img/logo_ccnmtl.png" /></a>
+        <a href="http://dental.columbia.edu/" target="_blank" title="Columbia University College of Dental Medicine"><img src="{{STATIC_URL}}img/logo_dental_school.png" /></a>
+        <a href="http://ccnmtl.columbia.edu" target="_blank" title="Columbia Center for New Media Teaching and Learning"><img src="{{STATIC_URL}}img/logo_ccnmtl.png" /></a>
     </footer>
     <footer class="print-block">
-        <img src="/site_media/img/logo_dental_school.png" />
-        <img src="/site_media/img/logo_ccnmtl.png" /><br />
+        <img src="{{STATIC_URL}}img/logo_dental_school.png" />
+        <img src="{{STATIC_URL}}img/logo_ccnmtl.png" /><br />
         https://teachdentistry.org
     </footer>
     {% endblock %}
 
-    <script type="text/javascript" src="/site_media/js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     
     {% compress js %}
-        <script type="text/javascript" src="/site_media/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}bootstrap/js/bootstrap.js"></script>
     {% endcompress %}
     
     <script type="text/javascript" >

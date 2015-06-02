@@ -101,8 +101,9 @@
                 }
             }
 
-            var iconURL = this.staticURL + self.model.get('video').length < 1 ?
-                'icon-pointer-indigo.png' : 'icon-pointer-red.png';
+            var iconURL = this.staticURL +
+                (self.model.get('video').length < 1 ?
+                'icon-pointer-indigo.png' : 'icon-pointer-red.png');
 
             this.marker = new google.maps.Marker({
                 position: this.latlng,

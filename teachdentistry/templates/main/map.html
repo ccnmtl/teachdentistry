@@ -1,5 +1,5 @@
 {% extends 'base_teachdentistry.html' %}
-{% load render %}
+{% load render compress %}
 
 {% block js %}
     <script src="{{STATIC_URL}}js/json2.js" type="text/javascript" ></script>
@@ -10,7 +10,10 @@
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key={{settings.GOOGLE_API_KEY}}&sensor=false">
     </script>
-    <script src="{{STATIC_URL}}markerclusterer/src/markerclusterer.min.js" type="text/javascript" ></script>
+
+    {% compress js %}
+    <script src="{{STATIC_URL}}markerclusterer/src/markerclusterer.js" type="text/javascript" ></script>
+    {% endcompress %}
     
     <script type="text/javascript" src="{{STATIC_URL}}js/app/map.js"></script>
     

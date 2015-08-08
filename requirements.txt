@@ -40,13 +40,13 @@ python-dateutil==2.4.2
 factory_boy==2.4.1
 sqlparse==0.1.14
 
-django-tastypie==0.9.15
+django-tastypie==0.12.1
 djangowind==0.13.3
 sorl==3.1
 tagging==0.3-pre
 typogrify==2.0.7
 django-indexer==0.3.0
-django-templatetag-sugar==0.1
+django-templatetag-sugar==1.0
 django-paging==0.2.5
 django-annoying==0.8.1
 django-appconf==1.0.1
@@ -61,7 +61,7 @@ django-jenkins==0.17.0
 django-smoketest==0.3.0
 django-extensions==1.4.9
 django-treebeard==3.0
-django-pagetree==1.1.6
+django-pagetree==1.1.7
 django-pageblocks==1.0.3
 django-quizblock==1.1.2
 django-pagetree_export==0.4

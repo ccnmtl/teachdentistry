@@ -40,7 +40,7 @@ python-dateutil==2.4.2
 factory_boy==2.4.1
 sqlparse==0.1.14
 
-django-tastypie==0.9.15
+django-tastypie==0.12.1
 djangowind==0.13.3
 sorl==3.1
 tagging==0.3-pre

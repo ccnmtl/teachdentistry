@@ -25,10 +25,10 @@
         <div class="section-thumbnail" style="margin-bottom: 0px;"><div class="section-slug thumbnail-map"></div><h3>SECTION: DENTAL EDUCATOR MAP</h3></div>
         <div class="map_back_nav"><a href="/map/" class="pager_button"><b>&larr;</b> Return to Dental Educator Map</a></div>
         <div class="profile-container">
-            
+
             <div class="educator-headshot">
             {% if educator.headshot %}
-                <img src="/uploads/{{educator.headshot}}" alt="headshot" class="headshot-thumb img-polaroid img-rounded" />
+                <img src="{{MEDIA_URL}}{{educator.headshot}}" alt="headshot" class="headshot-thumb img-polaroid img-rounded" />
             {% else %}
                 <img src="{% if educator.gender == 'M' %}{{STATIC_URL}}img/headshot_male.jpg{% else %}{{STATIC_URL}}img/headshot_female.jpg{% endif %}" alt="headshot" class="headshot-thumb img-polaroid img-rounded" />
             {% endif %}

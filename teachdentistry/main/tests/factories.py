@@ -7,13 +7,15 @@ import factory
 
 
 class UserFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = User
+    class Meta:
+        model = User
     username = factory.Sequence(lambda n: "user%03d" % n)
     is_staff = True
 
 
 class UserProfileFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = UserProfile
+    class Meta:
+        model = UserProfile
     user = factory.SubFactory(UserFactory)
     gender = 'M'
     year_of_graduation = 2000
@@ -36,24 +38,28 @@ class UserProfileFactory(factory.DjangoModelFactory):
 
 
 class InstitutionFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = Institution
+    class Meta:
+        model = Institution
     name = factory.Sequence(lambda n: "institution%03d" % n)
     latitude = 0.
     longitude = 0.
 
 
 class PrimaryTraineesTypeFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = PrimaryTraineesType
+    class Meta:
+        model = PrimaryTraineesType
     name = factory.Sequence(lambda n: "pt%03d" % n)
 
 
 class TimeCommitmentFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = TimeCommitment
+    class Meta:
+        model = TimeCommitment
     duration = "one year"
 
 
 class DentalEducatorFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = DentalEducator
+    class Meta:
+        model = DentalEducator
     first_name = factory.Sequence(lambda n: "fname%03d" % n)
     last_name = factory.Sequence(lambda n: "lname%03d" % n)
     institution = factory.SubFactory(InstitutionFactory)
@@ -63,13 +69,15 @@ class DentalEducatorFactory(factory.DjangoModelFactory):
 
 
 class HierarchyFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = Hierarchy
+    class Meta:
+        model = Hierarchy
     name = "main"
     base_url = ""
 
 
 class RootSectionFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = Section
+    class Meta:
+        model = Section
     hierarchy = factory.SubFactory(HierarchyFactory)
     label = "Root"
     slug = ""

@@ -110,7 +110,7 @@
                 title: this.model.get('name'),
                 map: this.parentView.mapInstance,
                 icon: iconURL
-             });
+            });
 
             google.maps.event.addListener(this.marker, 'click', function() {
                 self.parentView.trigger('markerClicked',

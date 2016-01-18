@@ -69,7 +69,7 @@ django-debug-toolbar==1.4
 django-waffle==0.11
 django-jenkins==0.17.0
 django-smoketest==0.3.0
-django-extensions==1.5.9
+django-extensions==1.6.1
 django-treebeard==3.0
 django-pagetree==1.1.9
 django-pageblocks==1.0.3

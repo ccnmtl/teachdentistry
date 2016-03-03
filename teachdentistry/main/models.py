@@ -276,9 +276,8 @@ class DentalEducator(models.Model):
     headshot = models.FileField(
         upload_to="headshots/%Y/%m/%d/", null=True, blank=True)
     academic_title = models.CharField(max_length=256, null=True, blank=True)
-    clinical_field = models.ManyToManyField(ClinicalField,
-                                            null=True, blank=True)
-    degree = models.ManyToManyField(Degree, null=True, blank=True)
+    clinical_field = models.ManyToManyField(ClinicalField, blank=True)
+    degree = models.ManyToManyField(Degree, blank=True)
     other_degree = models.CharField(max_length=256, null=True, blank=True)
     institution = models.ForeignKey(Institution)
     institution_state = models.CharField(max_length=2, null=True, blank=True)
@@ -297,12 +296,10 @@ class DentalEducator(models.Model):
     other_previous_dental_career = models.CharField(max_length=256,
                                                     null=True, blank=True)
     current_dental_career = models.ManyToManyField(
-        CareerType, null=True, blank=True,
-        related_name="dentaleducator_current_career")
+        CareerType, blank=True, related_name="dentaleducator_current_career")
     other_current_dental_career = models.CharField(max_length=256,
                                                    null=True, blank=True)
-    primary_motivation = models.ManyToManyField(Motivation,
-                                                null=True, blank=True)
+    primary_motivation = models.ManyToManyField(Motivation, blank=True)
     other_motivation = models.CharField(max_length=256, null=True, blank=True)
     teaching_reason = models.TextField(default='', null=True, blank=True)
     video = models.TextField(default='', null=True, blank=True)

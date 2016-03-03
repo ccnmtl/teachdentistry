@@ -33,7 +33,6 @@ INSTALLED_APPS += [  # noqa
     'pageblocks',
     'quizblock',
     'treebeard',
-    'registration',
     'localflavor',
 ]
 

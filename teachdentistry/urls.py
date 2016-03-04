@@ -3,11 +3,11 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.views.generic import TemplateView
-from registration.backends.default.views import RegistrationView
+from registration.backends.hmac.views import RegistrationView
 from tastypie.api import Api
 
 from teachdentistry.main.api import DentalEducatorResource, InstitutionResource
-from teachdentistry.main.models import UserProfileForm
+from teachdentistry.main.forms import UserProfileForm
 from teachdentistry.main.views import ReportView
 
 
@@ -20,6 +20,9 @@ admin.autodiscover()
 urlpatterns = patterns(
     '',
     ('^accounts/', include('djangowind.urls')),
+    url(r'^accounts/register/$', RegistrationView.as_view(
+        form_class=UserProfileForm), name='registration_register'),
+    url(r'^accounts/', include('registration.backends.hmac.urls')),
 
     url(r'^password/reset/$',
         auth_views.password_reset,
@@ -34,10 +37,6 @@ urlpatterns = patterns(
         auth_views.password_reset_confirm,
         name='password_reset_confirm'),
 
-    url(r'^accounts/register/$', RegistrationView.as_view(
-        form_class=UserProfileForm),
-        name='registration_register'),
-    (r'^accounts/', include('registration.backends.default.urls')),
     (r'^logout/$',
      'django.contrib.auth.views.logout',
      {'next_page': '/'}),

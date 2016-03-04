@@ -18,12 +18,13 @@ from pagetree.models import Hierarchy
 from quizblock.models import Submission
 from registration.signals import user_registered
 
+from teachdentistry.main.forms import UserProfileForm
 from teachdentistry.main.helpers import get_or_create_profile, has_responses, \
     allow_redo, is_section_unlocked, primary_nav_sections
 from teachdentistry.main.models import TeachDentistryReport
 from teachdentistry.main.models import UserProfile, DentalEducator, \
     CAREER_STAGE_CHOICES, TeachingResponsibility, TimeCommitment, \
-    PrimaryTraineesType, UserProfileForm, ClinicalField
+    PrimaryTraineesType, ClinicalField
 
 
 def context_processor(request):

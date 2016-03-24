@@ -83,34 +83,39 @@ def page(request, path):
             return HttpResponseRedirect(section.get_absolute_url())
     else:
         instructor_link = has_responses(section)
-
-        items = dict(section=section,
-                     module=module,
-                     accessible=accessible,
-                     needs_submit=needs_submit(section),
-                     is_submitted=submitted(section, request.user),
-                     modules=primary_nav_sections(user_profile),
-                     root=section.hierarchy.get_root(),
-                     instructor_link=instructor_link,
-                     can_edit=can_edit,
-                     allow_redo=allow_redo(section),
-                     next_unlocked=is_section_unlocked(user_profile,
-                                                       section.get_next()))
-
+        items = get_items(request, section, module, accessible, path,
+                          can_edit, instructor_link, user_profile)
         template_name = template_from_path(accessible, path)
-        if accessible and path.startswith('map'):
-            items['career_stages'] = CAREER_STAGE_CHOICES
-            items['clinical_fields'] = \
-                ClinicalField.objects.all().distinct().order_by('name')
-            items['teaching_responsibilities'] = \
-                TeachingResponsibility.objects.all().order_by('name')
-            items['paid_time_commitments'] = TimeCommitment.objects.all()
-            items['volunteer_time_commitments'] = TimeCommitment.objects.all()
-            items['trainee_types'] = PrimaryTraineesType.objects.all()
-
         return render_to_response(template_name,
                                   items,
                                   context_instance=RequestContext(request))
+
+
+def get_items(request, section, module, accessible, path, can_edit,
+              instructor_link, user_profile):
+    items = dict(section=section,
+                 module=module,
+                 accessible=accessible,
+                 needs_submit=needs_submit(section),
+                 is_submitted=submitted(section, request.user),
+                 modules=primary_nav_sections(user_profile),
+                 root=section.hierarchy.get_root(),
+                 instructor_link=instructor_link,
+                 can_edit=can_edit,
+                 allow_redo=allow_redo(section),
+                 next_unlocked=is_section_unlocked(user_profile,
+                                                   section.get_next()))
+
+    if accessible and path.startswith('map'):
+        items['career_stages'] = CAREER_STAGE_CHOICES
+        items['clinical_fields'] = \
+            ClinicalField.objects.all().distinct().order_by('name')
+        items['teaching_responsibilities'] = \
+            TeachingResponsibility.objects.all().order_by('name')
+        items['paid_time_commitments'] = TimeCommitment.objects.all()
+        items['volunteer_time_commitments'] = TimeCommitment.objects.all()
+        items['trainee_types'] = PrimaryTraineesType.objects.all()
+    return items
 
 
 def template_from_path(accessible, path):

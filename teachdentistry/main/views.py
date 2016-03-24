@@ -2,13 +2,12 @@ from StringIO import StringIO
 import csv
 from zipfile import ZipFile
 
-from annoying.decorators import render_to
 from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponseRedirect, HttpResponseForbidden, \
     HttpResponse
-from django.shortcuts import get_object_or_404, render_to_response
+from django.shortcuts import get_object_or_404, render_to_response, render
 from django.template.context import RequestContext
 from django.utils.decorators import method_decorator
 from django.views.generic.base import View
@@ -34,10 +33,10 @@ def context_processor(request):
 
 
 @login_required
-@render_to('main/index.html')
 def index(request):
     profile, created = UserProfile.objects.get_or_create(user=request.user)
-    return {'modules': primary_nav_sections(profile)}
+    return render(request, 'main/index.html',
+                  {'modules': primary_nav_sections(profile)})
 
 
 def can_user_edit(request):
@@ -126,7 +125,6 @@ def template_from_path(accessible, path):
 
 
 @login_required
-@render_to("main/instructor_page.html")
 def instructor_page(request, path):
     if not request.user.is_superuser:
         return HttpResponseForbidden()
@@ -146,28 +144,28 @@ def instructor_page(request, path):
 
     quizzes = [p.block() for p in section.pageblock_set.all(
     ) if hasattr(p.block(), 'needs_submit') and p.block().needs_submit()]
-    return dict(section=section,
-                quizzes=quizzes,
-                module=get_module(section),
-                modules=root.get_children(),
-                root=root)
+    return render(request, "main/instructor_page.html",
+                  dict(section=section,
+                       quizzes=quizzes,
+                       module=get_module(section),
+                       modules=root.get_children(),
+                       root=root))
 
 
 @staff_member_required
-@render_to('main/edit_page.html')
 def edit_page(request, path):
     section = get_section_from_path(path)
     user_profile = get_or_create_profile(user=request.user, section=section)
 
-    return dict(section=section,
-                module=get_module(section),
-                modules=primary_nav_sections(user_profile),
-                root=section.hierarchy.get_root(),
-                can_edit=True)
+    return render(request, 'main/edit_page.html',
+                  dict(section=section,
+                       module=get_module(section),
+                       modules=primary_nav_sections(user_profile),
+                       root=section.hierarchy.get_root(),
+                       can_edit=True))
 
 
 @login_required
-@render_to('main/profile.html')
 def profile(request, educator_id):
     section = get_section_from_path("map/")
     user_profile = get_or_create_profile(user=request.user, section=section)
@@ -176,10 +174,11 @@ def profile(request, educator_id):
 
     educator = get_object_or_404(DentalEducator, id=educator_id)
 
-    return dict(educator=educator,
-                module=get_module(section),
-                modules=primary_nav_sections(user_profile),
-                root=section.hierarchy.get_root())
+    return render(request, 'main/profile.html',
+                  dict(educator=educator,
+                       module=get_module(section),
+                       modules=primary_nav_sections(user_profile),
+                       root=section.hierarchy.get_root()))
 
 
 def update_user_profile(sender, user, request, **kwargs):

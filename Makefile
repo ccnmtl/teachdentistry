@@ -1,6 +1,6 @@
 APP=teachdentistry
 JS_FILES=media/js/app/
-MAX_COMPLEXITY=8
+MAX_COMPLEXITY=7
 
 all: jenkins
 

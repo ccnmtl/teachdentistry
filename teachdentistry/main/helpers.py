@@ -21,12 +21,18 @@ def is_section_unlocked(profile, section):
 
     # if the previous page had blocks to submit
     # we only let them by if they submitted
-    for p in previous.pageblock_set.all():
-        if (hasattr(p.block(), 'unlocked') and
-                not p.block().unlocked(profile.user)):
-            return False
+    if unlocked_blocks(previous, profile.user):
+        return False
 
     return profile.has_visited(previous)
+
+
+def unlocked_blocks(page, user):
+    for p in page.pageblock_set.all():
+        if (hasattr(p.block(), 'unlocked') and
+                not p.block().unlocked(user)):
+            return True
+    return False
 
 
 def primary_nav_sections(profile):

@@ -13,7 +13,7 @@ pep8==1.7.0
 pyflakes==1.1.0
 mccabe==0.4.0
 flake8==2.5.4
-lxml==3.5.0
+lxml==3.6.0
 sure==1.2.24
 traitlets==4.0.0
 ipython_genutils==0.1.0

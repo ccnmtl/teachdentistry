@@ -79,7 +79,7 @@ django-pagetree_export==0.4
 django-stagingcontext==0.1.0
 django-registration==2.0.3
 django-markwhat==1.4
-django-localflavor==1.1
+django-localflavor==1.2
 django-impersonate==0.9.1
 gunicorn==19.3.0
 boto==2.38.0

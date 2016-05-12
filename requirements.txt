@@ -51,7 +51,7 @@ python-dateutil==2.5.3
 fake-factory==0.5.3
 factory_boy==2.6.1
 sqlparse==0.1.19
-contextlib2==0.5.2
+contextlib2==0.5.3
 rcssmin==1.0.6
 rjsmin==1.0.12
 

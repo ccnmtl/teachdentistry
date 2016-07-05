@@ -249,8 +249,9 @@
                 self.mapMarkers.push(view.marker);
             });
 
-            self.markerClusterer = new window.MarkerClusterer(self.mapInstance,
-                                                              self.mapMarkers);
+            self.markerClusterer = new window.MarkerClusterer(
+                    self.mapInstance, self.mapMarkers,
+                    {imagePath: this.staticURL + 'markerclusterer/images/m'});
         },
         onResize: function() {
             var viewport = this.getVisibleViewport();

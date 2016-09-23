@@ -50,5 +50,3 @@ LETTUCE_APPS = (
 )
 
 THUMBNAIL_SUBDIR = "thumbs"
-
-DEFAULT_FROM_EMAIL = 'ccnmtl-teachdentistry@columbia.edu'

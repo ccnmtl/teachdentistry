@@ -76,7 +76,7 @@ django-waffle==0.11.1
 django-jenkins==0.110.0
 django-smoketest==1.0.0
 django-extensions==1.7.5
-django-treebeard==4.0.1
+django-treebeard==4.1.0
 django-pagetree==1.2.4
 django-pageblocks==1.0.4
 django-quizblock==1.2.2

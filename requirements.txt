@@ -18,7 +18,7 @@ enum34==1.1.6
 configparser==3.5.0
 flake8==3.3.0
 lxml==3.7.3
-sure==1.4.3
+sure==1.4.4
 traitlets==4.3.2
 ipython_genutils==0.2.0
 decorator==4.0.11

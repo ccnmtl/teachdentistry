@@ -1,12 +1,12 @@
-import django.contrib.auth.views
-import django.views.static
-import django.views.i18n
-
+import debug_toolbar
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+import django.contrib.auth.views
 from django.views.generic import TemplateView
+import django.views.i18n
+import django.views.static
 from registration.backends.hmac.views import RegistrationView
 from tastypie.api import Api
 
@@ -68,6 +68,7 @@ if settings.DEBUG:
     urlpatterns += [
         url(r'^favicon.ico$', django.views.static.serve,
             {'document_root': '../media/img/favicon.ico'}),
+        url(r'^__debug__/', include(debug_toolbar.urls)),
     ]
 
 urlpatterns += [

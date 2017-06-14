@@ -223,6 +223,7 @@ def update_user_profile(sender, user, request, **kwargs):
 
     user_profile.save()
 
+
 user_registered.connect(update_user_profile)
 
 

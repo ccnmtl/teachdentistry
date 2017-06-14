@@ -14,6 +14,7 @@ class UserVisitedAdmin(admin.ModelAdmin):
     search_fields = ["user__user__username"]
     list_display = ("user", "section", "visited_time")
 
+
 admin.site.register(UserVisited, UserVisitedAdmin)
 
 admin.site.register(Institution)

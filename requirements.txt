@@ -96,7 +96,7 @@ requirements/src/django-pagetree_export-0.4.tar.gz
 django-stagingcontext==0.1.0
 django-registration==2.2
 django-markwhat==1.5.1
-django-localflavor==1.5
+django-localflavor==1.5.1
 django-impersonate==1.1
 gunicorn==19.7.1
 boto==2.47.0

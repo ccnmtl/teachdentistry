@@ -100,7 +100,7 @@ django-localflavor==1.5.1
 django-impersonate==1.1
 gunicorn==19.7.1
 boto==2.47.0
-django-storages==1.5.2
+django-storages==1.6.1
 django-cacheds3storage==0.1.2
 django-ga-context==0.1.0
 django-smtp-ssl==1.0

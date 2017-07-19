@@ -59,7 +59,7 @@ pylint==1.7.2
 six==1.10.0
 python-dateutil==2.6.1
 ipaddress==1.0.18
-Faker==0.7.17
+Faker==0.7.18
 factory_boy==2.8.1
 sqlparse==0.2.3
 contextlib2==0.5.5
